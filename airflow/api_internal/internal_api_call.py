@@ -46,7 +46,7 @@ class InternalApiConfig:
         Block current component from using Internal API.
 
         All methods decorated with internal_api_call will always be executed locally.
-        This mode is needed for "trusted" components like Scheduler, Webserver or Internal Api server.
+        This mode is needed for "trusted"s components like Scheduler, Webserver or Internal Api server.
         """
         InternalApiConfig._initialized = True
         InternalApiConfig._use_internal_api = False
