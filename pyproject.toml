@@ -331,13 +331,14 @@ combine-as-imports = true
 # Pydantic also require models to be imported during execution
 "airflow/serialization/pydantic/*.py" = ["I002", "UP007", "TCH001"]
 
-# Ignore pydoc style from these
+# Ignore pydoc/ruff style from these
 "*.pyi" = ["D"]
 "scripts/*" = ["D", "PT"]  # In addition ignore pytest specific rules
 "docs/*" = ["D"]
 "provider_packages/*" = ["D"]
 "*/example_dags/*" = ["D"]
 "chart/*" = ["D"]
+"clients/*" = ["D"]
 "dev/*" = ["D"]
 # In addition, ignore top level imports, e.g. pandas, numpy (TID253) and use of assert (S101) in tests
 "dev/perf/*" = ["TID253"]
@@ -351,7 +352,6 @@ combine-as-imports = true
 # All of the modules which have an extra license header (i.e. that we copy from another project) need to
 # ignore E402 -- module level import not at top level
 "scripts/ci/pre_commit/*.py" = ["E402"]
-"airflow/api/auth/backend/kerberos_auth.py" = ["E402"]
 "airflow/security/kerberos.py" = ["E402"]
 "airflow/security/utils.py" = ["E402"]
 "tests/providers/elasticsearch/log/elasticmock/__init__.py" = ["E402"]
