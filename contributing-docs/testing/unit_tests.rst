@@ -39,13 +39,13 @@ Follow the guidelines when writing unit tests:
 Handling warnings
 .................
 
-By default, in the new tests selected warnings are prohibited:
+In the new tests, following warnings are considered as errors:
 
 * ``airflow.exceptions.AirflowProviderDeprecationWarning``
 * ``airflow.exceptions.RemovedInAirflow3Warning``
 * ``airflow.utils.context.AirflowContextDeprecationWarning``
 
-That mean if one of this warning appear during test run and do not captured the test will failed.
+If you see those warnings in your test output, you should fix them. Else, test will fail.
 
 .. code-block:: console
 
@@ -53,9 +53,9 @@ That mean if one of this warning appear during test run and do not captured the 
     ...
     FAILED tests/models/test_dag.py::TestDag::test_clear_dag[None-None] - airflow.exceptions.RemovedInAirflow3Warning: Calling `DAG.create_dagrun()` without an explicit data interval is deprecated
 
-For avoid this make sure:
+To avoid this make sure to follow the guidelines below:
 
-* You do not use deprecated method, classes and arguments in your test cases;
+* Do not use deprecated method, classes and arguments in your test cases;
 * Your change do not affect other component, e.g. deprecate one part of Airflow Core or one of Community Supported
   Providers might be a reason for new deprecation warnings. In this case changes should be also made in all affected
   components in backward compatible way.
