@@ -5,6 +5,7 @@ import {
   AssetService,
   ConnectionService,
   DagService,
+  DagStatsService,
 } from "../requests/services.gen";
 import { DagRunState } from "../requests/types.gen";
 import * as Common from "./common";
@@ -166,5 +167,23 @@ export const useConnectionServiceGetConnectionSuspense = <
       queryKey,
     ),
     queryFn: () => ConnectionService.getConnection({ connectionId }) as TData,
+    ...options,
+  });
+/**
+ * Get Dag Stats
+ * @returns unknown Successful Response
+ * @throws ApiError
+ */
+export const useDagStatsServiceGetDagStatsSuspense = <
+  TData = Common.DagStatsServiceGetDagStatsDefaultResponse,
+  TError = unknown,
+  TQueryKey extends Array<unknown> = unknown[],
+>(
+  queryKey?: TQueryKey,
+  options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">,
+) =>
+  useSuspenseQuery<TData, TError>({
+    queryKey: Common.UseDagStatsServiceGetDagStatsKeyFn(queryKey),
+    queryFn: () => DagStatsService.getDagStats() as TData,
     ...options,
   });

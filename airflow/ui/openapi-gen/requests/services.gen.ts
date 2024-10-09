@@ -19,6 +19,7 @@ import type {
   GetConnectionResponse,
   DeleteVariableData,
   DeleteVariableResponse,
+  GetDagStatsResponse,
 } from "./types.gen";
 
 export class AssetService {
@@ -273,6 +274,20 @@ export class VariableService {
         404: "Not Found",
         422: "Validation Error",
       },
+    });
+  }
+}
+
+export class DagStatsService {
+  /**
+   * Get Dag Stats
+   * @returns unknown Successful Response
+   * @throws ApiError
+   */
+  public static getDagStats(): CancelablePromise<GetDagStatsResponse> {
+    return __request(OpenAPI, {
+      method: "GET",
+      url: "/public/dagStats/dagStats",
     });
   }
 }

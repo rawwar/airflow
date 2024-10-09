@@ -228,6 +228,8 @@ export type DeleteVariableData = {
 
 export type DeleteVariableResponse = void;
 
+export type GetDagStatsResponse = unknown;
+
 export type $OpenApiTs = {
   "/ui/next_run_assets/{dag_id}": {
     get: {
@@ -428,6 +430,16 @@ export type $OpenApiTs = {
          * Validation Error
          */
         422: HTTPValidationError;
+      };
+    };
+  };
+  "/public/dagStats/dagStats": {
+    get: {
+      res: {
+        /**
+         * Successful Response
+         */
+        200: unknown;
       };
     };
   };

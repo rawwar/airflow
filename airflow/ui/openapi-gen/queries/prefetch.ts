@@ -5,6 +5,7 @@ import {
   AssetService,
   ConnectionService,
   DagService,
+  DagStatsService,
 } from "../requests/services.gen";
 import { DagRunState } from "../requests/types.gen";
 import * as Common from "./common";
@@ -137,4 +138,16 @@ export const prefetchUseConnectionServiceGetConnection = (
   queryClient.prefetchQuery({
     queryKey: Common.UseConnectionServiceGetConnectionKeyFn({ connectionId }),
     queryFn: () => ConnectionService.getConnection({ connectionId }),
+  });
+/**
+ * Get Dag Stats
+ * @returns unknown Successful Response
+ * @throws ApiError
+ */
+export const prefetchUseDagStatsServiceGetDagStats = (
+  queryClient: QueryClient,
+) =>
+  queryClient.prefetchQuery({
+    queryKey: Common.UseDagStatsServiceGetDagStatsKeyFn(),
+    queryFn: () => DagStatsService.getDagStats(),
   });

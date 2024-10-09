@@ -5,6 +5,7 @@ import {
   AssetService,
   ConnectionService,
   DagService,
+  DagStatsService,
   VariableService,
 } from "../requests/services.gen";
 import { DagRunState } from "../requests/types.gen";
@@ -111,6 +112,17 @@ export const UseConnectionServiceGetConnectionKeyFn = (
   useConnectionServiceGetConnectionKey,
   ...(queryKey ?? [{ connectionId }]),
 ];
+export type DagStatsServiceGetDagStatsDefaultResponse = Awaited<
+  ReturnType<typeof DagStatsService.getDagStats>
+>;
+export type DagStatsServiceGetDagStatsQueryResult<
+  TData = DagStatsServiceGetDagStatsDefaultResponse,
+  TError = unknown,
+> = UseQueryResult<TData, TError>;
+export const useDagStatsServiceGetDagStatsKey = "DagStatsServiceGetDagStats";
+export const UseDagStatsServiceGetDagStatsKeyFn = (
+  queryKey?: Array<unknown>,
+) => [useDagStatsServiceGetDagStatsKey, ...(queryKey ?? [])];
 export type DagServicePatchDagsMutationResult = Awaited<
   ReturnType<typeof DagService.patchDags>
 >;

@@ -496,6 +496,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
+  /public/dagStats/dagStats:
+    get:
+      tags:
+      - DagStats
+      summary: Get Dag Stats
+      operationId: get_dag_stats
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
 components:
   schemas:
     ConnectionResponse:
