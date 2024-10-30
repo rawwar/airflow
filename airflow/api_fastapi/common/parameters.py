@@ -276,6 +276,32 @@ class _DagTagNamePatternSearch(_SearchParam):
         return self.set_value(tag_name_pattern)
 
 
+class _DateTimeFilter(BaseParam[str]):
+    """Filter on datetime."""
+
+    def __init__(self, attribute: ColumnElement, skip_none: bool = True) -> None:
+        super().__init__(skip_none)
+        self.attribute: ColumnElement = attribute
+        self.operator: str = "=="
+
+    def to_orm(self, select: Select) -> Select:
+        if self.value is None and self.skip_none:
+            return select
+
+        if self.operator == "==":
+            return select.where(self.attribute == self.value)
+        elif self.operator == "<=":
+            return select.where(self.attribute <= self.value)
+        elif self.operator == ">=":
+            return select.where(self.attribute >= self.value)
+        else:
+            raise ValueError(f"Unsupported operator: {self.operator}")
+
+    def depends(self, date: str | None = None, operator: str = "==") -> _DateTimeFilter:
+        self.operator = operator
+        return self.set_value(date)
+
+
 def _safe_parse_datetime(date_to_check: str) -> datetime:
     """
     Parse datetime and raise error for invalid dates.
