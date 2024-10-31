@@ -287,13 +287,14 @@ class _DateTimeFilter(BaseParam[str]):
     def to_orm(self, select: Select) -> Select:
         if self.value is None and self.skip_none:
             return select
+        value = _safe_parse_datetime(self.value)
 
         if self.operator == "==":
-            return select.where(self.attribute == self.value)
+            return select.where(self.attribute == value)
         elif self.operator == "<=":
-            return select.where(self.attribute <= self.value)
+            return select.where(self.attribute <= value)
         elif self.operator == ">=":
-            return select.where(self.attribute >= self.value)
+            return select.where(self.attribute >= value)
         else:
             raise ValueError(f"Unsupported operator: {self.operator}")
 
