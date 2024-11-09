@@ -270,8 +270,12 @@ class _OwnersFilter(BaseParam[List[str]]):
         return self.set_value(owners)
 
 
-class _TIStateFilter(BaseParam[List[Optional[TaskInstanceState]]]):
-    """Filter on task instance state."""
+class _StateFilter(BaseParam[List[str]]):
+    """Filter on state."""
+    
+    def __init__(self, attribute: ColumnElement, skip_none: bool = True) -> None:
+        super().__init__(skip_none=skip_none)
+        self.attribute = attribute
 
     def to_orm(self, select: Select) -> Select:
         if self.skip_none is False:
@@ -280,10 +284,10 @@ class _TIStateFilter(BaseParam[List[Optional[TaskInstanceState]]]):
         if not self.value:
             return select
 
-        conditions = [TaskInstance.state == state for state in self.value]
+        conditions = [self.attribute == state for state in self.value]
         return select.where(or_(*conditions))
 
-    def depends(self, state: list[str] = Query(default_factory=list)) -> _TIStateFilter:
+    def depends(self, state: list[str] = Query(default_factory=list)) -> _StateFilter:
         states = _convert_ti_states(state)
         return self.set_value(states)
 
