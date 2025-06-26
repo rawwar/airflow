@@ -124,6 +124,7 @@ class BigQueryInsertJobTrigger(BaseTrigger):
         """
         # Database query is needed to get the latest state of the task instance.
         task_instance = self.get_task_instance()  # type: ignore[call-arg]
+        self.log.debug("Task instance state: %s", task_instance.state)
         return task_instance.state != TaskInstanceState.DEFERRED
 
     async def run(self) -> AsyncIterator[TriggerEvent]:  # type: ignore[override]
@@ -131,9 +132,11 @@ class BigQueryInsertJobTrigger(BaseTrigger):
         hook = self._get_async_hook()
         try:
             while True:
+                self.log.debug("Checking job status")
                 job_status = await hook.get_job_status(
                     job_id=self.job_id, project_id=self.project_id, location=self.location
                 )
+                self.log.debug("Job status: %s", job_status)
                 if job_status["status"] == "success":
                     yield TriggerEvent(
                         {
@@ -153,7 +156,8 @@ class BigQueryInsertJobTrigger(BaseTrigger):
                         self.poll_interval,
                     )
                     await asyncio.sleep(self.poll_interval)
-        except asyncio.CancelledError:
+        except asyncio.CancelledError as e:
+            self.log.debug("CancelledError raised. Exception: %s", e)
             if self.job_id and self.cancel_on_kill and self.safe_to_cancel():
                 self.log.info(
                     "The job is safe to cancel the as airflow TaskInstance is not in deferred state."
