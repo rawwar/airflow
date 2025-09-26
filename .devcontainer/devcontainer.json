@@ -8,8 +8,7 @@
         "terminal.integrated.defaultProfile.linux": "bash"
     },
     "features": {
-        "ghcr.io/devcontainers/features/docker-in-docker:2": {},
-        "ghcr.io/devcontainers/features/docker-compose:1": {}
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
     },
     "extensions": [
         "ms-python.python",
@@ -30,6 +29,5 @@
     // for users who use non-standard git config patterns
     // https://github.com/microsoft/vscode-remote-release/issues/2084#issuecomment-989756268
     "initializeCommand": "cd \"${localWorkspaceFolder}\" && git config --local user.email \"$(git config user.email)\" && git config --local user.name \"$(git config user.name)\"",
-    "postCreateCommand": "docker --version && docker compose version",
     "overrideCommand": true
 }
