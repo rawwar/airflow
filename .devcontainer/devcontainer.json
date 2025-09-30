@@ -1,6 +1,6 @@
 {
     "name": "Apache Airflow - Github Codespaces",
-    "image": "ghcr.io/astral-sh/uv:latest",
+    "image": "ubuntu:22.04",
     "features": {
         "ghcr.io/devcontainers/features/git:1": {},
         "ghcr.io/devcontainers/features/docker-in-docker:2": {
