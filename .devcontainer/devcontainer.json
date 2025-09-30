@@ -1,5 +1,5 @@
 {
-    "name": "Clean Development Environment with Docker",
+    "name": "Apache Airflow Github Codespaces",
     "image": "ubuntu:22.04",
     "features": {
         "ghcr.io/devcontainers/features/git:1": {},
@@ -7,7 +7,7 @@
             "moby": false
         }
     },
-    "postCreateCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh && echo 'export PATH=\"/root/.cargo/bin:$PATH\"' >> ~/.bashrc && apt-get update && apt-get install -y python3.11 python3.11-pip python3.11-venv",
+    "postCreateCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh && echo 'export PATH=\"/root/.cargo/bin:$PATH\"' >> ~/.bashrc && apt-get update",
     "customizations": {
         "vscode": {
             "extensions": [
@@ -19,10 +19,10 @@
             }
         }
     },
-    "workspaceFolder": "/workspaces/airflow",
+    "workspaceFolder": "/opt/airflow",
     "forwardPorts": [8080],
     "mounts": [
-        "source=${localWorkspaceFolder},target=/workspaces/airflow,type=bind,consistency=cached"
+        "source=${localWorkspaceFolder},target=/opt/airflow,type=bind,consistency=cached"
     ],
     "privileged": true
 }
