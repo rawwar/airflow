@@ -1,11 +1,13 @@
 {
     "name": "Clean Development Environment with Docker",
-    "image": "python:3.11-slim",
+    "image": "ubuntu:22.04",
     "features": {
         "ghcr.io/devcontainers/features/git:1": {},
-        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {
+            "moby": false
+        }
     },
-    "postCreateCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh && echo 'export PATH=\"/root/.cargo/bin:$PATH\"' >> ~/.bashrc",
+    "postCreateCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh && echo 'export PATH=\"/root/.cargo/bin:$PATH\"' >> ~/.bashrc && apt-get update && apt-get install -y python3.11 python3.11-pip python3.11-venv",
     "customizations": {
         "vscode": {
             "extensions": [
