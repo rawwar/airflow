@@ -1,13 +1,13 @@
 {
     "name": "Apache Airflow - Github Codespaces",
-    "image": "ubuntu:22.04",
+    "image": "ghcr.io/astral-sh/uv:latest",
     "features": {
         "ghcr.io/devcontainers/features/git:1": {},
         "ghcr.io/devcontainers/features/docker-in-docker:2": {
             "moby": false
         }
     },
-    "postCreateCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh && echo 'export PATH=\"/root/.cargo/bin:$PATH\"' >> ~/.bashrc && source ~/.bashrc &&apt-get update && cd /workspaces/airflow && uv venv .venv -p 3.11 && source .venv/bin/activate && uv tool install prek && prek install -f && prek install -t pre-push && uv tool install -e ./dev/breeze && mkdir -p files/airflow-breeze-config && echo 'AIRFLOW__CORE__SIMPLE_AUTH_MANAGER_ALL_ADMINS=True' > files/airflow-breeze-config/environment_variables.env && echo 'AIRFLOW__API__EXPOSE_CONFIG=True' >> files/airflow-breeze-config/environment_variables.env",
+    "postCreateCommand": "apt-get update && cd /workspaces/airflow && uv venv .venv -p 3.11 && source .venv/bin/activate && uv tool install prek && prek install -f && prek install -t pre-push && uv tool install -e ./dev/breeze && mkdir -p files/airflow-breeze-config && echo 'AIRFLOW__CORE__SIMPLE_AUTH_MANAGER_ALL_ADMINS=True' > files/airflow-breeze-config/environment_variables.env && echo 'AIRFLOW__API__EXPOSE_CONFIG=True' >> files/airflow-breeze-config/environment_variables.env",
     "customizations": {
         "vscode": {
             "extensions": [
