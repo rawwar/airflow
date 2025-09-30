@@ -7,7 +7,7 @@
             "moby": false
         }
     },
-    "postCreateCommand": "apt-get update && cd /workspaces/airflow && uv venv .venv -p 3.11 && source .venv/bin/activate && uv tool install prek && prek install -f && prek install -t pre-push && uv tool install -e ./dev/breeze && mkdir -p files/airflow-breeze-config && echo 'AIRFLOW__CORE__SIMPLE_AUTH_MANAGER_ALL_ADMINS=True' > files/airflow-breeze-config/environment_variables.env && echo 'AIRFLOW__API__EXPOSE_CONFIG=True' >> files/airflow-breeze-config/environment_variables.env",
+    "postCreateCommand": "chmod +x .devcontainer/setup.sh && ./.devcontainer/setup.sh",
     "customizations": {
         "vscode": {
             "extensions": [
