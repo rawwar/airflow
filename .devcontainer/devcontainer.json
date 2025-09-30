@@ -7,6 +7,7 @@
             "moby": false
         }
     },
+    "initializeCommand": "mkdir -p /opt/airflow",
     "postCreateCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh && echo 'export PATH=\"/root/.cargo/bin:$PATH\"' >> ~/.bashrc && apt-get update",
     "customizations": {
         "vscode": {
