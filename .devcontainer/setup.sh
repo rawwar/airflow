@@ -1,37 +1,3 @@
-#!/bin/bash
-# Licensed to the Apache Software Foundation (ASF) under one
-# or more contributor license agreements.  See the NOTICE file
-# distributed with this work for additional information
-# regarding copyright ownership.  The ASF licenses this file
-# to you under the Apache License, Version 2.0 (the
-# "License"); you may not use this file except in compliance
-# with the License.  You may obtain a copy of the License at
-#
-#   http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing,
-# software distributed under the License is distributed on an
-# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-# KIND, either express or implied.  See the License for the
-# specific language governing permissions and limitations
-# under the License.
-
-set -e
-
-echo "🚀 Starting Apache Airflow Codespaces setup..."
-
-# Install uv if not already installed
-if ! command -v uv &> /dev/null; then
-    echo "📦 Installing uv..."
-    curl -LsSf https://astral.sh/uv/install.sh | sh
-    export PATH="/root/.cargo/bin:$PATH"
-    echo "export PATH=\"/root/.cargo/bin:\$PATH\"" >> ~/.bashrc
-else
-    echo "✅ uv is already installed"
-fi
-
-# Update package lists
-echo "🔄 Updating package lists..."
 apt-get update
 
 # Navigate to workspace
@@ -42,7 +8,7 @@ echo "🐍 Creating Python 3.11 virtual environment..."
 uv venv .venv -p 3.11
 
 # Activate virtual environment
-echo "🔧 Activating virtual environment..."
+echo "Activating virtual environment..."
 source .venv/bin/activate
 
 # Install prek
@@ -66,5 +32,13 @@ AIRFLOW__CORE__SIMPLE_AUTH_MANAGER_ALL_ADMINS=True
 AIRFLOW__API__EXPOSE_CONFIG=True
 EOF
 
+# Prompt for GitHub username and email, then set them globally
+read -p "Enter your GitHub username: " github_username
+read -p "Enter your GitHub email: " github_email
+
+git config --global user.name "$github_username"
+git config --global user.email "$github_email"
+
+echo "🔧 Git global config set for user.name and user.email."
 echo "✅ Setup completed successfully!"
 echo "🎉 Your Apache Airflow development environment is ready!"
