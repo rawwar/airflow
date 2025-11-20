@@ -160,7 +160,6 @@ class BaseAuthManager(Generic[T], LoggingMixin, metaclass=ABCMeta):
         *,
         method: ResourceMethod,
         user: BaseUser,
-        details: Any | None = None,
     ) -> bool:
         """Return whether the user is authorized to interact with endpoints that query Metadata DB."""
         raise NotImplementedError

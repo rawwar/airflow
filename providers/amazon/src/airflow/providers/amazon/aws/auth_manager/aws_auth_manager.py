@@ -233,7 +233,6 @@ class AwsAuthManager(BaseAuthManager[AwsAuthManagerUser]):
         *,
         method: ResourceMethod,
         user: AwsAuthManagerUser,
-        details: Any | None = None,
     ) -> bool:
         return self.avp_facade.is_authorized(
             method=method,

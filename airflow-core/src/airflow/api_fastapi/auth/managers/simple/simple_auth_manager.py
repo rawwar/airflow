@@ -161,7 +161,6 @@ class SimpleAuthManager(BaseAuthManager[SimpleAuthManagerUser]):
         *,
         method: ResourceMethod,
         user: SimpleAuthManagerUser,
-        details: Any | None = None,
     ) -> bool:
         return self._is_authorized(
             method=method,

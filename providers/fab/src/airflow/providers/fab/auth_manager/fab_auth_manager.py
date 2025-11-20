@@ -294,7 +294,6 @@ class FabAuthManager(BaseAuthManager[User]):
         *,
         method: ResourceMethod,
         user: User,
-        details: Any | None = None,
     ) -> bool:
         return self._is_authorized(method=method, resource_type=RESOURCE_METADATA_DB, user=user)
 
