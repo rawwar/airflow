@@ -228,6 +228,19 @@ class AwsAuthManager(BaseAuthManager[AwsAuthManagerUser]):
             entity_id=resource_name,
         )
 
+    def is_authorized_metadata_db(
+        self,
+        *,
+        method: ResourceMethod,
+        user: AwsAuthManagerUser,
+        details: Any | None = None,
+    ) -> bool:
+        return self.avp_facade.is_authorized(
+            method=method,
+            entity_type=AvpEntities.METADATA_DB,
+            user=user,
+        )
+
     def filter_authorized_menu_items(
         self, menu_items: list[MenuItem], *, user: AwsAuthManagerUser
     ) -> list[MenuItem]:

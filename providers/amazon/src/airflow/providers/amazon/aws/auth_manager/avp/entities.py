@@ -40,6 +40,7 @@ class AvpEntities(Enum):
     CONNECTION = "Connection"
     CUSTOM = "Custom"
     DAG = "Dag"
+    METADATA_DB = "MetadataDb"
     MENU = "Menu"
     POOL = "Pool"
     VARIABLE = "Variable"
