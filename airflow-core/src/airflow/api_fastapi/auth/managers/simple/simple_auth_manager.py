@@ -156,6 +156,20 @@ class SimpleAuthManager(BaseAuthManager[SimpleAuthManagerUser]):
     def serialize_user(self, user: SimpleAuthManagerUser) -> dict[str, Any]:
         return {"sub": user.username, "role": user.role}
 
+    def is_authorized_metadata_db(
+        self,
+        *,
+        method: ResourceMethod,
+        user: SimpleAuthManagerUser,
+        details: Any | None = None,
+    ) -> bool:
+        return self._is_authorized(
+            method=method,
+            allow_role=SimpleAuthManagerRole.ADMIN,
+            user=user,
+            allow_get_role=SimpleAuthManagerRole.ADMIN,
+        )
+
     def is_authorized_configuration(
         self,
         *,

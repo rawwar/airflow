@@ -141,6 +141,7 @@ class TestSimpleAuthManager:
             "is_authorized_backfill",
             "is_authorized_pool",
             "is_authorized_variable",
+            "is_authorized_metadata_db",
         ],
     )
     @pytest.mark.parametrize(
@@ -259,6 +260,25 @@ class TestSimpleAuthManager:
     ):
         assert (
             getattr(auth_manager, api)(method=method, user=SimpleAuthManagerUser(username="test", role=role))
+            is result
+        )
+
+    @pytest.mark.parametrize(
+        ("role", "method", "result"),
+        [
+            ("ADMIN", "GET", True),
+            ("ADMIN", "POST", False),
+            ("OP", "GET", False),
+            ("USER", "GET", False),
+            ("VIEWER", "GET", False),
+            (None, "GET", False),
+        ],
+    )
+    def test_is_authorized_metadata_db_admin_required(self, auth_manager, role, method, result):
+        assert (
+            auth_manager.is_authorized_metadata_db(
+                method=method, user=SimpleAuthManagerUser(username="test", role=role)
+            )
             is result
         )
 

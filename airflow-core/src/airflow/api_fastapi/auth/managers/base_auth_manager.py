@@ -155,6 +155,17 @@ class BaseAuthManager(Generic[T], LoggingMixin, metaclass=ABCMeta):
         return None
 
     @abstractmethod
+    def is_authorized_metadata_db(
+        self,
+        *,
+        method: ResourceMethod,
+        user: BaseUser,
+        details: Any | None = None,
+    ) -> bool:
+        """Return whether the user is authorized to interact with endpoints that query Metadata DB."""
+        raise NotImplementedError
+
+    @abstractmethod
     def is_authorized_configuration(
         self,
         *,
