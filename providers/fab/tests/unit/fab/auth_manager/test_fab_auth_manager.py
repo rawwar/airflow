@@ -62,6 +62,7 @@ from airflow.providers.fab.www.security.permissions import (
     RESOURCE_DAG_RUN,
     RESOURCE_DOCS,
     RESOURCE_JOB,
+    RESOURCE_METADATA_DB,
     RESOURCE_PLUGIN,
     RESOURCE_PROVIDER,
     RESOURCE_TASK_INSTANCE,
@@ -199,6 +200,19 @@ class TestFabAuthManager:
         user = create_user(flask_app, "test")
         result = auth_manager_with_appbuilder.deserialize_user({"sub": str(user.id)})
         assert user.get_id() == result.get_id()
+
+    @pytest.mark.parametrize(
+        ("method", "perms", "expected"),
+        [
+            ("GET", [(ACTION_CAN_READ, RESOURCE_METADATA_DB)], True),
+            ("POST", [(ACTION_CAN_READ, RESOURCE_METADATA_DB)], False),
+            ("GET", [], False),
+        ],
+    )
+    def test_is_authorized_metadata_db(self, auth_manager, method, perms, expected):
+        user = Mock()
+        user.perms = perms
+        assert auth_manager.is_authorized_metadata_db(method=method, user=user) is expected
 
     def test_serialize_user(self, flask_app, auth_manager_with_appbuilder):
         user = create_user(flask_app, "test")

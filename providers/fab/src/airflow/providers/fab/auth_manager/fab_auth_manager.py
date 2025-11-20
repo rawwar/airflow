@@ -100,6 +100,7 @@ from airflow.providers.fab.www.security.permissions import (
     RESOURCE_VARIABLE,
     RESOURCE_WEBSITE,
     RESOURCE_XCOM,
+    RESOURCE_METADATA_DB,
 )
 from airflow.providers.fab.www.utils import (
     get_fab_action_from_method_map,
@@ -172,7 +173,6 @@ _MAP_MENU_ITEM_TO_FAB_RESOURCE_TYPE = {
     MenuItem.VARIABLES: RESOURCE_VARIABLE,
     MenuItem.XCOMS: RESOURCE_XCOM,
 }
-
 
 if AIRFLOW_V_3_1_PLUS:
     from airflow.providers.fab.www.security.permissions import RESOURCE_HITL_DETAIL
@@ -288,6 +288,15 @@ class FabAuthManager(BaseAuthManager[User]):
 
     def serialize_user(self, user: User) -> dict[str, Any]:
         return {"sub": str(user.id)}
+
+    def is_authorized_metadata_db(
+        self,
+        *,
+        method: ResourceMethod,
+        user: User,
+        details: Any | None = None,
+    ) -> bool:
+        return self._is_authorized(method=method, resource_type=RESOURCE_METADATA_DB, user=user)
 
     def is_logged_in(self) -> bool:
         """Return whether the user is logged in."""

@@ -60,6 +60,7 @@ RESOURCE_USER_STATS_CHART = "User Stats Chart"
 RESOURCE_VARIABLE = "Variables"
 RESOURCE_WEBSITE = "Website"
 RESOURCE_XCOM = "XComs"
+RESOURCE_METADATA_DB = "MetadataDB"
 
 # Action Constants
 ACTION_CAN_CREATE = "can_create"

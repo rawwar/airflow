@@ -22,6 +22,7 @@ from unittest.mock import Mock
 import pytest
 
 from airflow.providers.fab.auth_manager.security_manager.override import FabAirflowSecurityManagerOverride
+from airflow.providers.fab.www.security import permissions
 
 
 class EmptySecurityManager(FabAirflowSecurityManagerOverride):
@@ -244,3 +245,8 @@ class TestFabAirflowSecurityManagerOverride:
         sm._decode_and_validate_azure_jwt = Mock(return_value=resp)
         sm._get_authentik_token_info = Mock(return_value=resp)
         assert sm.get_oauth_user_info(provider, {"id_token": None}) == user_info
+    def test_admin_permissions_include_metadata_db(self):
+        assert (permissions.ACTION_CAN_READ, permissions.RESOURCE_METADATA_DB) in \
+            FabAirflowSecurityManagerOverride.ADMIN_PERMISSIONS
+        assert (permissions.ACTION_CAN_READ, permissions.RESOURCE_METADATA_DB) not in \
+            FabAirflowSecurityManagerOverride.VIEWER_PERMISSIONS
