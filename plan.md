@@ -3,23 +3,15 @@ TODO Roadmap for Metadata DB FastAPI Endpoints (execute sequentially)
 Complete every checklist item in a step before starting the next step.
 
 ## Step 1 – Security Capability Updates
-- [ ] Update `airflow/api_fastapi/auth/managers/base_auth_manager.py`:
-  - Introduce abstract `has_access_to_db(self, *, user: BaseUser) -> bool` raising `NotImplementedError` by default.
-  - Provide reusable helper (e.g. `_raise_metadata_db_forbidden`) for consistent error messaging.
-- [ ] Implement `has_access_to_db` in simple auth manager (`airflow/api_fastapi/auth/managers/simple/simple_auth_manager.py`): grant access only to `SimpleAuthManagerRole.ADMIN` (or higher) and add unit coverage in `airflow-core/tests/unit/api_fastapi/auth/managers/simple/test_simple_auth_manager.py`.
-- [ ] Implement `has_access_to_db` in FAB auth manager (`providers/fab/src/airflow/providers/fab/auth_manager/fab_auth_manager.py`):
-  - Map to a new FAB resource constant (e.g. `RESOURCE_METADATA_DB`) with read action through existing security manager.
-  - Ensure FAB role sync seeds the permission; add/extend tests in `providers/fab/tests/unit/fab/auth_manager/test_fab_auth_manager.py` and related security manager tests.
-- [ ] Implement `has_access_to_db` in AWS auth manager (`providers/amazon/src/airflow/providers/amazon/aws/auth_manager/aws_auth_manager.py`):
-  - Introduce new `AvpEntities.METADATA_DB` constant and ensure schemas/CLI reference it.
-  - Extend unit tests in `providers/amazon/tests/unit/amazon/aws/auth_manager/test_aws_auth_manager.py` to cover allow/deny.
-- [ ] Implement `has_access_to_db` in Keycloak auth manager (`providers/keycloak/src/airflow/providers/keycloak/auth_manager/keycloak_auth_manager.py`):
-  - Add `KeycloakResource.METADATA_DB` and enforce permission requests via `_is_authorized`.
-  - Update unit tests in `providers/keycloak/tests/unit/keycloak/auth_manager/test_keycloak_auth_manager.py`.
-- [ ] Update provider and core documentation if new permissions/entities require configuration (`providers/fab/docs/`, `providers/amazon/docs/`, `providers/keycloak/docs/`) and ensure release notes mention the new permission requirement where appropriate.
+- [x] Update `airflow/api_fastapi/auth/managers/base_auth_manager.py` to expose abstract `is_authorized_metadata_db(self, *, method: ResourceMethod, user: BaseUser) -> bool` raising `NotImplementedError` by default.
+- [x] Implement `is_authorized_metadata_db` in simple auth manager (`airflow/api_fastapi/auth/managers/simple/simple_auth_manager.py`): restrict access to `SimpleAuthManagerRole.ADMIN` for all methods and extend unit coverage in `airflow-core/tests/unit/api_fastapi/auth/managers/simple/test_simple_auth_manager.py`.
+- [x] Implement `is_authorized_metadata_db` in FAB auth manager (`providers/fab/src/airflow/providers/fab/auth_manager/fab_auth_manager.py`): wire through `RESOURCE_METADATA_DB`, adjust role seeds so only Admin retains read access, and update tests in `providers/fab/tests/unit/fab/auth_manager/test_fab_auth_manager.py` plus security manager expectations.
+- [x] Implement `is_authorized_metadata_db` in AWS auth manager (`providers/amazon/src/airflow/providers/amazon/aws/auth_manager/aws_auth_manager.py`): ensure AVP facade checks `AvpEntities.METADATA_DB` and extend unit tests in `providers/amazon/tests/unit/amazon/aws/auth_manager/test_aws_auth_manager.py`.
+- [x] Implement `is_authorized_metadata_db` in Keycloak auth manager (`providers/keycloak/src/airflow/providers/keycloak/auth_manager/keycloak_auth_manager.py`): leverage `KeycloakResource.METADATA_DB` via `_is_authorized` and update tests in `providers/keycloak/tests/unit/keycloak/auth_manager/test_keycloak_auth_manager.py`.
+- [x] Update provider/core documentation (FAB, AWS, Keycloak) and relevant release notes to describe the new metadata DB authorization requirement.
 
 ## Step 2 – Shared Dependency & Module Scaffolding
-- [ ] Add `requires_metadata_db_access` dependency to `airflow/api_fastapi/core_api/security.py` using `get_auth_manager().has_access_to_db(user)` and returning HTTP 403 when false; add unit tests in `airflow-core/tests/unit/api_fastapi/test_security.py`.
+- [ ] Add `requires_metadata_db_access` dependency to `airflow/api_fastapi/core_api/security.py` using `get_auth_manager().is_authorized_metadata_db(method="GET", user=user)` and returning HTTP 403 when false; add unit tests in `airflow-core/tests/unit/api_fastapi/test_security.py`.
 - [ ] Create router module `airflow/api_fastapi/core_api/routes/public/metadata_db.py` with `AirflowRouter(prefix="/metadataDB", tags=["MetadataDB"])` and placeholder route functions guarded by the new dependency.
 - [ ] Register the metadata router inside `authenticated_router` in `airflow/api_fastapi/core_api/routes/public/__init__.py`.
 - [ ] Create datamodel scaffold `airflow/api_fastapi/core_api/datamodels/metadata_db.py` with placeholder Pydantic classes for stats and index responses (to be filled in later steps).
@@ -48,7 +40,7 @@ Complete every checklist item in a step before starting the next step.
    - [ ] Add endpoint tests in `airflow-core/tests/unit/api_fastapi/core_api/test_metadata_db_routes.py` using FastAPI `TestClient` covering authorized success, forbidden access, missing table, and unsupported dialect responses.
    - [ ] Validate serialization for new Pydantic models in tests.
 5. Documentation
-   - [ ] Update API reference docs (`docs/apache-airflow/api-ref/` or corresponding FastAPI section) with endpoint description, request examples, and Deployment Manager/`has_access_to_db` requirement.
+   - [ ] Update API reference docs (`docs/apache-airflow/api-ref/` or corresponding FastAPI section) with endpoint description, request examples, and Deployment Manager/`is_authorized_metadata_db` requirement.
 
 ## Step 5 – Endpoint Loop 2 (`GET /metadataDB/indexes`)
 1. Models & Schema
@@ -77,5 +69,5 @@ Complete every checklist item in a step before starting the next step.
 ## Step 7 – Final Integration
 - [ ] Ensure router import ordering keeps alphabetical grouping in `public/__init__.py` and add any missing exports in `__all__` files.
 - [ ] Regenerate or verify OpenAPI schema (without running Breeze) to confirm endpoints and models appear with correct security notes.
-- [ ] Update release notes (`docs/apache-airflow/stable/changelog.rst` or relevant provider changelogs) summarizing metadata DB inspection endpoints and new `has_access_to_db` permission.
+- [ ] Update release notes (`docs/apache-airflow/stable/changelog.rst` or relevant provider changelogs) summarizing metadata DB inspection endpoints and new `is_authorized_metadata_db` permission.
 - [ ] Provide guidance in developer docs (e.g. `contributing-docs/` or provider READMEs) for configuring FAB roles, AWS AVP policies, and Keycloak resources to enable access.
