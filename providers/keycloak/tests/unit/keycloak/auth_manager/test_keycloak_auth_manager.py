@@ -243,6 +243,7 @@ class TestKeycloakAuthManager:
             "is_authorized_asset_alias",
             "is_authorized_variable",
             "is_authorized_pool",
+            "is_authorized_metadata_db",
         ],
     )
     @patch("airflow.providers.keycloak.auth_manager.keycloak_auth_manager.requests")
@@ -267,6 +268,7 @@ class TestKeycloakAuthManager:
             "is_authorized_asset_alias",
             "is_authorized_variable",
             "is_authorized_pool",
+            "is_authorized_metadata_db",
         ],
     )
     @patch("airflow.providers.keycloak.auth_manager.keycloak_auth_manager.requests")

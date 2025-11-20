@@ -225,6 +225,19 @@ class KeycloakAuthManager(BaseAuthManager[KeycloakAuthManagerUser]):
             resource_id=access_view.value,
         )
 
+    def is_authorized_metadata_db(
+        self,
+        *,
+        method: ResourceMethod,
+        user: KeycloakAuthManagerUser,
+    ) -> bool:
+        return self._is_authorized(
+            method=method,
+            resource_type=KeycloakResource.METADATA_DB,
+            user=user,
+            resource_id=None,
+        )
+
     def is_authorized_custom_view(
         self, *, method: ResourceMethod | str, resource_name: str, user: KeycloakAuthManagerUser
     ) -> bool:
