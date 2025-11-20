@@ -45,6 +45,7 @@ from airflow.api_fastapi.core_api.security import (
     requires_access_pool_bulk,
     requires_access_variable,
     requires_access_variable_bulk,
+    requires_metadata_db_access,
     resolve_user_from_token,
 )
 from airflow.models import Connection, Pool, Variable
@@ -521,3 +522,27 @@ class TestAuthManagerDependency:
         assert auth_manager is not None
         assert hasattr(auth_manager, "get_url_login")
         assert hasattr(auth_manager, "get_url_logout")
+    @patch("airflow.api_fastapi.core_api.security.get_auth_manager")
+    def test_requires_metadata_db_access_authorized(self, mock_get_auth_manager):
+        auth_manager = Mock()
+        auth_manager.is_authorized_metadata_db.return_value = True
+        mock_get_auth_manager.return_value = auth_manager
+
+        user = Mock()
+
+        requires_metadata_db_access()(user)
+
+        auth_manager.is_authorized_metadata_db.assert_called_once_with(method="GET", user=user)
+
+    @patch("airflow.api_fastapi.core_api.security.get_auth_manager")
+    def test_requires_metadata_db_access_forbidden(self, mock_get_auth_manager):
+        auth_manager = Mock()
+        auth_manager.is_authorized_metadata_db.return_value = False
+        mock_get_auth_manager.return_value = auth_manager
+
+        user = Mock()
+
+        with pytest.raises(HTTPException, match="Forbidden"):
+            requires_metadata_db_access()(user)
+
+        auth_manager.is_authorized_metadata_db.assert_called_once_with(method="GET", user=user)
