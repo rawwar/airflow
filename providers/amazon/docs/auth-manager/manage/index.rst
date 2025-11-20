@@ -181,6 +181,22 @@ This is equivalent to the :doc:`Viewer role in Flask AppBuilder <apache-airflow-
     resource
   );
 
+Restrict metadata database inspection to deployment managers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The metadata inspection endpoints (`/metadataDB`) require the Cedar action ``Airflow::Action::"MetadataDb.GET"``.
+Grant this action only to trusted principals (for example, a deployment manager group):
+
+::
+
+  permit(
+    principal in Airflow::Group::"deployment-managers",
+    action in [Airflow::Action::"MetadataDb.GET"],
+    resource == Airflow::MetadataDb::""
+  );
+
+Users without this action receive ``403`` responses from the metadata inspection APIs.
+
 Give standard Airflow user permissions to a group of users
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

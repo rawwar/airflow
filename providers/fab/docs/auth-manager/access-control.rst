@@ -79,6 +79,11 @@ other users. ``Admin`` users have ``Op`` permission plus additional permissions:
     :start-after: [START security_admin_perms]
     :end-before: [END security_admin_perms]
 
+.. note::
+   Metadata database inspection endpoints are intentionally limited to ``Admin``. If you introduce custom roles that
+   should surface the `/metadataDB` API responses, ensure those roles receive ``(can_read, Metadata DB)`` and remove
+   the permission from any other role that should not be able to view database internals.
+
 Custom Roles
 '''''''''''''
 

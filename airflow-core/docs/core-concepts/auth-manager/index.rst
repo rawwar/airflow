@@ -142,6 +142,7 @@ These authorization methods are:
 * ``is_authorized_pool``: Return whether the user is authorized to access Airflow pools. Some details about the pool can be provided (e.g. the pool name).
 * ``is_authorized_variable``: Return whether the user is authorized to access Airflow variables. Some details about the variable can be provided (e.g. the variable key).
 * ``is_authorized_metadata_db``: Return whether the user is authorized to access Airflow metadata database inspection endpoints (e.g. the metadata DB inspection endpoints).
+  Deployment Managers must grant this permission explicitly – by default only elevated roles (for example FAB's ``Admin`` role) should be able to invoke metadata inspection APIs.
 * ``is_authorized_view``: Return whether the user is authorized to access a specific view in Airflow. The view is specified through ``access_view`` (e.g. ``AccessView.CLUSTER_ACTIVITY``).
 * ``is_authorized_custom_view``: Return whether the user is authorized to access a specific view not defined in Airflow. This view can be provided by the auth manager itself or a plugin defined by the user.
 * ``filter_authorized_menu_items``: Given the list of menu items in the UI, return the list of menu items the user has access to.
