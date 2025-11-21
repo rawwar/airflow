@@ -91,3 +91,23 @@ More resources about permissions can be found in the official documentation of K
 2- `Keycloak Permission Overview <https://www.keycloak.org/docs/latest/authorization_services/index.html#_permission_overview>`_
 
 3- `Keycloak Creating scope-based Permissions <https://www.keycloak.org/docs/latest/authorization_services/index.html#_policy_overview>`_
+
+Metadata Database Access
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Access to metadata database inspection endpoints (``/api/v2/metadataDB/*``) is controlled via the
+``METADATA_DB`` resource in Keycloak. These endpoints provide statistics about table sizes and row
+counts to help Deployment Managers with database maintenance decisions.
+
+The CLI commands above (``airflow keycloak create-resources`` and ``airflow keycloak create-permissions``)
+automatically create the ``METADATA_DB`` resource and assign appropriate permissions to the admin role.
+
+To manually grant metadata database access using the Keycloak console:
+
+1. Navigate to your Airflow client in Keycloak admin console
+2. Go to **Authorization > Resources**
+3. Find or create the ``METADATA_DB`` resource with scope ``GET``
+4. Create a permission mapping this resource to deployment manager roles
+
+For more details on metadata database endpoints, see the Airflow core documentation on
+See the Airflow REST API reference for complete endpoint documentation.

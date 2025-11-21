@@ -365,3 +365,18 @@ In the case that there is no ``access_control`` defined on the Dag itself, Airfl
 may have been set through the UI, CLI or by previous access_control args on the Dag in question.
 
 In all cases, system-wide roles such as ``Can edit on DAG`` take precedence over dag-level access controls, such that they can be considered ``Can edit on DAG: *``
+
+Metadata Database Access
+'''''''''''''''''''''''''
+
+Access to metadata database inspection endpoints (``/api/v2/metadataDB/*``) is restricted to
+users with the ``Admin`` role by default. These endpoints provide statistics about table sizes
+and row counts to help with database maintenance decisions.
+
+To grant metadata database access to custom roles:
+
+1. Navigate to **Security > Roles** in the Airflow UI
+2. Edit the desired role
+3. Add permission: ``can_read on Metadata DB``
+
+For more details on these endpoints, see the Airflow REST API reference.

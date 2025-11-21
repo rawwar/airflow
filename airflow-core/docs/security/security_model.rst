@@ -105,6 +105,11 @@ situation and should be trusted not to misuse this capability.
 
 Only admin users have access to audit logs.
 
+Additionally, admin users have access to metadata database inspection endpoints
+(``/api/v2/metadataDB/*``) which provide statistics about table sizes, row counts,
+and index information. These endpoints are restricted to users with Deployment Manager
+privileges to help with database maintenance and cleanup decisions.
+
 Operations users
 ................
 

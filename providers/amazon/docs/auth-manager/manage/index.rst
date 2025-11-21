@@ -328,3 +328,33 @@ The policy below removes access of Dags ``secret-dag-1`` and ``secret-dag-2`` fr
     action,
     resource in [Airflow::Dag::"secret-dag-1", Airflow::Dag::"secret-dag-2"]
   );
+
+Grant Metadata Database Access
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Access to metadata database inspection endpoints (``/api/v2/metadataDB/*``) requires specific permissions
+for the ``METADATA_DB`` resource. These endpoints provide statistics about table sizes and row counts
+to help Deployment Managers with database maintenance decisions.
+
+The policy below grants metadata database read access to a group of deployment managers:
+
+ ::
+
+  permit(
+    principal in Airflow::Group::"aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+    action == Airflow::Action::"Metadata.Database.GET",
+    resource == Airflow::Resource::"METADATA_DB"
+  );
+
+The policy below grants metadata database access to a specific user:
+
+ ::
+
+  permit(
+    principal == Airflow::User::"aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+    action == Airflow::Action::"Metadata.Database.GET",
+    resource == Airflow::Resource::"METADATA_DB"
+  );
+
+For more details on metadata database endpoints, see the Airflow core documentation on
+See the Airflow REST API reference for complete endpoint documentation.
