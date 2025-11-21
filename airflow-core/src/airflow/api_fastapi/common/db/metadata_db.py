@@ -24,7 +24,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from sqlalchemy import func, select, text
+from sqlalchemy import func, inspect, select, text
 
 from airflow.models.base import Base
 
@@ -33,9 +33,18 @@ if TYPE_CHECKING:
     from sqlalchemy.schema import Table
 
     from airflow.api_fastapi.core_api.datamodels.metadata_db import (
+        MetadataDbIndexInfo,
+        MetadataDbSchemaIndexesResponse,
         MetadataDbStatsResponse,
         MetadataDbTableStatsResponse,
     )
+
+
+def _bytes_to_mb(size_bytes: int | None) -> float | None:
+    """Convert bytes to megabytes with 4 decimal places."""
+    if size_bytes is None:
+        return None
+    return round(size_bytes / (1024 * 1024), 4)
 
 
 def _get_table_row_count(session: Session, table: Table) -> int | None:
@@ -66,16 +75,6 @@ def _get_table_size_bytes(session: Session, table_name: str) -> int | None:
             )
             result = session.execute(query, {"table_name": table_name}).scalar()
             return result
-        elif dialect == "mssql":
-            query = text(
-                """
-                SELECT SUM(reserved_page_count) * 8 * 1024
-                FROM sys.dm_db_partition_stats
-                WHERE object_id = OBJECT_ID(:table_name)
-                """
-            )
-            result = session.execute(query, {"table_name": table_name}).scalar()
-            return result
         else:
             # SQLite and other dialects don't have a reliable way to get table size
             return None
@@ -94,7 +93,7 @@ def _build_table_stats(
 
     return MetadataDbTableStatsResponse(
         table_name=table_name,
-        table_size_bytes=table_size_bytes,
+        table_size_mb=_bytes_to_mb(table_size_bytes),
         row_count=row_count,
     )
 
@@ -157,3 +156,100 @@ def get_metadata_db_stats(
         return _get_single_table_stats(session, table_name, include_row_count)
 
     return _get_all_tables_stats(session, include_row_count)
+
+
+def _get_index_size_bytes(session: Session, table_name: str, index_name: str) -> int | None:
+    """Get index size in bytes using dialect-specific queries."""
+    dialect = session.get_bind().dialect.name
+
+    try:
+        if dialect == "postgresql":
+            query = text("SELECT pg_relation_size(:index_name)")
+            result = session.execute(query, {"index_name": index_name}).scalar()
+            return result
+        elif dialect in ("mysql", "mariadb"):
+            query = text(
+                """
+                SELECT index_length
+                FROM information_schema.tables
+                WHERE table_schema = DATABASE() AND table_name = :table_name
+                """
+            )
+            result = session.execute(query, {"table_name": table_name}).scalar()
+            return result
+        else:
+            # SQLite and other dialects don't have a reliable way to get index size
+            return None
+    except Exception:
+        return None
+
+
+def _build_index_info(session: Session, table_name: str, index_data: dict) -> MetadataDbIndexInfo:
+    """Build index info with name and size."""
+    from airflow.api_fastapi.core_api.datamodels.metadata_db import MetadataDbIndexInfo
+
+    index_name = index_data["name"]
+    size_bytes = _get_index_size_bytes(session, table_name, index_name)
+
+    return MetadataDbIndexInfo(
+        name=index_name,
+        size_mb=_bytes_to_mb(size_bytes),
+    )
+
+
+def get_schema_indexes(session: Session) -> list[MetadataDbSchemaIndexesResponse]:
+    """
+    Get index information for all Airflow metadata tables.
+
+    :param session: Database session
+    :return: List of MetadataDbSchemaIndexesResponse, one per table
+    """
+    from airflow.api_fastapi.core_api.datamodels.metadata_db import MetadataDbSchemaIndexesResponse
+
+    inspector = inspect(session.get_bind())
+    airflow_tables = Base.metadata.tables
+    results = []
+
+    for table_name in sorted(airflow_tables.keys()):
+        try:
+            indexes = inspector.get_indexes(table_name)
+            index_info_list = [_build_index_info(session, table_name, idx) for idx in indexes]
+
+            results.append(
+                MetadataDbSchemaIndexesResponse(
+                    table_name=table_name,
+                    indexes=index_info_list,
+                )
+            )
+        except Exception:
+            # If we can't get indexes for a table, skip it
+            continue
+
+    return results
+
+
+def get_table_indexes(session: Session, table_name: str) -> MetadataDbSchemaIndexesResponse:
+    """
+    Get index information for a specific Airflow metadata table.
+
+    :param session: Database session
+    :param table_name: Name of the table
+    :return: MetadataDbSchemaIndexesResponse
+    :raises NoSuchTableError: If the table doesn't exist in Airflow metadata
+    """
+    from sqlalchemy.exc import NoSuchTableError
+
+    from airflow.api_fastapi.core_api.datamodels.metadata_db import MetadataDbSchemaIndexesResponse
+
+    airflow_tables = Base.metadata.tables
+    if table_name not in airflow_tables:
+        raise NoSuchTableError(f"Table '{table_name}' not found in Airflow metadata")
+
+    inspector = inspect(session.get_bind())
+    indexes = inspector.get_indexes(table_name)
+    index_info_list = [_build_index_info(session, table_name, idx) for idx in indexes]
+
+    return MetadataDbSchemaIndexesResponse(
+        table_name=table_name,
+        indexes=index_info_list,
+    )

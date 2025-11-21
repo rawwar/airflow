@@ -22,9 +22,12 @@ from fastapi import Depends, HTTPException, Query, status
 from sqlalchemy.exc import NoSuchTableError
 
 from airflow.api_fastapi.common.db.common import SessionDep
-from airflow.api_fastapi.common.db.metadata_db import get_metadata_db_stats
+from airflow.api_fastapi.common.db.metadata_db import get_metadata_db_stats, get_schema_indexes
 from airflow.api_fastapi.common.router import AirflowRouter
-from airflow.api_fastapi.core_api.datamodels.metadata_db import MetadataDbStatsResponse
+from airflow.api_fastapi.core_api.datamodels.metadata_db import (
+    MetadataDbSchemaIndexesResponse,
+    MetadataDbStatsResponse,
+)
 from airflow.api_fastapi.core_api.openapi.exceptions import create_openapi_http_exception_doc
 from airflow.api_fastapi.core_api.security import requires_metadata_db_access
 
@@ -49,10 +52,10 @@ def get_global_stats(
     """
     try:
         return get_metadata_db_stats(session, table_name=None, include_row_count=include_row_count)
-    except Exception as e:
+    except Exception:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Failed to retrieve metadata statistics: {str(e)}",
+            detail="Failed to retrieve metadata statistics",
         )
 
 
@@ -81,20 +84,34 @@ def get_table_stats(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Table '{table_name}' not found in Airflow metadata schema",
         )
-    except Exception as e:
+    except Exception:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Failed to retrieve table statistics: {str(e)}",
+            detail="Failed to retrieve table statistics",
         )
 
 
 @metadata_db_router.get(
     "/indexes",
     dependencies=[Depends(requires_metadata_db_access())],
+    responses=create_openapi_http_exception_doc([status.HTTP_500_INTERNAL_SERVER_ERROR]),
 )
-def get_schema_indexes():
-    """Get index information for all Airflow metadata tables."""
-    raise NotImplementedError
+def get_schema_indexes_endpoint(
+    session: SessionDep,
+) -> list[MetadataDbSchemaIndexesResponse]:
+    """
+    Get index information for all Airflow metadata tables.
+
+    Returns a list of tables with their associated indexes, including column names,
+    uniqueness constraints, and dialect-specific options.
+    """
+    try:
+        return get_schema_indexes(session)
+    except Exception:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to retrieve schema indexes",
+        )
 
 
 @metadata_db_router.get(

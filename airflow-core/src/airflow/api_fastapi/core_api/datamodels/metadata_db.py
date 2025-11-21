@@ -23,7 +23,7 @@ class MetadataDbTableStatsResponse(BaseModel):
     """Response model for individual table metadata statistics."""
 
     table_name: str
-    table_size_bytes: int | None
+    table_size_mb: float | None
     row_count: int | None = None
 
 
@@ -34,13 +34,15 @@ class MetadataDbStatsResponse(BaseModel):
     total_tables: int
 
 
-class MetadataDbColumnStats(BaseModel):
-    """Placeholder response model for per-column statistics."""
-
-
 class MetadataDbIndexInfo(BaseModel):
-    """Placeholder response model for index metadata."""
+    """Response model for individual index metadata."""
+
+    name: str
+    size_mb: float | None
 
 
 class MetadataDbSchemaIndexesResponse(BaseModel):
-    """Placeholder response model for schema-wide index inventory."""
+    """Response model for schema-wide index inventory."""
+
+    table_name: str
+    indexes: list[MetadataDbIndexInfo]

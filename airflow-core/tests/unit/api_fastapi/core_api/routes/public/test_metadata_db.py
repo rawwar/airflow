@@ -43,9 +43,13 @@ class TestGetGlobalStats(TestMetadataDbStatsEndpoint):
         # Verify table structure
         for table in body["tables"]:
             assert "table_name" in table
-            assert "table_size_bytes" in table
+            assert "table_size_mb" in table
             # row_count should be None by default
             assert table.get("row_count") is None
+            # table_size_mb should be a float or None
+            if table["table_size_mb"] is not None:
+                assert isinstance(table["table_size_mb"], float)
+                assert table["table_size_mb"] >= 0
 
     def test_get_global_stats_with_row_count(self, test_client):
         """Test GET /metadataDB/stats?include_row_count=true includes row counts."""
@@ -94,9 +98,12 @@ class TestGetTableStats(TestMetadataDbStatsEndpoint):
         # Verify the table data
         table = body["tables"][0]
         assert table["table_name"] == "dag"
-        assert "table_size_bytes" in table
+        assert "table_size_mb" in table
         # row_count should be None by default
         assert table.get("row_count") is None
+        # table_size_mb should be a float or None
+        if table["table_size_mb"] is not None:
+            assert isinstance(table["table_size_mb"], float)
 
     def test_get_table_stats_with_row_count(self, test_client):
         """Test GET /metadataDB/stats/dag?include_row_count=true returns row count."""
@@ -144,3 +151,50 @@ class TestGetTableStats(TestMetadataDbStatsEndpoint):
         body = response.json()
         assert body["total_tables"] == 1
         assert body["tables"][0]["table_name"] == table_name
+
+
+class TestGetSchemaIndexes(TestMetadataDbStatsEndpoint):
+    def test_get_schema_indexes_success(self, test_client):
+        """Test GET /metadataDB/indexes returns 200 with schema-wide index data."""
+        response = test_client.get("/metadataDB/indexes")
+        assert response.status_code == 200
+
+        body = response.json()
+        assert isinstance(body, list)
+        assert len(body) > 0
+
+        # Check structure of each table entry
+        for table_entry in body:
+            assert "table_name" in table_entry
+            assert "indexes" in table_entry
+            assert isinstance(table_entry["indexes"], list)
+
+            # Verify index structure
+            for index in table_entry["indexes"]:
+                assert "name" in index
+                assert "size_mb" in index
+                # size_mb can be None for unsupported dialects (e.g., SQLite)
+                if index["size_mb"] is not None:
+                    assert isinstance(index["size_mb"], float)
+                    assert index["size_mb"] >= 0
+
+    def test_schema_indexes_includes_known_tables(self, test_client):
+        """Test that response includes some known Airflow tables with indexes."""
+        response = test_client.get("/metadataDB/indexes")
+        assert response.status_code == 200
+
+        body = response.json()
+        table_names = [entry["table_name"] for entry in body]
+
+        # Check that common Airflow tables are present
+        known_tables = ["dag", "dag_run", "task_instance"]
+        for table in known_tables:
+            assert table in table_names, f"Expected table '{table}' not found in response"
+
+    def test_should_respond_401(self, unauthenticated_test_client):
+        response = unauthenticated_test_client.get("/metadataDB/indexes")
+        assert response.status_code == 401
+
+    def test_should_respond_403(self, unauthorized_test_client):
+        response = unauthorized_test_client.get("/metadataDB/indexes")
+        assert response.status_code == 403
