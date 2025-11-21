@@ -19,12 +19,19 @@ from __future__ import annotations
 from pydantic import BaseModel
 
 
-class MetadataDbStatsResponse(BaseModel):
-    """Placeholder response model for global metadata DB statistics."""
-
-
 class MetadataDbTableStatsResponse(BaseModel):
-    """Placeholder response model for per-table metadata DB statistics."""
+    """Response model for individual table metadata statistics."""
+
+    table_name: str
+    table_size_bytes: int | None
+    row_count: int | None = None
+
+
+class MetadataDbStatsResponse(BaseModel):
+    """Response model for global metadata DB statistics."""
+
+    tables: list[MetadataDbTableStatsResponse]
+    total_tables: int
 
 
 class MetadataDbColumnStats(BaseModel):

@@ -16,9 +16,16 @@
 # under the License.
 from __future__ import annotations
 
-from airflow.api_fastapi.core_api.base import AirflowRouter
-from fastapi import Depends
+from typing import Annotated
 
+from fastapi import Depends, HTTPException, Query, status
+from sqlalchemy.exc import NoSuchTableError
+
+from airflow.api_fastapi.common.db.common import SessionDep
+from airflow.api_fastapi.common.db.metadata_db import get_metadata_db_stats
+from airflow.api_fastapi.common.router import AirflowRouter
+from airflow.api_fastapi.core_api.datamodels.metadata_db import MetadataDbStatsResponse
+from airflow.api_fastapi.core_api.openapi.exceptions import create_openapi_http_exception_doc
 from airflow.api_fastapi.core_api.security import requires_metadata_db_access
 
 
@@ -28,24 +35,65 @@ metadata_db_router = AirflowRouter(prefix="/metadataDB", tags=["MetadataDB"])
 @metadata_db_router.get(
     "/stats",
     dependencies=[Depends(requires_metadata_db_access())],
+    responses=create_openapi_http_exception_doc([status.HTTP_500_INTERNAL_SERVER_ERROR]),
 )
-async def get_metadata_db_stats():
-    raise NotImplementedError
+def get_global_stats(
+    session: SessionDep,
+    include_row_count: Annotated[bool, Query()] = False,
+) -> MetadataDbStatsResponse:
+    """
+    Get statistics for all Airflow metadata tables.
+
+    By default returns table sizes only. Set include_row_count=true to also get row counts
+    (expensive operation requiring full table scans).
+    """
+    try:
+        return get_metadata_db_stats(session, table_name=None, include_row_count=include_row_count)
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to retrieve metadata statistics: {str(e)}",
+        )
 
 
 @metadata_db_router.get(
     "/stats/{table_name}",
     dependencies=[Depends(requires_metadata_db_access())],
+    responses=create_openapi_http_exception_doc(
+        [status.HTTP_404_NOT_FOUND, status.HTTP_500_INTERNAL_SERVER_ERROR]
+    ),
 )
-async def get_metadata_db_table_stats(table_name: str):
-    raise NotImplementedError
+def get_table_stats(
+    table_name: str,
+    session: SessionDep,
+    include_row_count: Annotated[bool, Query()] = False,
+) -> MetadataDbStatsResponse:
+    """
+    Get statistics for a specific Airflow metadata table.
+
+    By default returns table size only. Set include_row_count=true to also get row count
+    (expensive operation requiring full table scan).
+    """
+    try:
+        return get_metadata_db_stats(session, table_name=table_name, include_row_count=include_row_count)
+    except NoSuchTableError:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Table '{table_name}' not found in Airflow metadata schema",
+        )
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to retrieve table statistics: {str(e)}",
+        )
 
 
 @metadata_db_router.get(
     "/indexes",
     dependencies=[Depends(requires_metadata_db_access())],
 )
-async def get_metadata_db_indexes():
+def get_schema_indexes():
+    """Get index information for all Airflow metadata tables."""
     raise NotImplementedError
 
 
@@ -53,5 +101,6 @@ async def get_metadata_db_indexes():
     "/indexes/{table_name}",
     dependencies=[Depends(requires_metadata_db_access())],
 )
-async def get_metadata_db_table_indexes(table_name: str):
+def get_table_indexes(table_name: str):
+    """Get index information for a specific Airflow metadata table."""
     raise NotImplementedError
