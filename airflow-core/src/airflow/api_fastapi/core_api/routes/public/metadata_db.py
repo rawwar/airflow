@@ -22,7 +22,11 @@ from fastapi import Depends, HTTPException, Query, status
 from sqlalchemy.exc import NoSuchTableError
 
 from airflow.api_fastapi.common.db.common import SessionDep
-from airflow.api_fastapi.common.db.metadata_db import get_metadata_db_stats, get_schema_indexes
+from airflow.api_fastapi.common.db.metadata_db import (
+    get_metadata_db_stats,
+    get_schema_indexes,
+    get_table_indexes,
+)
 from airflow.api_fastapi.common.router import AirflowRouter
 from airflow.api_fastapi.core_api.datamodels.metadata_db import (
     MetadataDbSchemaIndexesResponse,
@@ -117,7 +121,28 @@ def get_schema_indexes_endpoint(
 @metadata_db_router.get(
     "/indexes/{table_name}",
     dependencies=[Depends(requires_metadata_db_access())],
+    responses=create_openapi_http_exception_doc(
+        [status.HTTP_404_NOT_FOUND, status.HTTP_500_INTERNAL_SERVER_ERROR]
+    ),
 )
-def get_table_indexes(table_name: str):
-    """Get index information for a specific Airflow metadata table."""
-    raise NotImplementedError
+def get_table_indexes_endpoint(
+    table_name: str,
+    session: SessionDep,
+) -> MetadataDbSchemaIndexesResponse:
+    """
+    Get index information for a specific Airflow metadata table.
+
+    Returns index details including name and size for all indexes on the specified table.
+    """
+    try:
+        return get_table_indexes(session, table_name)
+    except NoSuchTableError:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Table '{table_name}' not found in Airflow metadata schema",
+        )
+    except Exception:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to retrieve table indexes",
+        )

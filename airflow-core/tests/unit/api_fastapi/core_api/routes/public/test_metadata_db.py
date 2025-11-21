@@ -198,3 +198,62 @@ class TestGetSchemaIndexes(TestMetadataDbStatsEndpoint):
     def test_should_respond_403(self, unauthorized_test_client):
         response = unauthorized_test_client.get("/metadataDB/indexes")
         assert response.status_code == 403
+
+
+class TestGetTableIndexes(TestMetadataDbStatsEndpoint):
+    def test_get_table_indexes_success(self, test_client):
+        """Test GET /metadataDB/indexes/{table_name} returns 200 with index data."""
+        # Use a known Airflow table
+        response = test_client.get("/metadataDB/indexes/dag")
+        assert response.status_code == 200
+
+        body = response.json()
+        assert "table_name" in body
+        assert body["table_name"] == "dag"
+        assert "indexes" in body
+        assert isinstance(body["indexes"], list)
+
+        # Verify index structure if indexes exist
+        for index in body["indexes"]:
+            assert "name" in index
+            assert "size_mb" in index
+            # size_mb can be None for unsupported dialects (e.g., SQLite)
+            if index["size_mb"] is not None:
+                assert isinstance(index["size_mb"], float)
+                assert index["size_mb"] >= 0
+
+    def test_should_respond_404(self, test_client):
+        """Test GET /metadataDB/indexes/{table_name} returns 404 for missing table."""
+        response = test_client.get("/metadataDB/indexes/non_existent_table")
+        assert response.status_code == 404
+
+        body = response.json()
+        assert "detail" in body
+        assert "Table 'non_existent_table' not found in Airflow metadata schema" == body["detail"]
+
+    def test_should_respond_401(self, unauthenticated_test_client):
+        response = unauthenticated_test_client.get("/metadataDB/indexes/dag")
+        assert response.status_code == 401
+
+    def test_should_respond_403(self, unauthorized_test_client):
+        response = unauthorized_test_client.get("/metadataDB/indexes/dag")
+        assert response.status_code == 403
+
+    @pytest.mark.parametrize(
+        "table_name",
+        [
+            "dag",
+            "dag_run",
+            "task_instance",
+            "connection",
+            "variable",
+        ],
+    )
+    def test_get_indexes_for_various_tables(self, test_client, table_name):
+        """Test getting indexes for various Airflow tables."""
+        response = test_client.get(f"/metadataDB/indexes/{table_name}")
+        assert response.status_code == 200
+
+        body = response.json()
+        assert body["table_name"] == table_name
+        assert "indexes" in body
