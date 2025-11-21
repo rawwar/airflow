@@ -522,6 +522,7 @@ class TestAuthManagerDependency:
         assert auth_manager is not None
         assert hasattr(auth_manager, "get_url_login")
         assert hasattr(auth_manager, "get_url_logout")
+
     @patch("airflow.api_fastapi.core_api.security.get_auth_manager")
     def test_requires_metadata_db_access_authorized(self, mock_get_auth_manager):
         auth_manager = Mock()

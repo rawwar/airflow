@@ -147,7 +147,9 @@ GetUserDep = Annotated[BaseUser, Depends(get_user)]
 def requires_metadata_db_access(method: ResourceMethod = "GET") -> Callable[[BaseUser], None]:
     def inner(user: GetUserDep) -> None:
         _requires_access(
-            is_authorized_callback=lambda: get_auth_manager().is_authorized_metadata_db(method=method, user=user)
+            is_authorized_callback=lambda: get_auth_manager().is_authorized_metadata_db(
+                method=method, user=user
+            )
         )
 
     return inner
