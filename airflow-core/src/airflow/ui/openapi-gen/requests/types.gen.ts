@@ -1120,6 +1120,39 @@ export type LastAssetEventResponse = {
 };
 
 /**
+ * Response model for individual index metadata.
+ */
+export type MetadataDbIndexInfo = {
+    name: string;
+    size_mb: number | null;
+};
+
+/**
+ * Response model for schema-wide index inventory.
+ */
+export type MetadataDbSchemaIndexesResponse = {
+    table_name: string;
+    indexes: Array<MetadataDbIndexInfo>;
+};
+
+/**
+ * Response model for global metadata DB statistics.
+ */
+export type MetadataDbStatsResponse = {
+    tables: Array<MetadataDbTableStatsResponse>;
+    total_tables: number;
+};
+
+/**
+ * Response model for individual table metadata statistics.
+ */
+export type MetadataDbTableStatsResponse = {
+    table_name: string;
+    table_size_mb: number | null;
+    row_count?: number | null;
+};
+
+/**
  * Request body for Clear Task Instances endpoint.
  */
 export type PatchTaskInstanceBody = {
@@ -3312,6 +3345,27 @@ export type GetDagVersionsData = {
 };
 
 export type GetDagVersionsResponse = DAGVersionCollectionResponse;
+
+export type GetGlobalStatsData = {
+    includeRowCount?: boolean;
+};
+
+export type GetGlobalStatsResponse = MetadataDbStatsResponse;
+
+export type GetTableStatsData = {
+    includeRowCount?: boolean;
+    tableName: string;
+};
+
+export type GetTableStatsResponse = MetadataDbStatsResponse;
+
+export type GetSchemaIndexesEndpointResponse = Array<MetadataDbSchemaIndexesResponse>;
+
+export type GetTableIndexesEndpointData = {
+    tableName: string;
+};
+
+export type GetTableIndexesEndpointResponse = MetadataDbSchemaIndexesResponse;
 
 export type GetHealthResponse = HealthInfoResponse;
 
@@ -6356,6 +6410,117 @@ export type $OpenApiTs = {
                  * Validation Error
                  */
                 422: HTTPValidationError;
+            };
+        };
+    };
+    '/api/v2/metadataDB/stats': {
+        get: {
+            req: GetGlobalStatsData;
+            res: {
+                /**
+                 * Successful Response
+                 */
+                200: MetadataDbStatsResponse;
+                /**
+                 * Unauthorized
+                 */
+                401: HTTPExceptionResponse;
+                /**
+                 * Forbidden
+                 */
+                403: HTTPExceptionResponse;
+                /**
+                 * Validation Error
+                 */
+                422: HTTPValidationError;
+                /**
+                 * Internal Server Error
+                 */
+                500: HTTPExceptionResponse;
+            };
+        };
+    };
+    '/api/v2/metadataDB/stats/{table_name}': {
+        get: {
+            req: GetTableStatsData;
+            res: {
+                /**
+                 * Successful Response
+                 */
+                200: MetadataDbStatsResponse;
+                /**
+                 * Unauthorized
+                 */
+                401: HTTPExceptionResponse;
+                /**
+                 * Forbidden
+                 */
+                403: HTTPExceptionResponse;
+                /**
+                 * Not Found
+                 */
+                404: HTTPExceptionResponse;
+                /**
+                 * Validation Error
+                 */
+                422: HTTPValidationError;
+                /**
+                 * Internal Server Error
+                 */
+                500: HTTPExceptionResponse;
+            };
+        };
+    };
+    '/api/v2/metadataDB/indexes': {
+        get: {
+            res: {
+                /**
+                 * Successful Response
+                 */
+                200: Array<MetadataDbSchemaIndexesResponse>;
+                /**
+                 * Unauthorized
+                 */
+                401: HTTPExceptionResponse;
+                /**
+                 * Forbidden
+                 */
+                403: HTTPExceptionResponse;
+                /**
+                 * Internal Server Error
+                 */
+                500: HTTPExceptionResponse;
+            };
+        };
+    };
+    '/api/v2/metadataDB/indexes/{table_name}': {
+        get: {
+            req: GetTableIndexesEndpointData;
+            res: {
+                /**
+                 * Successful Response
+                 */
+                200: MetadataDbSchemaIndexesResponse;
+                /**
+                 * Unauthorized
+                 */
+                401: HTTPExceptionResponse;
+                /**
+                 * Forbidden
+                 */
+                403: HTTPExceptionResponse;
+                /**
+                 * Not Found
+                 */
+                404: HTTPExceptionResponse;
+                /**
+                 * Validation Error
+                 */
+                422: HTTPValidationError;
+                /**
+                 * Internal Server Error
+                 */
+                500: HTTPExceptionResponse;
             };
         };
     };

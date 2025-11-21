@@ -8545,6 +8545,229 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
+  /api/v2/metadataDB/stats:
+    get:
+      tags:
+      - MetadataDB
+      summary: Get Global Stats
+      description: 'Get statistics for all Airflow metadata tables.
+
+
+        By default returns table sizes only. Set include_row_count=true to also get
+        row counts
+
+        (expensive operation requiring full table scans).'
+      operationId: get_global_stats
+      security:
+      - OAuth2PasswordBearer: []
+      - HTTPBearer: []
+      parameters:
+      - name: include_row_count
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+          title: Include Row Count
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetadataDbStatsResponse'
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPExceptionResponse'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPExceptionResponse'
+          description: Forbidden
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPExceptionResponse'
+          description: Internal Server Error
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v2/metadataDB/stats/{table_name}:
+    get:
+      tags:
+      - MetadataDB
+      summary: Get Table Stats
+      description: 'Get statistics for a specific Airflow metadata table.
+
+
+        By default returns table size only. Set include_row_count=true to also get
+        row count
+
+        (expensive operation requiring full table scan).'
+      operationId: get_table_stats
+      security:
+      - OAuth2PasswordBearer: []
+      - HTTPBearer: []
+      parameters:
+      - name: table_name
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Table Name
+      - name: include_row_count
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+          title: Include Row Count
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetadataDbStatsResponse'
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPExceptionResponse'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPExceptionResponse'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPExceptionResponse'
+          description: Not Found
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPExceptionResponse'
+          description: Internal Server Error
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /api/v2/metadataDB/indexes:
+    get:
+      tags:
+      - MetadataDB
+      summary: Get Schema Indexes Endpoint
+      description: 'Get index information for all Airflow metadata tables.
+
+
+        Returns a list of tables with their associated indexes, including column names,
+
+        uniqueness constraints, and dialect-specific options.'
+      operationId: get_schema_indexes_endpoint
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MetadataDbSchemaIndexesResponse'
+                type: array
+                title: Response Get Schema Indexes Endpoint
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPExceptionResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPExceptionResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPExceptionResponse'
+      security:
+      - OAuth2PasswordBearer: []
+      - HTTPBearer: []
+  /api/v2/metadataDB/indexes/{table_name}:
+    get:
+      tags:
+      - MetadataDB
+      summary: Get Table Indexes Endpoint
+      description: 'Get index information for a specific Airflow metadata table.
+
+
+        Returns index details including name and size for all indexes on the specified
+        table.'
+      operationId: get_table_indexes_endpoint
+      security:
+      - OAuth2PasswordBearer: []
+      - HTTPBearer: []
+      parameters:
+      - name: table_name
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Table Name
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetadataDbSchemaIndexesResponse'
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPExceptionResponse'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPExceptionResponse'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPExceptionResponse'
+          description: Not Found
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPExceptionResponse'
+          description: Internal Server Error
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
   /api/v2/monitor/health:
     get:
       tags:
@@ -11586,6 +11809,75 @@ components:
       type: object
       title: LastAssetEventResponse
       description: Last asset event response serializer.
+    MetadataDbIndexInfo:
+      properties:
+        name:
+          type: string
+          title: Name
+        size_mb:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Size Mb
+      type: object
+      required:
+      - name
+      - size_mb
+      title: MetadataDbIndexInfo
+      description: Response model for individual index metadata.
+    MetadataDbSchemaIndexesResponse:
+      properties:
+        table_name:
+          type: string
+          title: Table Name
+        indexes:
+          items:
+            $ref: '#/components/schemas/MetadataDbIndexInfo'
+          type: array
+          title: Indexes
+      type: object
+      required:
+      - table_name
+      - indexes
+      title: MetadataDbSchemaIndexesResponse
+      description: Response model for schema-wide index inventory.
+    MetadataDbStatsResponse:
+      properties:
+        tables:
+          items:
+            $ref: '#/components/schemas/MetadataDbTableStatsResponse'
+          type: array
+          title: Tables
+        total_tables:
+          type: integer
+          title: Total Tables
+      type: object
+      required:
+      - tables
+      - total_tables
+      title: MetadataDbStatsResponse
+      description: Response model for global metadata DB statistics.
+    MetadataDbTableStatsResponse:
+      properties:
+        table_name:
+          type: string
+          title: Table Name
+        table_size_mb:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Table Size Mb
+        row_count:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Row Count
+      type: object
+      required:
+      - table_name
+      - table_size_mb
+      title: MetadataDbTableStatsResponse
+      description: Response model for individual table metadata statistics.
     PatchTaskInstanceBody:
       properties:
         new_state:

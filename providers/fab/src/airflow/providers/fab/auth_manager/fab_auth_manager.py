@@ -91,6 +91,7 @@ from airflow.providers.fab.www.security.permissions import (
     RESOURCE_DOCS,
     RESOURCE_IMPORT_ERROR,
     RESOURCE_JOB,
+    RESOURCE_METADATA_DB,
     RESOURCE_PLUGIN,
     RESOURCE_POOL,
     RESOURCE_PROVIDER,
@@ -100,7 +101,6 @@ from airflow.providers.fab.www.security.permissions import (
     RESOURCE_VARIABLE,
     RESOURCE_WEBSITE,
     RESOURCE_XCOM,
-    RESOURCE_METADATA_DB,
 )
 from airflow.providers.fab.www.utils import (
     get_fab_action_from_method_map,

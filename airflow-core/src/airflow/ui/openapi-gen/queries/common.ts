@@ -1,7 +1,7 @@
 // generated with @7nohe/openapi-react-query-codegen@1.6.2 
 
 import { UseQueryResult } from "@tanstack/react-query";
-import { AssetService, AuthLinksService, BackfillService, CalendarService, ConfigService, ConnectionService, DagParsingService, DagRunService, DagService, DagSourceService, DagStatsService, DagVersionService, DagWarningService, DashboardService, DependenciesService, EventLogService, ExperimentalService, ExtraLinksService, GridService, ImportErrorService, JobService, LoginService, MonitorService, PluginService, PoolService, ProviderService, StructureService, TaskInstanceService, TaskService, TeamsService, VariableService, VersionService, XcomService } from "../requests/services.gen";
+import { AssetService, AuthLinksService, BackfillService, CalendarService, ConfigService, ConnectionService, DagParsingService, DagRunService, DagService, DagSourceService, DagStatsService, DagVersionService, DagWarningService, DashboardService, DependenciesService, EventLogService, ExperimentalService, ExtraLinksService, GridService, ImportErrorService, JobService, LoginService, MetadataDbService, MonitorService, PluginService, PoolService, ProviderService, StructureService, TaskInstanceService, TaskService, TeamsService, VariableService, VersionService, XcomService } from "../requests/services.gen";
 import { DagRunState, DagWarningType } from "../requests/types.gen";
 export type AssetServiceGetAssetsDefaultResponse = Awaited<ReturnType<typeof AssetService.getAssets>>;
 export type AssetServiceGetAssetsQueryResult<TData = AssetServiceGetAssetsDefaultResponse, TError = unknown> = UseQueryResult<TData, TError>;
@@ -749,6 +749,29 @@ export const UseDagVersionServiceGetDagVersionsKeyFn = ({ bundleName, bundleVers
   orderBy?: string[];
   versionNumber?: number;
 }, queryKey?: Array<unknown>) => [useDagVersionServiceGetDagVersionsKey, ...(queryKey ?? [{ bundleName, bundleVersion, dagId, limit, offset, orderBy, versionNumber }])];
+export type MetadataDbServiceGetGlobalStatsDefaultResponse = Awaited<ReturnType<typeof MetadataDbService.getGlobalStats>>;
+export type MetadataDbServiceGetGlobalStatsQueryResult<TData = MetadataDbServiceGetGlobalStatsDefaultResponse, TError = unknown> = UseQueryResult<TData, TError>;
+export const useMetadataDbServiceGetGlobalStatsKey = "MetadataDbServiceGetGlobalStats";
+export const UseMetadataDbServiceGetGlobalStatsKeyFn = ({ includeRowCount }: {
+  includeRowCount?: boolean;
+} = {}, queryKey?: Array<unknown>) => [useMetadataDbServiceGetGlobalStatsKey, ...(queryKey ?? [{ includeRowCount }])];
+export type MetadataDbServiceGetTableStatsDefaultResponse = Awaited<ReturnType<typeof MetadataDbService.getTableStats>>;
+export type MetadataDbServiceGetTableStatsQueryResult<TData = MetadataDbServiceGetTableStatsDefaultResponse, TError = unknown> = UseQueryResult<TData, TError>;
+export const useMetadataDbServiceGetTableStatsKey = "MetadataDbServiceGetTableStats";
+export const UseMetadataDbServiceGetTableStatsKeyFn = ({ includeRowCount, tableName }: {
+  includeRowCount?: boolean;
+  tableName: string;
+}, queryKey?: Array<unknown>) => [useMetadataDbServiceGetTableStatsKey, ...(queryKey ?? [{ includeRowCount, tableName }])];
+export type MetadataDbServiceGetSchemaIndexesEndpointDefaultResponse = Awaited<ReturnType<typeof MetadataDbService.getSchemaIndexesEndpoint>>;
+export type MetadataDbServiceGetSchemaIndexesEndpointQueryResult<TData = MetadataDbServiceGetSchemaIndexesEndpointDefaultResponse, TError = unknown> = UseQueryResult<TData, TError>;
+export const useMetadataDbServiceGetSchemaIndexesEndpointKey = "MetadataDbServiceGetSchemaIndexesEndpoint";
+export const UseMetadataDbServiceGetSchemaIndexesEndpointKeyFn = (queryKey?: Array<unknown>) => [useMetadataDbServiceGetSchemaIndexesEndpointKey, ...(queryKey ?? [])];
+export type MetadataDbServiceGetTableIndexesEndpointDefaultResponse = Awaited<ReturnType<typeof MetadataDbService.getTableIndexesEndpoint>>;
+export type MetadataDbServiceGetTableIndexesEndpointQueryResult<TData = MetadataDbServiceGetTableIndexesEndpointDefaultResponse, TError = unknown> = UseQueryResult<TData, TError>;
+export const useMetadataDbServiceGetTableIndexesEndpointKey = "MetadataDbServiceGetTableIndexesEndpoint";
+export const UseMetadataDbServiceGetTableIndexesEndpointKeyFn = ({ tableName }: {
+  tableName: string;
+}, queryKey?: Array<unknown>) => [useMetadataDbServiceGetTableIndexesEndpointKey, ...(queryKey ?? [{ tableName }])];
 export type MonitorServiceGetHealthDefaultResponse = Awaited<ReturnType<typeof MonitorService.getHealth>>;
 export type MonitorServiceGetHealthQueryResult<TData = MonitorServiceGetHealthDefaultResponse, TError = unknown> = UseQueryResult<TData, TError>;
 export const useMonitorServiceGetHealthKey = "MonitorServiceGetHealth";

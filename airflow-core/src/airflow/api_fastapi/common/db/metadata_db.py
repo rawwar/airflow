@@ -65,7 +65,7 @@ def _get_table_size_bytes(session: Session, table_name: str) -> int | None:
             query = text("SELECT pg_total_relation_size(:table_name)")
             result = session.execute(query, {"table_name": table_name}).scalar()
             return result
-        elif dialect in ("mysql", "mariadb"):
+        if dialect in ("mysql", "mariadb"):
             query = text(
                 """
                 SELECT (data_length + index_length)
@@ -75,9 +75,8 @@ def _get_table_size_bytes(session: Session, table_name: str) -> int | None:
             )
             result = session.execute(query, {"table_name": table_name}).scalar()
             return result
-        else:
-            # SQLite and other dialects don't have a reliable way to get table size
-            return None
+        # SQLite and other dialects don't have a reliable way to get table size
+        return None
     except Exception:
         return None
 
@@ -167,7 +166,7 @@ def _get_index_size_bytes(session: Session, table_name: str, index_name: str) ->
             query = text("SELECT pg_relation_size(:index_name)")
             result = session.execute(query, {"index_name": index_name}).scalar()
             return result
-        elif dialect in ("mysql", "mariadb"):
+        if dialect in ("mysql", "mariadb"):
             query = text(
                 """
                 SELECT index_length
@@ -177,9 +176,8 @@ def _get_index_size_bytes(session: Session, table_name: str, index_name: str) ->
             )
             result = session.execute(query, {"table_name": table_name}).scalar()
             return result
-        else:
-            # SQLite and other dialects don't have a reliable way to get index size
-            return None
+        # SQLite and other dialects don't have a reliable way to get index size
+        return None
     except Exception:
         return None
 

@@ -607,6 +607,34 @@ class LastAssetEventResponse(BaseModel):
     timestamp: Annotated[datetime | None, Field(title="Timestamp")] = None
 
 
+class MetadataDbIndexInfo(BaseModel):
+    """
+    Response model for individual index metadata.
+    """
+
+    name: Annotated[str, Field(title="Name")]
+    size_mb: Annotated[float | None, Field(title="Size Mb")] = None
+
+
+class MetadataDbSchemaIndexesResponse(BaseModel):
+    """
+    Response model for schema-wide index inventory.
+    """
+
+    table_name: Annotated[str, Field(title="Table Name")]
+    indexes: Annotated[list[MetadataDbIndexInfo], Field(title="Indexes")]
+
+
+class MetadataDbTableStatsResponse(BaseModel):
+    """
+    Response model for individual table metadata statistics.
+    """
+
+    table_name: Annotated[str, Field(title="Table Name")]
+    table_size_mb: Annotated[float | None, Field(title="Table Size Mb")] = None
+    row_count: Annotated[int | None, Field(title="Row Count")] = None
+
+
 class PluginImportErrorResponse(BaseModel):
     """
     Plugin Import Error serializer for responses.
@@ -1550,6 +1578,15 @@ class JobCollectionResponse(BaseModel):
 
     jobs: Annotated[list[JobResponse], Field(title="Jobs")]
     total_entries: Annotated[int, Field(title="Total Entries")]
+
+
+class MetadataDbStatsResponse(BaseModel):
+    """
+    Response model for global metadata DB statistics.
+    """
+
+    tables: Annotated[list[MetadataDbTableStatsResponse], Field(title="Tables")]
+    total_tables: Annotated[int, Field(title="Total Tables")]
 
 
 class PatchTaskInstanceBody(BaseModel):

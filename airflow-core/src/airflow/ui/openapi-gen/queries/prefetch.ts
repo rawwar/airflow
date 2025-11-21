@@ -1,7 +1,7 @@
 // generated with @7nohe/openapi-react-query-codegen@1.6.2 
 
 import { type QueryClient } from "@tanstack/react-query";
-import { AssetService, AuthLinksService, BackfillService, CalendarService, ConfigService, ConnectionService, DagRunService, DagService, DagSourceService, DagStatsService, DagVersionService, DagWarningService, DashboardService, DependenciesService, EventLogService, ExperimentalService, ExtraLinksService, GridService, ImportErrorService, JobService, LoginService, MonitorService, PluginService, PoolService, ProviderService, StructureService, TaskInstanceService, TaskService, TeamsService, VariableService, VersionService, XcomService } from "../requests/services.gen";
+import { AssetService, AuthLinksService, BackfillService, CalendarService, ConfigService, ConnectionService, DagRunService, DagService, DagSourceService, DagStatsService, DagVersionService, DagWarningService, DashboardService, DependenciesService, EventLogService, ExperimentalService, ExtraLinksService, GridService, ImportErrorService, JobService, LoginService, MetadataDbService, MonitorService, PluginService, PoolService, ProviderService, StructureService, TaskInstanceService, TaskService, TeamsService, VariableService, VersionService, XcomService } from "../requests/services.gen";
 import { DagRunState, DagWarningType } from "../requests/types.gen";
 import * as Common from "./common";
 /**
@@ -1427,6 +1427,59 @@ export const prefetchUseDagVersionServiceGetDagVersions = (queryClient: QueryCli
   orderBy?: string[];
   versionNumber?: number;
 }) => queryClient.prefetchQuery({ queryKey: Common.UseDagVersionServiceGetDagVersionsKeyFn({ bundleName, bundleVersion, dagId, limit, offset, orderBy, versionNumber }), queryFn: () => DagVersionService.getDagVersions({ bundleName, bundleVersion, dagId, limit, offset, orderBy, versionNumber }) });
+/**
+* Get Global Stats
+* Get statistics for all Airflow metadata tables.
+*
+* By default returns table sizes only. Set include_row_count=true to also get row counts
+* (expensive operation requiring full table scans).
+* @param data The data for the request.
+* @param data.includeRowCount
+* @returns MetadataDbStatsResponse Successful Response
+* @throws ApiError
+*/
+export const prefetchUseMetadataDbServiceGetGlobalStats = (queryClient: QueryClient, { includeRowCount }: {
+  includeRowCount?: boolean;
+} = {}) => queryClient.prefetchQuery({ queryKey: Common.UseMetadataDbServiceGetGlobalStatsKeyFn({ includeRowCount }), queryFn: () => MetadataDbService.getGlobalStats({ includeRowCount }) });
+/**
+* Get Table Stats
+* Get statistics for a specific Airflow metadata table.
+*
+* By default returns table size only. Set include_row_count=true to also get row count
+* (expensive operation requiring full table scan).
+* @param data The data for the request.
+* @param data.tableName
+* @param data.includeRowCount
+* @returns MetadataDbStatsResponse Successful Response
+* @throws ApiError
+*/
+export const prefetchUseMetadataDbServiceGetTableStats = (queryClient: QueryClient, { includeRowCount, tableName }: {
+  includeRowCount?: boolean;
+  tableName: string;
+}) => queryClient.prefetchQuery({ queryKey: Common.UseMetadataDbServiceGetTableStatsKeyFn({ includeRowCount, tableName }), queryFn: () => MetadataDbService.getTableStats({ includeRowCount, tableName }) });
+/**
+* Get Schema Indexes Endpoint
+* Get index information for all Airflow metadata tables.
+*
+* Returns a list of tables with their associated indexes, including column names,
+* uniqueness constraints, and dialect-specific options.
+* @returns MetadataDbSchemaIndexesResponse Successful Response
+* @throws ApiError
+*/
+export const prefetchUseMetadataDbServiceGetSchemaIndexesEndpoint = (queryClient: QueryClient) => queryClient.prefetchQuery({ queryKey: Common.UseMetadataDbServiceGetSchemaIndexesEndpointKeyFn(), queryFn: () => MetadataDbService.getSchemaIndexesEndpoint() });
+/**
+* Get Table Indexes Endpoint
+* Get index information for a specific Airflow metadata table.
+*
+* Returns index details including name and size for all indexes on the specified table.
+* @param data The data for the request.
+* @param data.tableName
+* @returns MetadataDbSchemaIndexesResponse Successful Response
+* @throws ApiError
+*/
+export const prefetchUseMetadataDbServiceGetTableIndexesEndpoint = (queryClient: QueryClient, { tableName }: {
+  tableName: string;
+}) => queryClient.prefetchQuery({ queryKey: Common.UseMetadataDbServiceGetTableIndexesEndpointKeyFn({ tableName }), queryFn: () => MetadataDbService.getTableIndexesEndpoint({ tableName }) });
 /**
 * Get Health
 * @returns HealthInfoResponse Successful Response

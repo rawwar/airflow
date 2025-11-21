@@ -4319,6 +4319,105 @@ export const $LastAssetEventResponse = {
     description: 'Last asset event response serializer.'
 } as const;
 
+export const $MetadataDbIndexInfo = {
+    properties: {
+        name: {
+            type: 'string',
+            title: 'Name'
+        },
+        size_mb: {
+            anyOf: [
+                {
+                    type: 'number'
+                },
+                {
+                    type: 'null'
+                }
+            ],
+            title: 'Size Mb'
+        }
+    },
+    type: 'object',
+    required: ['name', 'size_mb'],
+    title: 'MetadataDbIndexInfo',
+    description: 'Response model for individual index metadata.'
+} as const;
+
+export const $MetadataDbSchemaIndexesResponse = {
+    properties: {
+        table_name: {
+            type: 'string',
+            title: 'Table Name'
+        },
+        indexes: {
+            items: {
+                '$ref': '#/components/schemas/MetadataDbIndexInfo'
+            },
+            type: 'array',
+            title: 'Indexes'
+        }
+    },
+    type: 'object',
+    required: ['table_name', 'indexes'],
+    title: 'MetadataDbSchemaIndexesResponse',
+    description: 'Response model for schema-wide index inventory.'
+} as const;
+
+export const $MetadataDbStatsResponse = {
+    properties: {
+        tables: {
+            items: {
+                '$ref': '#/components/schemas/MetadataDbTableStatsResponse'
+            },
+            type: 'array',
+            title: 'Tables'
+        },
+        total_tables: {
+            type: 'integer',
+            title: 'Total Tables'
+        }
+    },
+    type: 'object',
+    required: ['tables', 'total_tables'],
+    title: 'MetadataDbStatsResponse',
+    description: 'Response model for global metadata DB statistics.'
+} as const;
+
+export const $MetadataDbTableStatsResponse = {
+    properties: {
+        table_name: {
+            type: 'string',
+            title: 'Table Name'
+        },
+        table_size_mb: {
+            anyOf: [
+                {
+                    type: 'number'
+                },
+                {
+                    type: 'null'
+                }
+            ],
+            title: 'Table Size Mb'
+        },
+        row_count: {
+            anyOf: [
+                {
+                    type: 'integer'
+                },
+                {
+                    type: 'null'
+                }
+            ],
+            title: 'Row Count'
+        }
+    },
+    type: 'object',
+    required: ['table_name', 'table_size_mb'],
+    title: 'MetadataDbTableStatsResponse',
+    description: 'Response model for individual table metadata statistics.'
+} as const;
+
 export const $PatchTaskInstanceBody = {
     properties: {
         new_state: {

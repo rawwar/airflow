@@ -85,7 +85,6 @@ authenticated_router.include_router(dag_tags_router)
 authenticated_router.include_router(dag_versions_router)
 authenticated_router.include_router(task_instances_hitl_router)
 authenticated_router.include_router(metadata_db_router)
-authenticated_router.include_router(metadata_db_router)
 
 
 # Include authenticated router in public router

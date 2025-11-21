@@ -35,7 +35,6 @@ from airflow.api_fastapi.core_api.datamodels.metadata_db import (
 from airflow.api_fastapi.core_api.openapi.exceptions import create_openapi_http_exception_doc
 from airflow.api_fastapi.core_api.security import requires_metadata_db_access
 
-
 metadata_db_router = AirflowRouter(prefix="/metadataDB", tags=["MetadataDB"])
 
 

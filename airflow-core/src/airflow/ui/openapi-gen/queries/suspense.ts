@@ -1,7 +1,7 @@
 // generated with @7nohe/openapi-react-query-codegen@1.6.2 
 
 import { UseQueryOptions, useSuspenseQuery } from "@tanstack/react-query";
-import { AssetService, AuthLinksService, BackfillService, CalendarService, ConfigService, ConnectionService, DagRunService, DagService, DagSourceService, DagStatsService, DagVersionService, DagWarningService, DashboardService, DependenciesService, EventLogService, ExperimentalService, ExtraLinksService, GridService, ImportErrorService, JobService, LoginService, MonitorService, PluginService, PoolService, ProviderService, StructureService, TaskInstanceService, TaskService, TeamsService, VariableService, VersionService, XcomService } from "../requests/services.gen";
+import { AssetService, AuthLinksService, BackfillService, CalendarService, ConfigService, ConnectionService, DagRunService, DagService, DagSourceService, DagStatsService, DagVersionService, DagWarningService, DashboardService, DependenciesService, EventLogService, ExperimentalService, ExtraLinksService, GridService, ImportErrorService, JobService, LoginService, MetadataDbService, MonitorService, PluginService, PoolService, ProviderService, StructureService, TaskInstanceService, TaskService, TeamsService, VariableService, VersionService, XcomService } from "../requests/services.gen";
 import { DagRunState, DagWarningType } from "../requests/types.gen";
 import * as Common from "./common";
 /**
@@ -1427,6 +1427,59 @@ export const useDagVersionServiceGetDagVersionsSuspense = <TData = Common.DagVer
   orderBy?: string[];
   versionNumber?: number;
 }, queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useSuspenseQuery<TData, TError>({ queryKey: Common.UseDagVersionServiceGetDagVersionsKeyFn({ bundleName, bundleVersion, dagId, limit, offset, orderBy, versionNumber }, queryKey), queryFn: () => DagVersionService.getDagVersions({ bundleName, bundleVersion, dagId, limit, offset, orderBy, versionNumber }) as TData, ...options });
+/**
+* Get Global Stats
+* Get statistics for all Airflow metadata tables.
+*
+* By default returns table sizes only. Set include_row_count=true to also get row counts
+* (expensive operation requiring full table scans).
+* @param data The data for the request.
+* @param data.includeRowCount
+* @returns MetadataDbStatsResponse Successful Response
+* @throws ApiError
+*/
+export const useMetadataDbServiceGetGlobalStatsSuspense = <TData = Common.MetadataDbServiceGetGlobalStatsDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>({ includeRowCount }: {
+  includeRowCount?: boolean;
+} = {}, queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useSuspenseQuery<TData, TError>({ queryKey: Common.UseMetadataDbServiceGetGlobalStatsKeyFn({ includeRowCount }, queryKey), queryFn: () => MetadataDbService.getGlobalStats({ includeRowCount }) as TData, ...options });
+/**
+* Get Table Stats
+* Get statistics for a specific Airflow metadata table.
+*
+* By default returns table size only. Set include_row_count=true to also get row count
+* (expensive operation requiring full table scan).
+* @param data The data for the request.
+* @param data.tableName
+* @param data.includeRowCount
+* @returns MetadataDbStatsResponse Successful Response
+* @throws ApiError
+*/
+export const useMetadataDbServiceGetTableStatsSuspense = <TData = Common.MetadataDbServiceGetTableStatsDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>({ includeRowCount, tableName }: {
+  includeRowCount?: boolean;
+  tableName: string;
+}, queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useSuspenseQuery<TData, TError>({ queryKey: Common.UseMetadataDbServiceGetTableStatsKeyFn({ includeRowCount, tableName }, queryKey), queryFn: () => MetadataDbService.getTableStats({ includeRowCount, tableName }) as TData, ...options });
+/**
+* Get Schema Indexes Endpoint
+* Get index information for all Airflow metadata tables.
+*
+* Returns a list of tables with their associated indexes, including column names,
+* uniqueness constraints, and dialect-specific options.
+* @returns MetadataDbSchemaIndexesResponse Successful Response
+* @throws ApiError
+*/
+export const useMetadataDbServiceGetSchemaIndexesEndpointSuspense = <TData = Common.MetadataDbServiceGetSchemaIndexesEndpointDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>(queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useSuspenseQuery<TData, TError>({ queryKey: Common.UseMetadataDbServiceGetSchemaIndexesEndpointKeyFn(queryKey), queryFn: () => MetadataDbService.getSchemaIndexesEndpoint() as TData, ...options });
+/**
+* Get Table Indexes Endpoint
+* Get index information for a specific Airflow metadata table.
+*
+* Returns index details including name and size for all indexes on the specified table.
+* @param data The data for the request.
+* @param data.tableName
+* @returns MetadataDbSchemaIndexesResponse Successful Response
+* @throws ApiError
+*/
+export const useMetadataDbServiceGetTableIndexesEndpointSuspense = <TData = Common.MetadataDbServiceGetTableIndexesEndpointDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>({ tableName }: {
+  tableName: string;
+}, queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useSuspenseQuery<TData, TError>({ queryKey: Common.UseMetadataDbServiceGetTableIndexesEndpointKeyFn({ tableName }, queryKey), queryFn: () => MetadataDbService.getTableIndexesEndpoint({ tableName }) as TData, ...options });
 /**
 * Get Health
 * @returns HealthInfoResponse Successful Response

@@ -124,7 +124,7 @@ class TestGetTableStats(TestMetadataDbStatsEndpoint):
 
         body = response.json()
         assert "detail" in body
-        assert "Table 'non_existent_table' not found in Airflow metadata schema" == body["detail"]
+        assert body["detail"] == "Table 'non_existent_table' not found in Airflow metadata schema"
 
     def test_should_respond_401(self, unauthenticated_test_client):
         response = unauthenticated_test_client.get("/metadataDB/stats/dag")
@@ -229,7 +229,7 @@ class TestGetTableIndexes(TestMetadataDbStatsEndpoint):
 
         body = response.json()
         assert "detail" in body
-        assert "Table 'non_existent_table' not found in Airflow metadata schema" == body["detail"]
+        assert body["detail"] == "Table 'non_existent_table' not found in Airflow metadata schema"
 
     def test_should_respond_401(self, unauthenticated_test_client):
         response = unauthenticated_test_client.get("/metadataDB/indexes/dag")
