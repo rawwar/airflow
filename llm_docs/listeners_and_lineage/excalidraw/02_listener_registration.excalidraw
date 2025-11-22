@@ -1,0 +1,336 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://excalidraw.com",
+  "elements": [
+    {
+      "type": "rectangle",
+      "id": "startup",
+      "x": 100,
+      "y": 50,
+      "width": 200,
+      "height": 70,
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeColor": "#333",
+      "backgroundColor": "#4ecdc4",
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "startup_text",
+      "x": 135,
+      "y": 70,
+      "width": 130,
+      "height": 30,
+      "fontSize": 18,
+      "text": "Airflow Startup",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "startup"
+    },
+    {
+      "type": "arrow",
+      "id": "arrow1",
+      "x": 200,
+      "y": 120,
+      "width": 0,
+      "height": 40,
+      "strokeColor": "#333",
+      "startBinding": {
+        "elementId": "startup"
+      },
+      "endBinding": {
+        "elementId": "scan"
+      },
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          40
+        ]
+      ]
+    },
+    {
+      "type": "rectangle",
+      "id": "scan",
+      "x": 100,
+      "y": 160,
+      "width": 200,
+      "height": 70,
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeColor": "#333",
+      "backgroundColor": "#d0ebff",
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "scan_text",
+      "x": 120,
+      "y": 175,
+      "width": 160,
+      "height": 40,
+      "fontSize": 14,
+      "text": "Scan Plugins\n($AIRFLOW_HOME/plugins)",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "scan"
+    },
+    {
+      "type": "arrow",
+      "id": "arrow2",
+      "x": 200,
+      "y": 230,
+      "width": 0,
+      "height": 40,
+      "strokeColor": "#333",
+      "startBinding": {
+        "elementId": "scan"
+      },
+      "endBinding": {
+        "elementId": "load"
+      },
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          40
+        ]
+      ]
+    },
+    {
+      "type": "rectangle",
+      "id": "load",
+      "x": 100,
+      "y": 270,
+      "width": 200,
+      "height": 70,
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeColor": "#333",
+      "backgroundColor": "#d0ebff",
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "load_text",
+      "x": 120,
+      "y": 285,
+      "width": 160,
+      "height": 40,
+      "fontSize": 14,
+      "text": "Load Python Modules\nFind AirflowPlugin classes",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "load"
+    },
+    {
+      "type": "arrow",
+      "id": "arrow3",
+      "x": 200,
+      "y": 340,
+      "width": 0,
+      "height": 40,
+      "strokeColor": "#333",
+      "startBinding": {
+        "elementId": "load"
+      },
+      "endBinding": {
+        "elementId": "extract"
+      },
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          40
+        ]
+      ]
+    },
+    {
+      "type": "rectangle",
+      "id": "extract",
+      "x": 100,
+      "y": 380,
+      "width": 200,
+      "height": 70,
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeColor": "#333",
+      "backgroundColor": "#95e1d3",
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "extract_text",
+      "x": 115,
+      "y": 395,
+      "width": 170,
+      "height": 40,
+      "fontSize": 14,
+      "text": "Extract listener attributes\nfrom plugin.listeners",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "extract"
+    },
+    {
+      "type": "arrow",
+      "id": "arrow4",
+      "x": 200,
+      "y": 450,
+      "width": 0,
+      "height": 40,
+      "strokeColor": "#333",
+      "startBinding": {
+        "elementId": "extract"
+      },
+      "endBinding": {
+        "elementId": "register"
+      },
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          40
+        ]
+      ]
+    },
+    {
+      "type": "rectangle",
+      "id": "register",
+      "x": 100,
+      "y": 490,
+      "width": 200,
+      "height": 90,
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeColor": "#333",
+      "backgroundColor": "#b2f2bb",
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "register_text",
+      "x": 115,
+      "y": 505,
+      "width": 170,
+      "height": 60,
+      "fontSize": 14,
+      "text": "ListenerManager\npm.register(listener)\n\u2713 OpenLineageListener",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "register"
+    },
+    {
+      "type": "rectangle",
+      "id": "plugin_example",
+      "x": 350,
+      "y": 160,
+      "width": 280,
+      "height": 200,
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeColor": "#868e96",
+      "backgroundColor": "#f8f9fa",
+      "strokeStyle": "dashed",
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "plugin_title",
+      "x": 365,
+      "y": 170,
+      "width": 250,
+      "height": 25,
+      "fontSize": 14,
+      "fontFamily": 3,
+      "text": "OpenLineageProviderPlugin",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "strokeColor": "#495057"
+    },
+    {
+      "type": "text",
+      "id": "plugin_code",
+      "x": 365,
+      "y": 200,
+      "width": 250,
+      "height": 140,
+      "fontSize": 12,
+      "fontFamily": 3,
+      "text": "class OpenLineagePlugin(\n    AirflowPlugin):\n  name = \"openlineage\"\n  \n  listeners = [\n    OpenLineageListener()\n  ]\n  \n  macros = [...]",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "strokeColor": "#495057",
+      "lineHeight": 1.4
+    },
+    {
+      "type": "arrow",
+      "id": "arrow5",
+      "x": 300,
+      "y": 300,
+      "width": 50,
+      "height": 0,
+      "strokeColor": "#868e96",
+      "strokeStyle": "dashed",
+      "startBinding": {
+        "elementId": "load"
+      },
+      "endBinding": {
+        "elementId": "plugin_example"
+      },
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          50,
+          0
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "x": 50,
+      "y": 10,
+      "width": 400,
+      "height": 30,
+      "fontSize": 24,
+      "text": "Listener Registration Flow",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "strokeColor": "#1e1e1e"
+    }
+  ],
+  "appState": {
+    "gridSize": null,
+    "viewBackgroundColor": "#ffffff"
+  },
+  "files": {}
+}
