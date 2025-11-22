@@ -1,0 +1,839 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://excalidraw.com",
+  "elements": [
+    {
+      "id": "title",
+      "type": "text",
+      "x": 400,
+      "y": 50,
+      "width": 600,
+      "height": 50,
+      "fontSize": 36,
+      "fontFamily": 1,
+      "text": "DAG Run Complete Lifecycle",
+      "textAlign": "center",
+      "verticalAlign": "top",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 0,
+      "opacity": 100,
+      "groupIds": [],
+      "strokeColor": "#1e1e1e",
+      "boundElements": []
+    },
+    {
+      "id": "phase1_rect",
+      "type": "rectangle",
+      "x": 100,
+      "y": 150,
+      "width": 250,
+      "height": 150,
+      "backgroundColor": "#4ecdc4",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "strokeColor": "#1e1e1e",
+      "groupIds": [
+        "phase1"
+      ],
+      "boundElements": [
+        {
+          "id": "arrow1",
+          "type": "arrow"
+        }
+      ]
+    },
+    {
+      "id": "phase1_title",
+      "type": "text",
+      "x": 120,
+      "y": 165,
+      "width": 210,
+      "height": 30,
+      "fontSize": 20,
+      "fontFamily": 1,
+      "text": "Phase 1: DAG Parsing",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "backgroundColor": "transparent",
+      "strokeWidth": 2,
+      "strokeColor": "#1e1e1e",
+      "fillStyle": "solid",
+      "roughness": 0,
+      "opacity": 100,
+      "groupIds": [
+        "phase1"
+      ]
+    },
+    {
+      "id": "phase1_text",
+      "type": "text",
+      "x": 120,
+      "y": 205,
+      "width": 210,
+      "height": 80,
+      "fontSize": 14,
+      "fontFamily": 1,
+      "text": "\u2022 Dag Processor parses DAG file\\n\u2022 Creates/Updates DagModel\\n\u2022 Sets next_dagrun_create_after\\n\u2022 Stores in database",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "backgroundColor": "transparent",
+      "strokeWidth": 2,
+      "strokeColor": "#1e1e1e",
+      "fillStyle": "solid",
+      "roughness": 0,
+      "opacity": 100,
+      "groupIds": [
+        "phase1"
+      ]
+    },
+    {
+      "id": "phase2_rect",
+      "type": "rectangle",
+      "x": 450,
+      "y": 150,
+      "width": 250,
+      "height": 150,
+      "backgroundColor": "#ffd93d",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "strokeColor": "#1e1e1e",
+      "groupIds": [
+        "phase2"
+      ],
+      "boundElements": [
+        {
+          "id": "arrow2",
+          "type": "arrow"
+        }
+      ]
+    },
+    {
+      "id": "phase2_title",
+      "type": "text",
+      "x": 470,
+      "y": 165,
+      "width": 210,
+      "height": 30,
+      "fontSize": 20,
+      "fontFamily": 1,
+      "text": "Phase 2: DAG Run Creation",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "backgroundColor": "transparent",
+      "strokeWidth": 2,
+      "strokeColor": "#1e1e1e",
+      "fillStyle": "solid",
+      "roughness": 0,
+      "opacity": 100,
+      "groupIds": [
+        "phase2"
+      ]
+    },
+    {
+      "id": "phase2_text",
+      "type": "text",
+      "x": 470,
+      "y": 205,
+      "width": 210,
+      "height": 80,
+      "fontSize": 14,
+      "fontFamily": 1,
+      "text": "\u2022 Scheduler queries DagModel\\n\u2022 Creates DagRun (QUEUED)\\n\u2022 Creates TaskInstances (NULL)\\n\u2022 Updates next_dagrun_create_after",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "backgroundColor": "transparent",
+      "strokeWidth": 2,
+      "strokeColor": "#1e1e1e",
+      "fillStyle": "solid",
+      "roughness": 0,
+      "opacity": 100,
+      "groupIds": [
+        "phase2"
+      ]
+    },
+    {
+      "id": "arrow1",
+      "type": "arrow",
+      "x": 350,
+      "y": 225,
+      "width": 100,
+      "height": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 3,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "startBinding": {
+        "elementId": "phase1_rect",
+        "focus": 0,
+        "gap": 1
+      },
+      "endBinding": {
+        "elementId": "phase2_rect",
+        "focus": 0,
+        "gap": 1
+      },
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          100,
+          0
+        ]
+      ],
+      "lastCommittedPoint": [
+        100,
+        0
+      ]
+    },
+    {
+      "id": "phase3_rect",
+      "type": "rectangle",
+      "x": 800,
+      "y": 150,
+      "width": 250,
+      "height": 150,
+      "backgroundColor": "#95e1d3",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "strokeColor": "#1e1e1e",
+      "groupIds": [
+        "phase3"
+      ],
+      "boundElements": [
+        {
+          "id": "arrow3",
+          "type": "arrow"
+        }
+      ]
+    },
+    {
+      "id": "phase3_title",
+      "type": "text",
+      "x": 820,
+      "y": 165,
+      "width": 210,
+      "height": 30,
+      "fontSize": 20,
+      "fontFamily": 1,
+      "text": "Phase 3: DAG Run Start",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "backgroundColor": "transparent",
+      "strokeWidth": 2,
+      "strokeColor": "#1e1e1e",
+      "fillStyle": "solid",
+      "roughness": 0,
+      "opacity": 100,
+      "groupIds": [
+        "phase3"
+      ]
+    },
+    {
+      "id": "phase3_text",
+      "type": "text",
+      "x": 820,
+      "y": 205,
+      "width": 210,
+      "height": 80,
+      "fontSize": 14,
+      "fontFamily": 1,
+      "text": "\u2022 Scheduler starts DAG run\\n\u2022 State: QUEUED \u2192 RUNNING\\n\u2022 Set start_date = NOW()\\n\u2022 Begin task scheduling",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "backgroundColor": "transparent",
+      "strokeWidth": 2,
+      "strokeColor": "#1e1e1e",
+      "fillStyle": "solid",
+      "roughness": 0,
+      "opacity": 100,
+      "groupIds": [
+        "phase3"
+      ]
+    },
+    {
+      "id": "arrow2",
+      "type": "arrow",
+      "x": 700,
+      "y": 225,
+      "width": 100,
+      "height": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 3,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "startBinding": {
+        "elementId": "phase2_rect",
+        "focus": 0,
+        "gap": 1
+      },
+      "endBinding": {
+        "elementId": "phase3_rect",
+        "focus": 0,
+        "gap": 1
+      },
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          100,
+          0
+        ]
+      ],
+      "lastCommittedPoint": [
+        100,
+        0
+      ]
+    },
+    {
+      "id": "phase4_rect",
+      "type": "rectangle",
+      "x": 100,
+      "y": 400,
+      "width": 250,
+      "height": 150,
+      "backgroundColor": "#ffec99",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "strokeColor": "#1e1e1e",
+      "groupIds": [
+        "phase4"
+      ],
+      "boundElements": [
+        {
+          "id": "arrow4",
+          "type": "arrow"
+        }
+      ]
+    },
+    {
+      "id": "phase4_title",
+      "type": "text",
+      "x": 120,
+      "y": 415,
+      "width": 210,
+      "height": 30,
+      "fontSize": 20,
+      "fontFamily": 1,
+      "text": "Phase 4: Task Scheduling",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "backgroundColor": "transparent",
+      "strokeWidth": 2,
+      "strokeColor": "#1e1e1e",
+      "fillStyle": "solid",
+      "roughness": 0,
+      "opacity": 100,
+      "groupIds": [
+        "phase4"
+      ]
+    },
+    {
+      "id": "phase4_text",
+      "type": "text",
+      "x": 120,
+      "y": 455,
+      "width": 210,
+      "height": 80,
+      "fontSize": 14,
+      "fontFamily": 1,
+      "text": "\u2022 Check task dependencies\\n\u2022 NULL \u2192 SCHEDULED (ready)\\n\u2022 Send to executor\\n\u2022 SCHEDULED \u2192 QUEUED",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "backgroundColor": "transparent",
+      "strokeWidth": 2,
+      "strokeColor": "#1e1e1e",
+      "fillStyle": "solid",
+      "roughness": 0,
+      "opacity": 100,
+      "groupIds": [
+        "phase4"
+      ]
+    },
+    {
+      "id": "arrow3",
+      "type": "arrow",
+      "x": 925,
+      "y": 300,
+      "width": 600,
+      "height": 100,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 3,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          100
+        ],
+        [
+          -600,
+          100
+        ]
+      ],
+      "lastCommittedPoint": [
+        -600,
+        100
+      ]
+    },
+    {
+      "id": "phase5_rect",
+      "type": "rectangle",
+      "x": 450,
+      "y": 400,
+      "width": 250,
+      "height": 150,
+      "backgroundColor": "#b2f2bb",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "strokeColor": "#1e1e1e",
+      "groupIds": [
+        "phase5"
+      ],
+      "boundElements": [
+        {
+          "id": "arrow5",
+          "type": "arrow"
+        }
+      ]
+    },
+    {
+      "id": "phase5_title",
+      "type": "text",
+      "x": 470,
+      "y": 415,
+      "width": 210,
+      "height": 30,
+      "fontSize": 20,
+      "fontFamily": 1,
+      "text": "Phase 5: Task Execution",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "backgroundColor": "transparent",
+      "strokeWidth": 2,
+      "strokeColor": "#1e1e1e",
+      "fillStyle": "solid",
+      "roughness": 0,
+      "opacity": 100,
+      "groupIds": [
+        "phase5"
+      ]
+    },
+    {
+      "id": "phase5_text",
+      "type": "text",
+      "x": 470,
+      "y": 455,
+      "width": 210,
+      "height": 80,
+      "fontSize": 14,
+      "fontFamily": 1,
+      "text": "\u2022 Worker picks up task\\n\u2022 QUEUED \u2192 RUNNING\\n\u2022 Execute task code\\n\u2022 RUNNING \u2192 SUCCESS/FAILED",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "backgroundColor": "transparent",
+      "strokeWidth": 2,
+      "strokeColor": "#1e1e1e",
+      "fillStyle": "solid",
+      "roughness": 0,
+      "opacity": 100,
+      "groupIds": [
+        "phase5"
+      ]
+    },
+    {
+      "id": "arrow4",
+      "type": "arrow",
+      "x": 350,
+      "y": 475,
+      "width": 100,
+      "height": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 3,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          100,
+          0
+        ]
+      ],
+      "lastCommittedPoint": [
+        100,
+        0
+      ]
+    },
+    {
+      "id": "phase6_rect",
+      "type": "rectangle",
+      "x": 800,
+      "y": 400,
+      "width": 250,
+      "height": 150,
+      "backgroundColor": "#d0ebff",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "strokeColor": "#1e1e1e",
+      "groupIds": [
+        "phase6"
+      ]
+    },
+    {
+      "id": "phase6_title",
+      "type": "text",
+      "x": 820,
+      "y": 415,
+      "width": 210,
+      "height": 30,
+      "fontSize": 20,
+      "fontFamily": 1,
+      "text": "Phase 6: State Evaluation",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "backgroundColor": "transparent",
+      "strokeWidth": 2,
+      "strokeColor": "#1e1e1e",
+      "fillStyle": "solid",
+      "roughness": 0,
+      "opacity": 100,
+      "groupIds": [
+        "phase6"
+      ]
+    },
+    {
+      "id": "phase6_text",
+      "type": "text",
+      "x": 820,
+      "y": 455,
+      "width": 210,
+      "height": 80,
+      "fontSize": 14,
+      "fontFamily": 1,
+      "text": "\u2022 Scheduler evaluates states\\n\u2022 All SUCCESS \u2192 DAG SUCCESS\\n\u2022 Any FAILED \u2192 DAG FAILED\\n\u2022 Set end_date = NOW()",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "backgroundColor": "transparent",
+      "strokeWidth": 2,
+      "strokeColor": "#1e1e1e",
+      "fillStyle": "solid",
+      "roughness": 0,
+      "opacity": 100,
+      "groupIds": [
+        "phase6"
+      ]
+    },
+    {
+      "id": "arrow5",
+      "type": "arrow",
+      "x": 700,
+      "y": 475,
+      "width": 100,
+      "height": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 3,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          100,
+          0
+        ]
+      ],
+      "lastCommittedPoint": [
+        100,
+        0
+      ]
+    },
+    {
+      "id": "db_ellipse",
+      "type": "ellipse",
+      "x": 500,
+      "y": 650,
+      "width": 200,
+      "height": 100,
+      "backgroundColor": "#ffd93d",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "strokeColor": "#1e1e1e",
+      "groupIds": [
+        "database"
+      ]
+    },
+    {
+      "id": "db_text",
+      "type": "text",
+      "x": 530,
+      "y": 685,
+      "width": 140,
+      "height": 30,
+      "fontSize": 20,
+      "fontFamily": 1,
+      "text": "Metadata DB",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "backgroundColor": "transparent",
+      "strokeWidth": 2,
+      "strokeColor": "#1e1e1e",
+      "fillStyle": "solid",
+      "roughness": 0,
+      "opacity": 100,
+      "groupIds": [
+        "database"
+      ]
+    },
+    {
+      "id": "arrow_db1",
+      "type": "arrow",
+      "x": 225,
+      "y": 550,
+      "width": 300,
+      "height": 100,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "dashed",
+      "roughness": 1,
+      "opacity": 70,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          300,
+          100
+        ]
+      ],
+      "lastCommittedPoint": [
+        300,
+        100
+      ]
+    },
+    {
+      "id": "arrow_db2",
+      "type": "arrow",
+      "x": 575,
+      "y": 550,
+      "width": 0,
+      "height": 100,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "dashed",
+      "roughness": 1,
+      "opacity": 70,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          100
+        ]
+      ],
+      "lastCommittedPoint": [
+        0,
+        100
+      ]
+    },
+    {
+      "id": "arrow_db3",
+      "type": "arrow",
+      "x": 925,
+      "y": 550,
+      "width": -300,
+      "height": 100,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "dashed",
+      "roughness": 1,
+      "opacity": 70,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          -300,
+          100
+        ]
+      ],
+      "lastCommittedPoint": [
+        -300,
+        100
+      ]
+    },
+    {
+      "id": "legend_title",
+      "type": "text",
+      "x": 100,
+      "y": 800,
+      "width": 100,
+      "height": 30,
+      "fontSize": 20,
+      "fontFamily": 1,
+      "text": "Legend:",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "backgroundColor": "transparent",
+      "strokeWidth": 2,
+      "strokeColor": "#1e1e1e",
+      "fillStyle": "solid",
+      "roughness": 0,
+      "opacity": 100
+    },
+    {
+      "id": "legend_solid",
+      "type": "line",
+      "x": 100,
+      "y": 850,
+      "width": 80,
+      "height": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 3,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          80,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "legend_solid_text",
+      "type": "text",
+      "x": 190,
+      "y": 840,
+      "width": 150,
+      "height": 20,
+      "fontSize": 14,
+      "fontFamily": 1,
+      "text": "Process flow",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "backgroundColor": "transparent",
+      "strokeWidth": 2,
+      "strokeColor": "#1e1e1e",
+      "fillStyle": "solid",
+      "roughness": 0,
+      "opacity": 100
+    },
+    {
+      "id": "legend_dashed",
+      "type": "line",
+      "x": 400,
+      "y": 850,
+      "width": 80,
+      "height": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "dashed",
+      "roughness": 1,
+      "opacity": 70,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          80,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "legend_dashed_text",
+      "type": "text",
+      "x": 490,
+      "y": 840,
+      "width": 200,
+      "height": 20,
+      "fontSize": 14,
+      "fontFamily": 1,
+      "text": "Database interaction",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "backgroundColor": "transparent",
+      "strokeWidth": 2,
+      "strokeColor": "#1e1e1e",
+      "fillStyle": "solid",
+      "roughness": 0,
+      "opacity": 100
+    }
+  ],
+  "appState": {
+    "gridSize": null,
+    "viewBackgroundColor": "#ffffff"
+  },
+  "files": {}
+}
