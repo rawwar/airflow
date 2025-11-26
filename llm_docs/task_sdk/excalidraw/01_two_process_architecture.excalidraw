@@ -1,0 +1,430 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://excalidraw.com",
+  "elements": [
+    {
+      "type": "rectangle",
+      "id": "scheduler",
+      "x": 100,
+      "y": 50,
+      "width": 200,
+      "height": 80,
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeColor": "#333",
+      "backgroundColor": "#d0ebff",
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "scheduler_text",
+      "x": 130,
+      "y": 75,
+      "width": 140,
+      "height": 30,
+      "fontSize": 18,
+      "text": "Scheduler/Executor",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "scheduler"
+    },
+    {
+      "type": "arrow",
+      "id": "arrow1",
+      "x": 200,
+      "y": 130,
+      "width": 0,
+      "height": 60,
+      "strokeColor": "#333",
+      "strokeWidth": 2,
+      "startBinding": {
+        "elementId": "scheduler"
+      },
+      "endBinding": {
+        "elementId": "supervisor"
+      },
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          60
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "id": "arrow1_label",
+      "x": 210,
+      "y": 150,
+      "width": 80,
+      "height": 20,
+      "fontSize": 12,
+      "text": "Start Task",
+      "strokeColor": "#495057"
+    },
+    {
+      "type": "rectangle",
+      "id": "supervisor",
+      "x": 100,
+      "y": 190,
+      "width": 200,
+      "height": 120,
+      "fillStyle": "solid",
+      "strokeWidth": 3,
+      "strokeColor": "#1971c2",
+      "backgroundColor": "#4ecdc4",
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "supervisor_text",
+      "x": 115,
+      "y": 210,
+      "width": 170,
+      "height": 80,
+      "fontSize": 16,
+      "text": "Supervisor Process\n(Trusted)\n\n\u2713 JWT Token\n\u2713 API Auth",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "supervisor",
+      "lineHeight": 1.3
+    },
+    {
+      "type": "arrow",
+      "id": "arrow2",
+      "x": 200,
+      "y": 310,
+      "width": 0,
+      "height": 60,
+      "strokeColor": "#333",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "startBinding": {
+        "elementId": "supervisor"
+      },
+      "endBinding": {
+        "elementId": "socket"
+      },
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          60
+        ]
+      ]
+    },
+    {
+      "type": "rectangle",
+      "id": "socket",
+      "x": 100,
+      "y": 370,
+      "width": 200,
+      "height": 60,
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeColor": "#f08c00",
+      "backgroundColor": "#ffec99",
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "socket_text",
+      "x": 115,
+      "y": 385,
+      "width": 170,
+      "height": 30,
+      "fontSize": 14,
+      "text": "Socket (stdin)\nmsgpack protocol",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "socket",
+      "lineHeight": 1.3
+    },
+    {
+      "type": "arrow",
+      "id": "arrow3",
+      "x": 200,
+      "y": 430,
+      "width": 0,
+      "height": 60,
+      "strokeColor": "#333",
+      "strokeWidth": 2,
+      "startBinding": {
+        "elementId": "socket"
+      },
+      "endBinding": {
+        "elementId": "taskrunner"
+      },
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          60
+        ]
+      ]
+    },
+    {
+      "type": "rectangle",
+      "id": "taskrunner",
+      "x": 100,
+      "y": 490,
+      "width": 200,
+      "height": 120,
+      "fillStyle": "solid",
+      "strokeWidth": 3,
+      "strokeColor": "#2f9e44",
+      "backgroundColor": "#95e1d3",
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "taskrunner_text",
+      "x": 115,
+      "y": 510,
+      "width": 170,
+      "height": 80,
+      "fontSize": 16,
+      "text": "Task Runner Process\n(User Code)\n\n\u2717 No JWT\n\u2713 Execute Operator",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "taskrunner",
+      "lineHeight": 1.3
+    },
+    {
+      "type": "rectangle",
+      "id": "api",
+      "x": 400,
+      "y": 190,
+      "width": 200,
+      "height": 120,
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeColor": "#333",
+      "backgroundColor": "#ffd93d",
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "api_text",
+      "x": 420,
+      "y": 220,
+      "width": 160,
+      "height": 60,
+      "fontSize": 16,
+      "text": "API Server\n\n/execution/api/v1/*",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "api",
+      "lineHeight": 1.3
+    },
+    {
+      "type": "arrow",
+      "id": "arrow4",
+      "x": 300,
+      "y": 240,
+      "width": 100,
+      "height": 0,
+      "strokeColor": "#1971c2",
+      "strokeWidth": 3,
+      "startBinding": {
+        "elementId": "supervisor"
+      },
+      "endBinding": {
+        "elementId": "api"
+      },
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          100,
+          0
+        ]
+      ],
+      "startArrowhead": null,
+      "endArrowhead": "arrow"
+    },
+    {
+      "type": "text",
+      "id": "arrow4_label",
+      "x": 320,
+      "y": 215,
+      "width": 70,
+      "height": 40,
+      "fontSize": 12,
+      "text": "HTTP\nJWT Auth",
+      "strokeColor": "#1971c2",
+      "textAlign": "center",
+      "lineHeight": 1.3
+    },
+    {
+      "type": "line",
+      "id": "no_access",
+      "x": 300,
+      "y": 540,
+      "width": 100,
+      "height": -240,
+      "strokeColor": "#e03131",
+      "strokeWidth": 2,
+      "strokeStyle": "dashed",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          100,
+          -240
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "id": "no_access_text",
+      "x": 330,
+      "y": 390,
+      "width": 120,
+      "height": 40,
+      "fontSize": 12,
+      "text": "\u2717 No Direct\nAPI Access",
+      "strokeColor": "#e03131",
+      "textAlign": "center",
+      "lineHeight": 1.3
+    },
+    {
+      "type": "rectangle",
+      "id": "db",
+      "x": 400,
+      "y": 350,
+      "width": 200,
+      "height": 80,
+      "fillStyle": "hachure",
+      "strokeWidth": 2,
+      "strokeColor": "#333",
+      "backgroundColor": "#fff9db",
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "db_text",
+      "x": 430,
+      "y": 375,
+      "width": 140,
+      "height": 30,
+      "fontSize": 16,
+      "text": "Airflow Database",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "db"
+    },
+    {
+      "type": "arrow",
+      "id": "arrow5",
+      "x": 500,
+      "y": 310,
+      "width": 0,
+      "height": 40,
+      "strokeColor": "#868e96",
+      "strokeWidth": 1,
+      "strokeStyle": "dashed",
+      "startBinding": {
+        "elementId": "api"
+      },
+      "endBinding": {
+        "elementId": "db"
+      },
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          40
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "x": 50,
+      "y": 10,
+      "width": 400,
+      "height": 30,
+      "fontSize": 24,
+      "text": "Task SDK: Two-Process Architecture",
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "strokeColor": "#1e1e1e"
+    },
+    {
+      "type": "rectangle",
+      "id": "legend_box",
+      "x": 50,
+      "y": 650,
+      "width": 550,
+      "height": 120,
+      "fillStyle": "solid",
+      "strokeWidth": 1,
+      "strokeColor": "#868e96",
+      "backgroundColor": "#f8f9fa",
+      "roundness": {
+        "type": 3
+      }
+    },
+    {
+      "type": "text",
+      "id": "legend_title",
+      "x": 60,
+      "y": 660,
+      "width": 100,
+      "height": 25,
+      "fontSize": 16,
+      "text": "Key Points:",
+      "strokeColor": "#1e1e1e",
+      "fontFamily": 1,
+      "fontWeight": "bold"
+    },
+    {
+      "type": "text",
+      "id": "legend_1",
+      "x": 60,
+      "y": 690,
+      "width": 520,
+      "height": 70,
+      "fontSize": 13,
+      "text": "\u2022 Supervisor has JWT token, Task Runner does NOT\n\u2022 All API calls proxied through Supervisor\n\u2022 Communication via msgpack over socket (stdin)\n\u2022 User code runs isolated in Task Runner process",
+      "strokeColor": "#495057",
+      "lineHeight": 1.4,
+      "textAlign": "left"
+    }
+  ],
+  "appState": {
+    "gridSize": null,
+    "viewBackgroundColor": "#ffffff"
+  },
+  "files": {}
+}
