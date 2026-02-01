@@ -511,3 +511,179 @@ Filename: `16_11_06_dag_run_notes_subtask_6.py` | Tags: `['reference', 'control'
 - [ ] Include error handling and best practices
 
 ---
+
+# 12. DAG Run Anti-Patterns
+
+### - [ ] 16.12.1 Avoiding Overlapping Runs
+Filename: `16_12_01_avoiding_overlapping_runs.py` | Tags: `['anti-pattern', 'control', 'intermediate', 'warning']`
+
+- [ ] Show problems with concurrent runs on shared resources
+- [ ] Demonstrate max_active_runs misconfigurations
+- [ ] Illustrate race conditions in parallel runs
+- [ ] Provide solutions using proper locking mechanisms
+
+### - [ ] 16.12.2 Infinite Catchup Loops
+Filename: `16_12_02_infinite_catchup_loops.py` | Tags: `['anti-pattern', 'control', 'intermediate', 'failure']`
+
+- [ ] Demonstrate catchup=True with old start_date pitfalls
+- [ ] Show resource exhaustion from excessive backfills
+- [ ] Illustrate how to safely handle large catchup ranges
+- [ ] Provide pattern for incremental catchup processing
+
+### - [ ] 16.12.3 Manual Trigger Misuse
+Filename: `16_12_03_manual_trigger_misuse.py` | Tags: `['anti-pattern', 'control', 'beginner', 'warning']`
+
+- [ ] Show issues with manual triggers bypassing data intervals
+- [ ] Demonstrate conf parameter validation problems
+- [ ] Illustrate duplicate run scenarios
+- [ ] Provide best practices for manual trigger workflows
+
+### - [ ] 16.12.4 State Manipulation Pitfalls
+Filename: `16_12_04_state_manipulation_pitfalls.py` | Tags: `['anti-pattern', 'control', 'advanced', 'failure']`
+
+- [ ] Show dangers of clearing tasks without understanding dependencies
+- [ ] Demonstrate marking success on failed upstream tasks
+- [ ] Illustrate cascading failures from improper state changes
+- [ ] Provide safe state manipulation patterns
+
+### - [ ] 16.12.5 Timeout Configuration Mistakes
+Filename: `16_12_05_timeout_configuration_mistakes.py` | Tags: `['anti-pattern', 'control', 'intermediate', 'warning']`
+
+- [ ] Show issues with no timeout configurations
+- [ ] Demonstrate timeout too short vs too long problems
+- [ ] Illustrate dagrun_timeout vs execution_timeout conflicts
+- [ ] Provide timeout strategy best practices
+
+---
+
+# 13. DAG Run Performance Optimization
+
+### - [ ] 16.13.1 Optimizing Run Frequency
+Filename: `16_13_01_optimizing_run_frequency.py` | Tags: `['performance', 'control', 'intermediate', 'success']`
+
+- [ ] Analyze scheduler load with different intervals
+- [ ] Demonstrate batch vs frequent run strategies
+- [ ] Show impact of max_active_runs on throughput
+- [ ] Provide metrics-based frequency tuning
+
+### - [ ] 16.13.2 Reducing Run Latency
+Filename: `16_13_02_reducing_run_latency.py` | Tags: `['performance', 'control', 'intermediate', 'success']`
+
+- [ ] Identify causes of DAG run startup delays
+- [ ] Optimize parsing time impact on runs
+- [ ] Configure scheduler for faster run creation
+- [ ] Implement monitoring for run latency
+
+### - [ ] 16.13.3 Managing Run Queue Depth
+Filename: `16_13_03_managing_run_queue_depth.py` | Tags: `['performance', 'control', 'advanced', 'success']`
+
+- [ ] Show queue buildup scenarios and impacts
+- [ ] Demonstrate backpressure handling strategies
+- [ ] Configure max_dagruns_per_loop_to_schedule
+- [ ] Implement queue depth monitoring and alerts
+
+### - [ ] 16.13.4 Parallel Run Optimization
+Filename: `16_13_04_parallel_run_optimization.py` | Tags: `['performance', 'control', 'advanced', 'success']`
+
+- [ ] Tune max_active_runs for resource utilization
+- [ ] Balance parallelism with system capacity
+- [ ] Show pool integration with parallel runs
+- [ ] Monitor and optimize concurrent run metrics
+
+### - [ ] 16.13.5 Database Query Optimization
+Filename: `16_13_05_database_query_optimization.py` | Tags: `['performance', 'control', 'advanced', 'success']`
+
+- [ ] Identify slow DAG run related queries
+- [ ] Optimize dag_run table indexing
+- [ ] Configure database connection pooling
+- [ ] Implement query performance monitoring
+
+---
+
+# 14. Real-World DAG Run Patterns
+
+### - [ ] 16.14.1 Event-Driven Run Patterns
+Filename: `16_14_01_event_driven_run_patterns.py` | Tags: `['real-world', 'control', 'intermediate', 'success']`
+
+- [ ] Implement file arrival triggered runs
+- [ ] Show API-triggered run workflows
+- [ ] Demonstrate sensor-based run initiation
+- [ ] Handle event deduplication in runs
+
+### - [ ] 16.14.2 Multi-Tenant Run Management
+Filename: `16_14_02_multi_tenant_run_management.py` | Tags: `['real-world', 'control', 'advanced', 'success']`
+
+- [ ] Isolate runs per tenant configuration
+- [ ] Implement tenant-specific run parameters
+- [ ] Show resource allocation per tenant
+- [ ] Monitor runs across tenants
+
+### - [ ] 16.14.3 SLA-Driven Run Monitoring
+Filename: `16_14_03_sla_driven_run_monitoring.py` | Tags: `['real-world', 'control', 'intermediate', 'success']`
+
+- [ ] Configure SLA miss callbacks on runs
+- [ ] Implement run duration tracking
+- [ ] Create SLA breach alerting
+- [ ] Show escalation patterns for slow runs
+
+### - [ ] 16.14.4 Data Pipeline Run Orchestration
+Filename: `16_14_04_data_pipeline_run_orchestration.py` | Tags: `['real-world', 'control', 'advanced', 'success']`
+
+- [ ] Coordinate runs across dependent DAGs
+- [ ] Implement run parameter propagation
+- [ ] Handle partial run failures in pipelines
+- [ ] Show retry strategies for pipeline runs
+
+### - [ ] 16.14.5 Production Run Operations
+Filename: `16_14_05_production_run_operations.py` | Tags: `['real-world', 'control', 'advanced', 'success']`
+
+- [ ] Implement blue-green DAG deployments
+- [ ] Show safe run migration between versions
+- [ ] Handle run draining during maintenance
+- [ ] Create operational runbooks for run issues
+
+---
+
+# 15. DAG Run Debugging and Troubleshooting
+
+### - [ ] 16.15.1 Diagnosing Stuck Runs
+Filename: `16_15_01_diagnosing_stuck_runs.py` | Tags: `['debugging', 'control', 'intermediate', 'success']`
+
+- [ ] Identify common causes of stuck runs
+- [ ] Query database for run state analysis
+- [ ] Use CLI for run diagnostics
+- [ ] Implement automated stuck run detection
+
+### - [ ] 16.15.2 Run State Inconsistencies
+Filename: `16_15_02_run_state_inconsistencies.py` | Tags: `['debugging', 'control', 'advanced', 'failure']`
+
+- [ ] Debug task vs run state mismatches
+- [ ] Handle orphaned run records
+- [ ] Fix corrupted run metadata
+- [ ] Prevent state sync issues
+
+### - [ ] 16.15.3 Analyzing Run Failures
+Filename: `16_15_03_analyzing_run_failures.py` | Tags: `['debugging', 'control', 'intermediate', 'failure']`
+
+- [ ] Trace failure root causes through logs
+- [ ] Correlate failures across runs
+- [ ] Identify systemic failure patterns
+- [ ] Build failure analysis dashboards
+
+### - [ ] 16.15.4 Run Execution Timeline Analysis
+Filename: `16_15_04_run_execution_timeline_analysis.py` | Tags: `['debugging', 'control', 'intermediate', 'success']`
+
+- [ ] Visualize run execution timelines
+- [ ] Identify bottlenecks in run execution
+- [ ] Compare run performance over time
+- [ ] Generate run performance reports
+
+### - [ ] 16.15.5 Recovery from Run Disasters
+Filename: `16_15_05_recovery_from_run_disasters.py` | Tags: `['debugging', 'control', 'advanced', 'success']`
+
+- [ ] Implement run state recovery procedures
+- [ ] Handle mass run failures gracefully
+- [ ] Create run backup and restore patterns
+- [ ] Document disaster recovery playbooks
+
+---

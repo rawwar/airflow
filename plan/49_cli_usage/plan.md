@@ -281,3 +281,177 @@ Filename: `49_06_06_config_cli_commands_example_6.py` | Tags: `['reference', 'ad
 - [ ] Include error handling and best practices
 
 ---
+
+# 7. Database Management CLI
+
+## Overview
+Managing the Airflow metadata database through CLI.
+
+## Tasks
+
+### - [ ] 49.7.1 Database Init and Upgrade
+Filename: `49_07_01_db_init_upgrade.py` | Tags: `['reference', 'core', 'beginner', 'success']`
+- [ ] airflow db init
+- [ ] airflow db upgrade
+- [ ] Migration tracking
+- [ ] Version checking
+
+### - [ ] 49.7.2 Database Reset and Clean
+Filename: `49_07_02_db_reset_clean.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+- [ ] airflow db reset (dev only)
+- [ ] airflow db clean
+- [ ] Archive old data
+- [ ] Space reclamation
+
+### - [ ] 49.7.3 Database Check and Diagnose
+Filename: `49_07_03_db_check.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+- [ ] airflow db check
+- [ ] Connection verification
+- [ ] Schema validation
+- [ ] Health diagnostics
+
+### - [ ] 49.7.4 Database Export/Import
+Filename: `49_07_04_db_export_import.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+- [ ] Export metadata
+- [ ] Import to new environment
+- [ ] Migration strategies
+- [ ] Backup procedures
+
+### - [ ] 49.7.5 Database Maintenance Scripts
+Filename: `49_07_05_db_maintenance.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+- [ ] Scheduled cleanup jobs
+- [ ] Performance optimization
+- [ ] Index management
+- [ ] Monitoring queries
+
+---
+
+# 8. DAG Testing and Validation CLI
+
+## Overview
+CLI commands for testing and validating DAGs.
+
+## Tasks
+
+### - [ ] 49.8.1 DAG Test Command
+Filename: `49_08_01_dag_test.py` | Tags: `['reference', 'core', 'beginner', 'success']`
+- [ ] airflow dags test
+- [ ] Run single DAG execution
+- [ ] Specify execution date
+- [ ] Debug mode
+
+### - [ ] 49.8.2 Task Test Command
+Filename: `49_08_02_task_test.py` | Tags: `['reference', 'core', 'beginner', 'success']`
+- [ ] airflow tasks test
+- [ ] Test individual tasks
+- [ ] Template rendering check
+- [ ] Dependency bypass
+
+### - [ ] 49.8.3 DAG Parse Validation
+Filename: `49_08_03_dag_parse.py` | Tags: `['reference', 'core', 'beginner', 'success']`
+- [ ] airflow dags list-import-errors
+- [ ] Validate syntax
+- [ ] Check imports
+- [ ] CI/CD integration
+
+### - [ ] 49.8.4 Render Templates Command
+Filename: `49_08_04_render_templates.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+- [ ] airflow tasks render
+- [ ] Preview templated values
+- [ ] Debug template issues
+- [ ] Multiple dates check
+
+### - [ ] 49.8.5 DAG Report Command
+Filename: `49_08_05_dag_report.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+- [ ] airflow dags report
+- [ ] DAG statistics
+- [ ] Task counts
+- [ ] Schedule information
+
+---
+
+# 9. Scheduler and Triggerer CLI
+
+## Overview
+Managing scheduler and triggerer processes via CLI.
+
+## Tasks
+
+### - [ ] 49.9.1 Scheduler Command
+Filename: `49_09_01_scheduler.py` | Tags: `['reference', 'core', 'beginner', 'success']`
+- [ ] airflow scheduler
+- [ ] Configuration options
+- [ ] Logging configuration
+- [ ] Debug mode
+
+### - [ ] 49.9.2 Triggerer Command
+Filename: `49_09_02_triggerer.py` | Tags: `['reference', 'core', 'beginner', 'success']`
+- [ ] airflow triggerer
+- [ ] Async task handling
+- [ ] Capacity settings
+- [ ] Log management
+
+### - [ ] 49.9.3 Webserver Command
+Filename: `49_09_03_webserver.py` | Tags: `['reference', 'core', 'beginner', 'success']`
+- [ ] airflow webserver
+- [ ] Port and host config
+- [ ] Worker settings
+- [ ] SSL configuration
+
+### - [ ] 49.9.4 Standalone Mode
+Filename: `49_09_04_standalone.py` | Tags: `['reference', 'core', 'beginner', 'success']`
+- [ ] airflow standalone
+- [ ] Development setup
+- [ ] All-in-one execution
+- [ ] Limitations
+
+### - [ ] 49.9.5 Worker Command
+Filename: `49_09_05_worker.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+- [ ] airflow celery worker
+- [ ] Queue selection
+- [ ] Concurrency settings
+- [ ] Autoscaling
+
+---
+
+# 10. CLI Scripting and Automation
+
+## Overview
+Using CLI commands in scripts and automation.
+
+## Tasks
+
+### - [ ] 49.10.1 Scripting with Airflow CLI
+Filename: `49_10_01_scripting.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+- [ ] Exit codes handling
+- [ ] Output parsing
+- [ ] Error handling
+- [ ] Piping commands
+
+### - [ ] 49.10.2 CI/CD Integration
+Filename: `49_10_02_cicd_integration.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+- [ ] DAG validation in pipeline
+- [ ] Deployment scripts
+- [ ] Testing automation
+- [ ] Rollback scripts
+
+### - [ ] 49.10.3 Bulk Operations
+Filename: `49_10_03_bulk_operations.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+- [ ] Loop through DAGs
+- [ ] Mass pause/unpause
+- [ ] Bulk backfill
+- [ ] Batch cleanup
+
+### - [ ] 49.10.4 CLI Output Formats
+Filename: `49_10_04_output_formats.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+- [ ] JSON output
+- [ ] YAML output
+- [ ] Table formatting
+- [ ] Custom formatting
+
+### - [ ] 49.10.5 CLI Best Practices
+Filename: `49_10_05_best_practices.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+- [ ] Idempotent operations
+- [ ] Logging and auditing
+- [ ] Error recovery
+- [ ] Documentation

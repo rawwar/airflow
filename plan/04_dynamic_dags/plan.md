@@ -373,3 +373,91 @@ Filename: `04_08_06_cycle_detection_in_dynamic_dependencies.py` | Tags: `['refer
 - [ ] Include debugging cyclic dependencies
 
 ---
+
+# 4.9 Dynamic DAG Testing
+
+### - [ ] 4.9.1 Testing DAG Generation Logic
+Filename: `04_09_01_testing_dag_generation_logic.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+
+- [ ] Unit test factory functions
+- [ ] Verify DAG count and IDs
+- [ ] Test with various inputs
+- [ ] Parameterized test patterns
+
+### - [ ] 4.9.2 Testing Dynamic Task Creation
+Filename: `04_09_02_testing_dynamic_task_creation.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+
+- [ ] Verify task IDs generated
+- [ ] Test dependency structure
+- [ ] Validate task parameters
+- [ ] Edge case testing
+
+### - [ ] 4.9.3 Testing expand() Behavior
+Filename: `04_09_03_testing_expand_behavior.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+
+- [ ] Test mapped task generation
+- [ ] Verify map index assignment
+- [ ] Test with XCom inputs
+- [ ] Empty list handling
+
+### - [ ] 4.9.4 Integration Testing Dynamic DAGs
+Filename: `04_09_04_integration_testing_dynamic_dags.py` | Tags: `['reference', 'core', 'advanced', 'success']`
+
+- [ ] Full execution tests
+- [ ] Database state verification
+- [ ] Cross-DAG dependency tests
+- [ ] Performance testing
+
+### - [ ] 4.9.5 Mocking Configuration Sources
+Filename: `04_09_05_mocking_configuration_sources.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+
+- [ ] Mock database queries
+- [ ] Mock API responses
+- [ ] Mock file system
+- [ ] Reproducible test configs
+
+---
+
+# 4.10 Dynamic DAG Real-World Examples
+
+### - [ ] 4.10.1 Multi-Environment DAGs
+Filename: `04_10_01_multi_environment_dags.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+
+- [ ] Generate DAGs per environment
+- [ ] Dev/staging/prod variants
+- [ ] Environment-specific configs
+- [ ] Deployment patterns
+
+### - [ ] 4.10.2 Customer-Specific DAGs
+Filename: `04_10_02_customer_specific_dags.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+
+- [ ] One DAG per customer
+- [ ] Customer configuration loading
+- [ ] Isolated scheduling
+- [ ] Customer-specific resources
+
+### - [ ] 4.10.3 Schema-Driven DAGs
+Filename: `04_10_03_schema_driven_dags.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+
+- [ ] DAG from database schema
+- [ ] Table-per-task pattern
+- [ ] Schema change handling
+- [ ] Automatic DAG updates
+
+### - [ ] 4.10.4 Event-Driven Dynamic DAGs
+Filename: `04_10_04_event_driven_dynamic_dags.py` | Tags: `['reference', 'patterns', 'advanced', 'success']`
+
+- [ ] DAG triggered by events
+- [ ] Dynamic task based on event
+- [ ] Event payload processing
+- [ ] Scalability patterns
+
+### - [ ] 4.10.5 ML Experiment DAGs
+Filename: `04_10_05_ml_experiment_dags.py` | Tags: `['reference', 'patterns', 'advanced', 'success']`
+
+- [ ] DAG per experiment config
+- [ ] Hyperparameter variants
+- [ ] Result aggregation
+- [ ] Experiment tracking
+
+---

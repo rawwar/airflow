@@ -419,3 +419,47 @@ Filename: `38_09_06_naming_conventions_example_6.py` | Tags: `['reference', 'adv
 - [ ] Include error handling and best practices
 
 ---
+
+# 10. Production Readiness
+
+### - [ ] 38.10.1 Pre-Production Checklist
+Filename: `38_10_01_pre_production_checklist.py` | Tags: `['reference', 'best-practices', 'intermediate', 'success']`
+
+- [ ] Validate DAG structure and dependencies
+- [ ] Test error handling paths
+- [ ] Verify monitoring and alerting
+- [ ] Document operational procedures
+
+### - [ ] 38.10.2 Deployment Best Practices
+Filename: `38_10_02_deployment_practices.py` | Tags: `['reference', 'best-practices', 'intermediate', 'success']`
+
+- [ ] Use CI/CD for DAG deployment
+- [ ] Implement staged rollouts
+- [ ] Version control configurations
+- [ ] Automate testing before deploy
+
+### - [ ] 38.10.3 Operational Excellence
+Filename: `38_10_03_operational_excellence.py` | Tags: `['reference', 'best-practices', 'intermediate', 'success']`
+
+- [ ] Establish on-call procedures
+- [ ] Create runbooks for common issues
+- [ ] Define escalation paths
+- [ ] Regular maintenance schedules
+
+### - [ ] 38.10.4 Security Best Practices
+Filename: `38_10_04_security_practices.py` | Tags: `['reference', 'best-practices', 'intermediate', 'success']`
+
+- [ ] Secure credential management
+- [ ] Implement least privilege
+- [ ] Audit sensitive operations
+- [ ] Regular security reviews
+
+### - [ ] 38.10.5 Scalability Planning
+Filename: `38_10_05_scalability_planning.py` | Tags: `['reference', 'best-practices', 'intermediate', 'success']`
+
+- [ ] Plan for workload growth
+- [ ] Design for horizontal scaling
+- [ ] Monitor capacity metrics
+- [ ] Budget for infrastructure
+
+---

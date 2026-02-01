@@ -327,3 +327,135 @@ Filename: `13_07_06_pool_monitoring_subtask_6.py` | Tags: `['reference', 'contro
 - [ ] Include error handling and best practices
 
 ---
+
+# 8. Pool Anti-Patterns
+
+### - [ ] 13.8.1 Pool Starvation
+Filename: `13_08_01_pool_starvation.py` | Tags: `['reference', 'control', 'intermediate', 'anti-pattern']`
+
+- [ ] High priority hogging slots
+- [ ] Lower priority never runs
+- [ ] Fairness considerations
+- [ ] Resolution strategies
+
+### - [ ] 13.8.2 Pool Misconfiguration
+Filename: `13_08_02_pool_misconfiguration.py` | Tags: `['reference', 'control', 'intermediate', 'anti-pattern']`
+
+- [ ] Too few slots for workload
+- [ ] Incorrect pool assignment
+- [ ] Detection and debugging
+- [ ] Configuration best practices
+
+### - [ ] 13.8.3 Ignoring Pools
+Filename: `13_08_03_ignoring_pools.py` | Tags: `['reference', 'control', 'intermediate', 'anti-pattern']`
+
+- [ ] Tasks without pool assignment
+- [ ] Default pool exhaustion
+- [ ] Resource contention
+- [ ] Proper pool usage
+
+### - [ ] 13.8.4 Pool Deadlocks
+Filename: `13_08_04_pool_deadlocks.py` | Tags: `['reference', 'control', 'intermediate', 'anti-pattern']`
+
+- [ ] Circular pool waiting
+- [ ] Detection patterns
+- [ ] Prevention strategies
+- [ ] Recovery procedures
+
+### - [ ] 13.8.5 Overusing Priority
+Filename: `13_08_05_overusing_priority.py` | Tags: `['reference', 'control', 'intermediate', 'anti-pattern']`
+
+- [ ] Everything is high priority
+- [ ] Priority inflation
+- [ ] Meaningful priority levels
+- [ ] Governance patterns
+
+---
+
+# 9. Pool Testing
+
+### - [ ] 13.9.1 Testing Pool Configuration
+Filename: `13_09_01_testing_pool_configuration.py` | Tags: `['reference', 'control', 'intermediate', 'success']`
+
+- [ ] Verify pool exists
+- [ ] Check slot count
+- [ ] Validate task assignments
+- [ ] CI/CD integration
+
+### - [ ] 13.9.2 Testing Priority Behavior
+Filename: `13_09_02_testing_priority_behavior.py` | Tags: `['reference', 'control', 'intermediate', 'success']`
+
+- [ ] Verify execution order
+- [ ] Test with contention
+- [ ] Assert priority effect
+- [ ] Race condition testing
+
+### - [ ] 13.9.3 Testing Concurrency Limits
+Filename: `13_09_03_testing_concurrency_limits.py` | Tags: `['reference', 'control', 'intermediate', 'success']`
+
+- [ ] Verify max_active_tasks honored
+- [ ] Test pool slot enforcement
+- [ ] Queuing behavior
+- [ ] Performance testing
+
+### - [ ] 13.9.4 Pool Integration Testing
+Filename: `13_09_04_pool_integration_testing.py` | Tags: `['reference', 'control', 'advanced', 'success']`
+
+- [ ] Multi-DAG pool sharing
+- [ ] Resource contention tests
+- [ ] Load testing patterns
+- [ ] Bottleneck identification
+
+### - [ ] 13.9.5 Mocking Pool Behavior
+Filename: `13_09_05_mocking_pool_behavior.py` | Tags: `['reference', 'control', 'intermediate', 'success']`
+
+- [ ] Mock pool slots
+- [ ] Simulate contention
+- [ ] Test queuing logic
+- [ ] Isolated test patterns
+
+---
+
+# 10. Real-World Pool Examples
+
+### - [ ] 13.10.1 Database Connection Pool
+Filename: `13_10_01_database_connection_pool.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+
+- [ ] Limit DB connections
+- [ ] Match database max_connections
+- [ ] Pool sizing strategy
+- [ ] Monitoring patterns
+
+### - [ ] 13.10.2 API Rate Limit Pool
+Filename: `13_10_02_api_rate_limit_pool.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+
+- [ ] Limit concurrent API calls
+- [ ] Honor rate limits
+- [ ] Backpressure handling
+- [ ] Retry integration
+
+### - [ ] 13.10.3 Resource-Intensive Task Pool
+Filename: `13_10_03_resource_intensive_pool.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+
+- [ ] Heavy compute tasks
+- [ ] Memory management
+- [ ] GPU resource pools
+- [ ] Cluster utilization
+
+### - [ ] 13.10.4 Multi-Tenant Pool Strategy
+Filename: `13_10_04_multi_tenant_pool.py` | Tags: `['reference', 'patterns', 'advanced', 'success']`
+
+- [ ] Per-tenant resource limits
+- [ ] Fair sharing
+- [ ] Priority by tenant
+- [ ] Isolation patterns
+
+### - [ ] 13.10.5 Priority-Based Scheduling
+Filename: `13_10_05_priority_based_scheduling.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+
+- [ ] Critical vs batch workloads
+- [ ] SLA-based priority
+- [ ] Dynamic priority adjustment
+- [ ] Monitoring and tuning
+
+---

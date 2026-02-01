@@ -373,3 +373,91 @@ Filename: `23_08_06_azure_functions_subtask_6.py` | Tags: `['reference', 'provid
 - [ ] Include error handling and best practices
 
 ---
+
+# 9. Azure Key Vault Integration
+
+#### - [ ] 23.9.1 Key Vault Secret Retrieval
+Filename: `23_09_01_key_vault_secret_retrieval.py` | Tags: `['azure', 'security', 'secrets', 'intermediate']`
+
+- [ ] Implement secure secret retrieval from Azure Key Vault
+- [ ] Show connection configuration for Key Vault access
+- [ ] Demonstrate secret caching and rotation handling
+- [ ] Include error handling for access denied scenarios
+
+#### - [ ] 23.9.2 Certificate Management with Key Vault
+Filename: `23_09_02_certificate_management.py` | Tags: `['azure', 'security', 'certificates', 'advanced']`
+
+- [ ] Create DAG for SSL certificate lifecycle management
+- [ ] Demonstrate certificate renewal automation
+- [ ] Show integration with Azure App Services
+- [ ] Include expiration monitoring and alerting
+
+#### - [ ] 23.9.3 Key Vault with Managed Identity
+Filename: `23_09_03_key_vault_managed_identity.py` | Tags: `['azure', 'security', 'identity', 'intermediate']`
+
+- [ ] Configure Airflow to use Azure Managed Identity
+- [ ] Demonstrate passwordless authentication to Key Vault
+- [ ] Show best practices for identity-based access
+- [ ] Include troubleshooting for identity configuration
+
+#### - [ ] 23.9.4 Dynamic Secret Injection
+Filename: `23_09_04_dynamic_secret_injection.py` | Tags: `['azure', 'secrets', 'dynamic', 'advanced']`
+
+- [ ] Build DAG that dynamically injects secrets at runtime
+- [ ] Show templated secret references in operators
+- [ ] Demonstrate secret versioning and rollback
+- [ ] Include audit logging for secret access
+
+#### - [ ] 23.9.5 Multi-Vault Secret Aggregation
+Filename: `23_09_05_multi_vault_aggregation.py` | Tags: `['azure', 'secrets', 'multi-tenant', 'advanced']`
+
+- [ ] Create pipeline accessing multiple Key Vaults
+- [ ] Show cross-subscription secret management
+- [ ] Demonstrate environment-specific vault routing
+- [ ] Include access control and governance patterns
+
+---
+
+# 10. Azure Anti-Patterns and Best Practices
+
+#### - [ ] 23.10.1 Azure Connection Anti-Patterns
+Filename: `23_10_01_azure_connection_antipatterns.py` | Tags: `['azure', 'anti-patterns', 'connections', 'intermediate']`
+
+- [ ] Document common Azure connection mistakes
+- [ ] Show hardcoded credential risks and solutions
+- [ ] Demonstrate connection pooling issues
+- [ ] Include proper connection lifecycle management
+
+#### - [ ] 23.10.2 Azure Resource Cleanup Patterns
+Filename: `23_10_02_resource_cleanup_patterns.py` | Tags: `['azure', 'cleanup', 'cost', 'intermediate']`
+
+- [ ] Implement proper Azure resource cleanup in DAGs
+- [ ] Show teardown tasks for temporary resources
+- [ ] Demonstrate cost optimization through cleanup
+- [ ] Include orphaned resource detection
+
+#### - [ ] 23.10.3 Azure Retry and Resilience Patterns
+Filename: `23_10_03_retry_resilience_patterns.py` | Tags: `['azure', 'retry', 'resilience', 'advanced']`
+
+- [ ] Configure proper retry strategies for Azure services
+- [ ] Show exponential backoff implementation
+- [ ] Demonstrate circuit breaker patterns
+- [ ] Include handling of Azure throttling responses
+
+#### - [ ] 23.10.4 Azure Cost Optimization DAGs
+Filename: `23_10_04_cost_optimization_dags.py` | Tags: `['azure', 'cost', 'optimization', 'intermediate']`
+
+- [ ] Build cost monitoring and optimization pipelines
+- [ ] Show resource right-sizing automation
+- [ ] Demonstrate reserved capacity management
+- [ ] Include budget alerting integration
+
+#### - [ ] 23.10.5 Azure Multi-Region Patterns
+Filename: `23_10_05_multi_region_patterns.py` | Tags: `['azure', 'multi-region', 'disaster-recovery', 'advanced']`
+
+- [ ] Create multi-region failover DAGs
+- [ ] Show data replication across Azure regions
+- [ ] Demonstrate geo-redundant pipeline design
+- [ ] Include disaster recovery testing patterns
+
+---

@@ -189,3 +189,267 @@ Filename: `45_04_06_metadata_database_example_6.py` | Tags: `['reference', 'adva
 - [ ] Include error handling and best practices
 
 ---
+
+# 5. Data Lineage and Provenance
+
+### - [ ] 45.5.1 OpenLineage Integration
+Filename: `45_05_01_openlineage_integration.py` | Tags: `['reference', 'metadata', 'intermediate', 'success']`
+
+- [ ] Configure OpenLineage provider
+- [ ] Emit lineage events from DAGs
+- [ ] Integrate with lineage backends
+- [ ] Visualize data lineage
+
+### - [ ] 45.5.2 Asset-Based Lineage
+Filename: `45_05_02_asset_based_lineage.py` | Tags: `['reference', 'metadata', 'intermediate', 'success']`
+
+- [ ] Use assets for lineage tracking
+- [ ] Define producer-consumer relationships
+- [ ] Track data dependencies
+- [ ] Query lineage graph
+
+### - [ ] 45.5.3 Custom Lineage Operators
+Filename: `45_05_03_custom_lineage_operators.py` | Tags: `['reference', 'metadata', 'advanced', 'success']`
+
+- [ ] Extend operators with lineage
+- [ ] Emit custom lineage facets
+- [ ] Handle external system lineage
+- [ ] Test lineage emissions
+
+### - [ ] 45.5.4 Lineage Visualization
+Filename: `45_05_04_lineage_visualization.py` | Tags: `['reference', 'metadata', 'intermediate', 'success']`
+
+- [ ] Integrate with Marquez
+- [ ] Use DataHub for lineage
+- [ ] Build lineage dashboards
+- [ ] Query lineage APIs
+
+### - [ ] 45.5.5 Data Provenance Tracking
+Filename: `45_05_05_data_provenance.py` | Tags: `['reference', 'metadata', 'intermediate', 'success']`
+
+- [ ] Track data transformations
+- [ ] Record processing history
+- [ ] Audit data changes
+- [ ] Support reproducibility
+
+---
+
+# 6. Tags and Labels
+
+### - [ ] 45.6.1 DAG Tagging Strategy
+Filename: `45_06_01_dag_tagging_strategy.py` | Tags: `['reference', 'metadata', 'beginner', 'success']`
+
+- [ ] Define tag taxonomy
+- [ ] Apply consistent tags
+- [ ] Use tags for filtering
+- [ ] Document tag meanings
+
+### - [ ] 45.6.2 Organizational Tags
+Filename: `45_06_02_organizational_tags.py` | Tags: `['reference', 'metadata', 'beginner', 'success']`
+
+- [ ] Tag by team ownership
+- [ ] Tag by project/domain
+- [ ] Tag by environment
+- [ ] Tag by priority/SLA
+
+### - [ ] 45.6.3 Operational Tags
+Filename: `45_06_03_operational_tags.py` | Tags: `['reference', 'metadata', 'beginner', 'success']`
+
+- [ ] Tag by data classification
+- [ ] Tag by retention policy
+- [ ] Tag by compliance needs
+- [ ] Tag by alerting tier
+
+### - [ ] 45.6.4 Dynamic Tagging
+Filename: `45_06_04_dynamic_tagging.py` | Tags: `['reference', 'metadata', 'intermediate', 'success']`
+
+- [ ] Generate tags programmatically
+- [ ] Tag based on DAG attributes
+- [ ] Update tags automatically
+- [ ] Validate tag consistency
+
+### - [ ] 45.6.5 Tag-Based Operations
+Filename: `45_06_05_tag_based_operations.py` | Tags: `['reference', 'metadata', 'intermediate', 'success']`
+
+- [ ] Filter DAGs by tags in UI
+- [ ] Query DAGs by tags via API
+- [ ] Batch operations on tagged DAGs
+- [ ] Alert based on tags
+
+---
+
+# 7. Documentation Automation
+
+### - [ ] 45.7.1 Auto-Generated Documentation
+Filename: `45_07_01_auto_generated_docs.py` | Tags: `['reference', 'metadata', 'intermediate', 'success']`
+
+- [ ] Extract docs from DAG code
+- [ ] Generate API documentation
+- [ ] Build DAG catalogs
+- [ ] Keep docs in sync
+
+### - [ ] 45.7.2 Documentation Templates
+Filename: `45_07_02_documentation_templates.py` | Tags: `['reference', 'metadata', 'beginner', 'success']`
+
+- [ ] Create standardized templates
+- [ ] Enforce required sections
+- [ ] Support markdown formatting
+- [ ] Include examples
+
+### - [ ] 45.7.3 DAG Catalog Integration
+Filename: `45_07_03_dag_catalog_integration.py` | Tags: `['reference', 'metadata', 'intermediate', 'success']`
+
+- [ ] Publish to data catalogs
+- [ ] Integrate with Datahub
+- [ ] Sync with Amundsen
+- [ ] Update catalog automatically
+
+### - [ ] 45.7.4 Change Documentation
+Filename: `45_07_04_change_documentation.py` | Tags: `['reference', 'metadata', 'intermediate', 'success']`
+
+- [ ] Document DAG changes
+- [ ] Maintain changelog
+- [ ] Version documentation
+- [ ] Track documentation reviews
+
+### - [ ] 45.7.5 Runbook Integration
+Filename: `45_07_05_runbook_integration.py` | Tags: `['reference', 'metadata', 'intermediate', 'success']`
+
+- [ ] Link runbooks from DAGs
+- [ ] Auto-update runbook links
+- [ ] Include troubleshooting guides
+- [ ] Test runbook accuracy
+
+---
+
+# 8. Metadata Search and Discovery
+
+### - [ ] 45.8.1 DAG Search Patterns
+Filename: `45_08_01_dag_search_patterns.py` | Tags: `['reference', 'metadata', 'beginner', 'success']`
+
+- [ ] Search DAGs by name
+- [ ] Search by documentation content
+- [ ] Search by tags and labels
+- [ ] Filter search results
+
+### - [ ] 45.8.2 Data Discovery
+Filename: `45_08_02_data_discovery.py` | Tags: `['reference', 'metadata', 'intermediate', 'success']`
+
+- [ ] Find DAGs that produce data
+- [ ] Discover data consumers
+- [ ] Understand data flows
+- [ ] Navigate dependencies
+
+### - [ ] 45.8.3 Impact Analysis
+Filename: `45_08_03_impact_analysis.py` | Tags: `['reference', 'metadata', 'intermediate', 'success']`
+
+- [ ] Identify downstream impacts
+- [ ] Analyze change effects
+- [ ] Plan migrations safely
+- [ ] Document dependencies
+
+### - [ ] 45.8.4 Metadata APIs
+Filename: `45_08_04_metadata_apis.py` | Tags: `['reference', 'metadata', 'intermediate', 'success']`
+
+- [ ] Query DAG metadata via API
+- [ ] Access run history
+- [ ] Retrieve task details
+- [ ] Build custom tools
+
+### - [ ] 45.8.5 Knowledge Graph
+Filename: `45_08_05_knowledge_graph.py` | Tags: `['reference', 'metadata', 'advanced', 'success']`
+
+- [ ] Build DAG knowledge graph
+- [ ] Connect with external metadata
+- [ ] Enable graph queries
+- [ ] Visualize relationships
+
+---
+
+# 9. Debugging and Validation
+
+### - [ ] 45.9.1 Validate Documentation
+Filename: `45_09_01_validate_documentation.py` | Tags: `['reference', 'testing', 'intermediate', 'success']`
+
+- [ ] Check documentation completeness
+- [ ] Validate markdown syntax
+- [ ] Test documentation links
+- [ ] Enforce documentation standards
+
+### - [ ] 45.9.2 Debug Missing Metadata
+Filename: `45_09_02_debug_missing_metadata.py` | Tags: `['reference', 'debugging', 'intermediate', 'failure']`
+
+- [ ] Identify DAGs without docs
+- [ ] Find missing tags
+- [ ] Check lineage gaps
+- [ ] Report metadata issues
+
+### - [ ] 45.9.3 Debug Lineage Issues
+Filename: `45_09_03_debug_lineage_issues.py` | Tags: `['reference', 'debugging', 'intermediate', 'failure']`
+
+- [ ] Troubleshoot missing lineage
+- [ ] Fix broken lineage links
+- [ ] Validate lineage accuracy
+- [ ] Debug extraction problems
+
+### - [ ] 45.9.4 Documentation Anti-Patterns
+Filename: `45_09_04_documentation_antipatterns.py` | Tags: `['reference', 'anti-patterns', 'intermediate', 'failure']`
+
+- [ ] Avoid outdated documentation
+- [ ] Prevent doc duplication
+- [ ] Fix vague descriptions
+- [ ] Handle missing context
+
+### - [ ] 45.9.5 Metadata Quality Metrics
+Filename: `45_09_05_metadata_quality.py` | Tags: `['reference', 'metadata', 'intermediate', 'success']`
+
+- [ ] Measure documentation coverage
+- [ ] Track lineage completeness
+- [ ] Monitor metadata freshness
+- [ ] Report quality trends
+
+---
+
+# 10. Best Practices
+
+### - [ ] 45.10.1 Documentation Best Practices
+Filename: `45_10_01_documentation_best_practices.py` | Tags: `['reference', 'best-practices', 'beginner', 'success']`
+
+- [ ] Write clear descriptions
+- [ ] Document business context
+- [ ] Keep documentation current
+- [ ] Review documentation regularly
+
+### - [ ] 45.10.2 Metadata Governance
+Filename: `45_10_02_metadata_governance.py` | Tags: `['reference', 'best-practices', 'intermediate', 'success']`
+
+- [ ] Define metadata standards
+- [ ] Assign ownership
+- [ ] Establish review processes
+- [ ] Enforce compliance
+
+### - [ ] 45.10.3 Lineage Best Practices
+Filename: `45_10_03_lineage_best_practices.py` | Tags: `['reference', 'best-practices', 'intermediate', 'success']`
+
+- [ ] Capture complete lineage
+- [ ] Include transformation logic
+- [ ] Document data quality
+- [ ] Maintain lineage accuracy
+
+### - [ ] 45.10.4 Tag Governance
+Filename: `45_10_04_tag_governance.py` | Tags: `['reference', 'best-practices', 'intermediate', 'success']`
+
+- [ ] Standardize tag vocabulary
+- [ ] Enforce tagging policy
+- [ ] Review tag usage
+- [ ] Retire unused tags
+
+### - [ ] 45.10.5 Documentation Checklist
+Filename: `45_10_05_documentation_checklist.py` | Tags: `['reference', 'best-practices', 'beginner', 'success']`
+
+- [ ] DAG description complete
+- [ ] Tasks documented
+- [ ] Lineage defined
+- [ ] Tags applied correctly
+
+---

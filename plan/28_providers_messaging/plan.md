@@ -419,3 +419,47 @@ Filename: `28_09_06_amqp_operator_example_6.py` | Tags: `['reference', 'provider
 - [ ] Include error handling and best practices
 
 ---
+
+# 10. Messaging Anti-Patterns and Best Practices
+
+#### - [ ] 28.10.1 Message Ordering Violations
+Filename: `28_10_01_message_ordering.py` | Tags: `['messaging', 'anti-pattern', 'ordering', 'intermediate']`
+
+- [ ] Document message ordering mistakes
+- [ ] Show proper partition key usage
+- [ ] Demonstrate ordering guarantees by platform
+- [ ] Include solutions for out-of-order handling
+
+#### - [ ] 28.10.2 Dead Letter Queue Management
+Filename: `28_10_02_dead_letter_queues.py` | Tags: `['messaging', 'dlq', 'error-handling', 'intermediate']`
+
+- [ ] Implement proper DLQ handling
+- [ ] Show message retry strategies
+- [ ] Demonstrate DLQ monitoring and alerting
+- [ ] Include message reprocessing patterns
+
+#### - [ ] 28.10.3 Message Serialization Best Practices
+Filename: `28_10_03_serialization.py` | Tags: `['messaging', 'serialization', 'schema', 'intermediate']`
+
+- [ ] Document serialization format choices
+- [ ] Show schema evolution patterns
+- [ ] Demonstrate Avro, Protobuf, JSON trade-offs
+- [ ] Include backward compatibility strategies
+
+#### - [ ] 28.10.4 Consumer Group Management
+Filename: `28_10_04_consumer_groups.py` | Tags: `['messaging', 'consumers', 'scaling', 'intermediate']`
+
+- [ ] Implement proper consumer group patterns
+- [ ] Show partition assignment strategies
+- [ ] Demonstrate consumer rebalancing handling
+- [ ] Include lag monitoring
+
+#### - [ ] 28.10.5 Messaging Performance Optimization
+Filename: `28_10_05_messaging_performance.py` | Tags: `['messaging', 'performance', 'optimization', 'advanced']`
+
+- [ ] Optimize messaging throughput
+- [ ] Show batch processing patterns
+- [ ] Demonstrate compression strategies
+- [ ] Include latency vs throughput trade-offs
+
+---

@@ -2,7 +2,13 @@
 
 ## Overview
 
-This section covers all aspects of 08 sensors.
+This section covers all aspects of sensors in Airflow 3.x, including basic sensors, modes, cloud sensors, and deferrable sensors.
+
+## Airflow 3.x Notes
+- Dataset renamed to **Asset** - see section 8.6
+- Many sensors support `deferrable=True` for efficient resource usage
+- Deferrable sensors require triggerer component
+- See Section 51 for deep dive into deferrable operators
 
 ---
 
@@ -236,49 +242,55 @@ Filename: `08_05_06_grpc_custom_protocol_sensors.py` | Tags: `['reference', 'con
 
 ---
 
-# 8.6 Dataset Sensors
+# 8.6 Asset-Driven Scheduling (formerly Dataset)
 
-### - [ ] 8.8.6.1 Dataset schedule triggering
-Filename: `08_06_01_dataset_schedule_triggering.py` | Tags: `['reference', 'control', 'beginner', 'success']`
+**Note**: In Airflow 3.x, Dataset is renamed to **Asset**. See Section 11 for comprehensive Asset coverage.
 
-- [ ] Create DAG triggered by Dataset updates
-- [ ] Show schedule=[Dataset()] usage
-- [ ] Include dataset URI patterns
+### - [ ] 8.6.1 Asset Schedule Triggering
+Filename: `08_06_01_asset_schedule_triggering.py` | Tags: `['reference', 'control', 'beginner', 'success']`
 
-### - [ ] 8.8.6.2 Multiple dataset conditions
-Filename: `08_06_02_multiple_dataset_conditions.py` | Tags: `['reference', 'control', 'beginner', 'success']`
+- [ ] Create DAG triggered by Asset updates
+- [ ] Show `schedule=[Asset()]` usage (not Dataset)
+- [ ] Import from `airflow.sdk.definitions.asset`
+- [ ] Include asset URI patterns
 
-- [ ] Create DAG with multiple Dataset dependencies
-- [ ] Show AND/OR logic
-- [ ] Include complex conditions
+### - [ ] 8.6.2 Multiple Asset Conditions
+Filename: `08_06_02_multiple_asset_conditions.py` | Tags: `['reference', 'control', 'beginner', 'success']`
 
-### - [ ] 8.8.6.3 Dataset producing tasks
-Filename: `08_06_03_dataset_producing_tasks.py` | Tags: `['reference', 'control', 'beginner', 'success']`
+- [ ] Create DAG with multiple Asset dependencies
+- [ ] Show AND logic: `schedule=[Asset("a"), Asset("b")]`
+- [ ] Show OR logic: `AssetAny(Asset("a"), Asset("b"))`
+- [ ] Include complex conditions with AssetAll
 
-- [ ] Create DAG with outlet datasets
-- [ ] Show Dataset publication
-- [ ] Include lineage tracking
+### - [ ] 8.6.3 Asset Producing Tasks
+Filename: `08_06_03_asset_producing_tasks.py` | Tags: `['reference', 'control', 'beginner', 'success']`
 
-### - [ ] 8.8.6.4 Cross-DAG dataset dependencies
-Filename: `08_06_04_crossdag_dataset_dependencies.py` | Tags: `['reference', 'control', 'beginner', 'success']`
+- [ ] Create DAG with outlet assets
+- [ ] Show `outlets=[Asset()]` on tasks
+- [ ] Include lineage tracking in UI
+
+### - [ ] 8.6.4 Cross-DAG Asset Dependencies
+Filename: `08_06_04_crossdag_asset_dependencies.py` | Tags: `['reference', 'control', 'beginner', 'success']`
 
 - [ ] Create producer and consumer DAGs
-- [ ] Show dataset-driven workflow
-- [ ] Include dependency graph
+- [ ] Show asset-driven workflow
+- [ ] Include dependency graph visualization
 
-### - [ ] 8.8.6.5 Dataset sensors vs ExternalTaskSensor
-Filename: `08_06_05_dataset_sensors_vs_externaltasksensor.py` | Tags: `['reference', 'control', 'beginner', 'success']`
+### - [ ] 8.6.5 Asset vs ExternalTaskSensor
+Filename: `08_06_05_asset_vs_externaltasksensor.py` | Tags: `['reference', 'control', 'beginner', 'success']`
 
 - [ ] Create comparison DAGs
-- [ ] Show use cases for each
+- [ ] Assets: data-centric, loose coupling
+- [ ] ExternalTaskSensor: task-centric, execution alignment
 - [ ] Include migration guide
 
-### - [ ] 8.8.6.6 Dataset best practices
-Filename: `08_06_06_dataset_best_practices.py` | Tags: `['reference', 'control', 'beginner', 'success']`
+### - [ ] 8.6.6 Asset Best Practices
+Filename: `08_06_06_asset_best_practices.py` | Tags: `['reference', 'control', 'beginner', 'success']`
 
-- [ ] Create DAG demonstrating dataset patterns
+- [ ] Create DAG demonstrating asset patterns
 - [ ] Show URI conventions
 - [ ] Include versioning strategies
+- [ ] Reference Section 11 for deep dive
 
 ---
 
@@ -443,12 +455,14 @@ Filename: `08_10_03_custom_sensor_with_connections.py` | Tags: `['reference', 'c
 - [ ] Show hook usage
 - [ ] Include connection testing
 
-### - [ ] 8.8.10.4 Async custom sensor
-Filename: `08_10_04_async_custom_sensor.py` | Tags: `['reference', 'control', 'advanced', 'success']`
+### - [ ] 8.10.4 Deferrable Custom Sensor (Async)
+Filename: `08_10_04_deferrable_custom_sensor.py` | Tags: `['reference', 'control', 'advanced', 'success']`
 
-- [ ] Create async sensor (deferrable)
+- [ ] Create deferrable sensor using defer()
+- [ ] Implement custom Trigger class
 - [ ] Show suspend/resume pattern
-- [ ] Include trigger implementation
+- [ ] Efficient resource usage vs poke mode
+- [ ] See Section 51 for complete deferrable coverage
 
 ### - [ ] 8.8.10.5 Custom sensor testing
 Filename: `08_10_05_custom_sensor_testing.py` | Tags: `['reference', 'control', 'advanced', 'success']`
@@ -457,11 +471,66 @@ Filename: `08_10_05_custom_sensor_testing.py` | Tags: `['reference', 'control', 
 - [ ] Show mocking external dependencies
 - [ ] Include pytest examples
 
-### - [ ] 8.8.10.6 Custom sensor packaging
+### - [ ] 8.10.6 Custom sensor packaging
 Filename: `08_10_06_custom_sensor_packaging.py` | Tags: `['reference', 'control', 'advanced', 'success']`
 
 - [ ] Create packaged custom sensor
 - [ ] Show plugin or provider integration
 - [ ] Include distribution
+
+---
+
+# 8.11 Deferrable Sensors (Airflow 3.x)
+
+## Overview
+Deferrable sensors release their worker slot while waiting, dramatically improving resource efficiency. See Section 51 for complete coverage of deferrable operators.
+
+### - [ ] 8.11.1 Deferrable vs Poke Mode Comparison
+Filename: `08_11_01_deferrable_vs_poke.py` | Tags: `['reference', 'control', 'intermediate', 'success']`
+
+- [ ] Same sensor in poke mode vs deferrable mode
+- [ ] Show worker slot usage difference
+- [ ] Resource efficiency comparison
+- [ ] When to use each mode
+
+### - [ ] 8.11.2 deferrable=True Parameter
+Filename: `08_11_02_deferrable_parameter.py` | Tags: `['reference', 'control', 'beginner', 'success']`
+
+- [ ] Enable deferrable on compatible sensors
+- [ ] FileSensor(deferrable=True)
+- [ ] ExternalTaskSensor(deferrable=True)
+- [ ] HttpSensor(deferrable=True)
+
+### - [ ] 8.11.3 Built-in Async Sensors
+Filename: `08_11_03_builtin_async_sensors.py` | Tags: `['reference', 'control', 'beginner', 'success']`
+
+- [ ] TimeSensorAsync
+- [ ] DateTimeSensorAsync
+- [ ] Async variants of common sensors
+- [ ] Requires triggerer component
+
+### - [ ] 8.11.4 Deferrable Sensor Resource Savings
+Filename: `08_11_04_deferrable_resource_savings.py` | Tags: `['reference', 'control', 'intermediate', 'success']`
+
+- [ ] DAG with many sensors waiting
+- [ ] Poke mode: N workers blocked
+- [ ] Deferrable mode: 0 workers while waiting
+- [ ] Scale benefits demonstration
+
+### - [ ] 8.11.5 Deferrable Sensor Timeout Handling
+Filename: `08_11_05_deferrable_timeout.py` | Tags: `['reference', 'control', 'intermediate', 'success']`
+
+- [ ] Timeout behavior in deferrable mode
+- [ ] Trigger timeout vs task timeout
+- [ ] Graceful timeout handling
+- [ ] Cleanup on timeout
+
+### - [ ] 8.11.6 Triggerer Requirement
+Filename: `08_11_06_triggerer_requirement.py` | Tags: `['reference', 'control', 'beginner', 'success']`
+
+- [ ] Triggerer must be running for deferrable
+- [ ] Detect triggerer availability
+- [ ] Fallback behavior
+- [ ] Monitoring triggerer health
 
 ---

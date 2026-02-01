@@ -327,3 +327,135 @@ Filename: `32_07_06_authentication_backends_example_6.py` | Tags: `['reference',
 - [ ] Include error handling and best practices
 
 ---
+
+# 8. OAuth/OIDC Integration
+
+### - [ ] 32.8.1 OAuth2 Provider Setup
+Filename: `32_08_01_oauth2_provider_setup.py` | Tags: `['reference', 'security', 'intermediate', 'success']`
+
+- [ ] Configure OAuth2 authentication backend
+- [ ] Set up client credentials flow
+- [ ] Handle token refresh automatically
+- [ ] Map OAuth scopes to Airflow roles
+
+### - [ ] 32.8.2 OIDC Authentication
+Filename: `32_08_02_oidc_authentication.py` | Tags: `['reference', 'security', 'intermediate', 'success']`
+
+- [ ] Integrate with OIDC providers (Okta, Auth0)
+- [ ] Configure ID token validation
+- [ ] Extract user info from claims
+- [ ] Handle single sign-on flows
+
+### - [ ] 32.8.3 SAML Integration
+Filename: `32_08_03_saml_integration.py` | Tags: `['reference', 'security', 'advanced', 'success']`
+
+- [ ] Configure SAML authentication
+- [ ] Set up identity provider metadata
+- [ ] Handle assertion validation
+- [ ] Map SAML attributes to roles
+
+### - [ ] 32.8.4 Multi-Provider Authentication
+Filename: `32_08_04_multi_provider_auth.py` | Tags: `['reference', 'security', 'advanced', 'success']`
+
+- [ ] Configure multiple auth backends
+- [ ] Handle fallback authentication
+- [ ] Support internal and external users
+- [ ] Manage provider priority
+
+### - [ ] 32.8.5 Token-Based API Authentication
+Filename: `32_08_05_token_api_auth.py` | Tags: `['reference', 'security', 'intermediate', 'success']`
+
+- [ ] Generate API tokens for automation
+- [ ] Configure token expiration policies
+- [ ] Revoke compromised tokens
+- [ ] Audit token usage
+
+---
+
+# 9. Security Best Practices
+
+### - [ ] 32.9.1 Connection Credential Rotation
+Filename: `32_09_01_credential_rotation.py` | Tags: `['reference', 'security', 'intermediate', 'success']`
+
+- [ ] Implement automatic credential rotation
+- [ ] Handle rotation without downtime
+- [ ] Audit rotation events
+- [ ] Test rotation procedures
+
+### - [ ] 32.9.2 Secrets Masking in Logs
+Filename: `32_09_02_secrets_masking.py` | Tags: `['reference', 'security', 'beginner', 'success']`
+
+- [ ] Configure log masking patterns
+- [ ] Prevent credential leakage in UI
+- [ ] Handle custom sensitive fields
+- [ ] Test masking effectiveness
+
+### - [ ] 32.9.3 Network Security Configuration
+Filename: `32_09_03_network_security.py` | Tags: `['reference', 'security', 'intermediate', 'success']`
+
+- [ ] Configure TLS for all connections
+- [ ] Set up mTLS for internal services
+- [ ] Handle certificate management
+- [ ] Configure allowed hosts
+
+### - [ ] 32.9.4 Audit Logging Setup
+Filename: `32_09_04_audit_logging.py` | Tags: `['reference', 'security', 'intermediate', 'success']`
+
+- [ ] Enable comprehensive audit logs
+- [ ] Track user actions and changes
+- [ ] Configure log retention
+- [ ] Set up compliance reporting
+
+### - [ ] 32.9.5 Security Hardening Checklist
+Filename: `32_09_05_security_hardening.py` | Tags: `['reference', 'best-practices', 'intermediate', 'success']`
+
+- [ ] Disable default credentials
+- [ ] Configure secure headers
+- [ ] Enable CSRF protection
+- [ ] Review security settings
+
+---
+
+# 10. Testing and Debugging Security
+
+### - [ ] 32.10.1 Testing Authentication Flows
+Filename: `32_10_01_testing_auth_flows.py` | Tags: `['reference', 'testing', 'intermediate', 'success']`
+
+- [ ] Unit test authentication backends
+- [ ] Mock OAuth/OIDC providers
+- [ ] Test role mapping logic
+- [ ] Validate session handling
+
+### - [ ] 32.10.2 Testing RBAC Permissions
+Filename: `32_10_02_testing_rbac.py` | Tags: `['reference', 'testing', 'intermediate', 'success']`
+
+- [ ] Test permission enforcement
+- [ ] Validate DAG-level access control
+- [ ] Check API authorization
+- [ ] Test permission inheritance
+
+### - [ ] 32.10.3 Debug Authentication Failures
+Filename: `32_10_03_debug_auth_failures.py` | Tags: `['reference', 'debugging', 'intermediate', 'failure']`
+
+- [ ] Troubleshoot login failures
+- [ ] Debug token validation errors
+- [ ] Diagnose OAuth callback issues
+- [ ] Fix certificate problems
+
+### - [ ] 32.10.4 Security Anti-Patterns
+Filename: `32_10_04_security_antipatterns.py` | Tags: `['reference', 'anti-patterns', 'intermediate', 'failure']`
+
+- [ ] Avoid hardcoded credentials
+- [ ] Prevent overly permissive roles
+- [ ] Fix insecure secret storage
+- [ ] Handle token exposure risks
+
+### - [ ] 32.10.5 Security Incident Response
+Filename: `32_10_05_incident_response.py` | Tags: `['reference', 'security', 'advanced', 'success']`
+
+- [ ] Detect credential compromise
+- [ ] Implement emergency access revocation
+- [ ] Rotate affected secrets
+- [ ] Document incident handling procedures
+
+---

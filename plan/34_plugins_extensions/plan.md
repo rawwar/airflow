@@ -327,3 +327,135 @@ Filename: `34_07_06_plugin_menu_links_example_6.py` | Tags: `['reference', 'adva
 - [ ] Include error handling and best practices
 
 ---
+
+# 8. Plugin Testing
+
+### - [ ] 34.8.1 Unit Testing Plugins
+Filename: `34_08_01_unit_testing_plugins.py` | Tags: `['reference', 'testing', 'intermediate', 'success']`
+
+- [ ] Create test fixtures for plugins
+- [ ] Mock Airflow context in tests
+- [ ] Test plugin initialization
+- [ ] Validate hook/operator functionality
+
+### - [ ] 34.8.2 Integration Testing Plugins
+Filename: `34_08_02_integration_testing_plugins.py` | Tags: `['reference', 'testing', 'intermediate', 'success']`
+
+- [ ] Test plugins with real Airflow environment
+- [ ] Verify UI components render correctly
+- [ ] Test blueprint routes
+- [ ] Validate database interactions
+
+### - [ ] 34.8.3 Plugin Compatibility Testing
+Filename: `34_08_03_compatibility_testing.py` | Tags: `['reference', 'testing', 'intermediate', 'success']`
+
+- [ ] Test across Airflow versions
+- [ ] Verify Python version compatibility
+- [ ] Test dependency conflicts
+- [ ] Validate provider package compatibility
+
+### - [ ] 34.8.4 Test Fixtures for Plugins
+Filename: `34_08_04_test_fixtures.py` | Tags: `['reference', 'testing', 'intermediate', 'success']`
+
+- [ ] Create reusable pytest fixtures
+- [ ] Set up test database state
+- [ ] Mock external services
+- [ ] Handle cleanup between tests
+
+### - [ ] 34.8.5 CI/CD for Plugin Development
+Filename: `34_08_05_cicd_plugin_dev.py` | Tags: `['reference', 'testing', 'intermediate', 'success']`
+
+- [ ] Set up automated testing pipeline
+- [ ] Configure linting and type checks
+- [ ] Run tests across Python versions
+- [ ] Automate package publishing
+
+---
+
+# 9. Plugin Debugging and Performance
+
+### - [ ] 34.9.1 Debugging Plugin Load Failures
+Filename: `34_09_01_debug_load_failures.py` | Tags: `['reference', 'debugging', 'intermediate', 'failure']`
+
+- [ ] Troubleshoot import errors
+- [ ] Debug dependency issues
+- [ ] Fix initialization failures
+- [ ] Handle circular imports
+
+### - [ ] 34.9.2 Plugin Performance Optimization
+Filename: `34_09_02_plugin_performance.py` | Tags: `['reference', 'performance', 'intermediate', 'success']`
+
+- [ ] Minimize plugin load time
+- [ ] Lazy load heavy dependencies
+- [ ] Cache expensive operations
+- [ ] Profile plugin performance
+
+### - [ ] 34.9.3 Plugin Memory Management
+Filename: `34_09_03_memory_management.py` | Tags: `['reference', 'performance', 'advanced', 'success']`
+
+- [ ] Avoid memory leaks in plugins
+- [ ] Handle connection pooling properly
+- [ ] Clean up resources on unload
+- [ ] Monitor plugin memory usage
+
+### - [ ] 34.9.4 Debug Plugin UI Issues
+Filename: `34_09_04_debug_ui_issues.py` | Tags: `['reference', 'debugging', 'intermediate', 'failure']`
+
+- [ ] Troubleshoot missing views
+- [ ] Debug JavaScript errors
+- [ ] Fix template rendering issues
+- [ ] Handle static file problems
+
+### - [ ] 34.9.5 Plugin Anti-Patterns
+Filename: `34_09_05_plugin_antipatterns.py` | Tags: `['reference', 'anti-patterns', 'intermediate', 'failure']`
+
+- [ ] Avoid blocking operations in plugins
+- [ ] Prevent global state pollution
+- [ ] Handle version incompatibilities
+- [ ] Fix security vulnerabilities
+
+---
+
+# 10. Advanced Plugin Patterns
+
+### - [ ] 34.10.1 Plugin Communication Patterns
+Filename: `34_10_01_plugin_communication.py` | Tags: `['reference', 'patterns', 'advanced', 'success']`
+
+- [ ] Share state between plugins
+- [ ] Use signals for plugin events
+- [ ] Implement plugin discovery
+- [ ] Handle plugin dependencies
+
+### - [ ] 34.10.2 Dynamic Plugin Configuration
+Filename: `34_10_02_dynamic_configuration.py` | Tags: `['reference', 'patterns', 'advanced', 'success']`
+
+- [ ] Configure plugins via Variables
+- [ ] Support environment-based config
+- [ ] Hot-reload configuration changes
+- [ ] Validate configuration at startup
+
+### - [ ] 34.10.3 Plugin Distribution
+Filename: `34_10_03_plugin_distribution.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+
+- [ ] Package plugins as Python packages
+- [ ] Distribute via PyPI
+- [ ] Handle plugin versioning
+- [ ] Document installation process
+
+### - [ ] 34.10.4 Multi-Tenant Plugin Design
+Filename: `34_10_04_multi_tenant_plugins.py` | Tags: `['reference', 'patterns', 'advanced', 'success']`
+
+- [ ] Isolate plugin data by tenant
+- [ ] Handle tenant-specific configuration
+- [ ] Support per-tenant customization
+- [ ] Test multi-tenant scenarios
+
+### - [ ] 34.10.5 Real-World Plugin Examples
+Filename: `34_10_05_real_world_examples.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+
+- [ ] Custom data lineage plugin
+- [ ] Business metadata plugin
+- [ ] Cost tracking plugin
+- [ ] SLA monitoring plugin
+
+---

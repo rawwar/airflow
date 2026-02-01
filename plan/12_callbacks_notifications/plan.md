@@ -419,3 +419,47 @@ Filename: `12_09_06_callback_patterns_subtask_6.py` | Tags: `['reference', 'cont
 - [ ] Include error handling and best practices
 
 ---
+
+# 10. Callback Testing
+
+### - [ ] 12.10.1 Unit Testing Callbacks
+Filename: `12_10_01_unit_testing_callbacks.py` | Tags: `['reference', 'control', 'intermediate', 'success']`
+
+- [ ] Test callback functions independently
+- [ ] Mock context parameter
+- [ ] Verify side effects
+- [ ] Assert notifications sent
+
+### - [ ] 12.10.2 Integration Testing Notifications
+Filename: `12_10_02_integration_testing_notifications.py` | Tags: `['reference', 'control', 'intermediate', 'success']`
+
+- [ ] Test email delivery
+- [ ] Test Slack webhook
+- [ ] Verify message content
+- [ ] End-to-end validation
+
+### - [ ] 12.10.3 Testing Error Callbacks
+Filename: `12_10_03_testing_error_callbacks.py` | Tags: `['reference', 'control', 'intermediate', 'success']`
+
+- [ ] Trigger task failure
+- [ ] Verify on_failure_callback called
+- [ ] Test exception info passed
+- [ ] Notification verification
+
+### - [ ] 12.10.4 Testing DAG-Level Callbacks
+Filename: `12_10_04_testing_dag_level_callbacks.py` | Tags: `['reference', 'control', 'intermediate', 'success']`
+
+- [ ] Test on_success_callback for DAG
+- [ ] Test on_failure_callback for DAG
+- [ ] Aggregate metrics verification
+- [ ] State validation
+
+### - [ ] 12.10.5 Mocking Notification Services
+Filename: `12_10_05_mocking_notification_services.py` | Tags: `['reference', 'control', 'intermediate', 'success']`
+
+- [ ] Mock SMTP server
+- [ ] Mock HTTP endpoints
+- [ ] Mock cloud services
+- [ ] Isolated testing patterns
+
+---

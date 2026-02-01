@@ -327,3 +327,135 @@ Filename: `19_07_06_health_monitoring_subtask_6.py` | Tags: `['reference', 'cont
 - [ ] Include error handling and best practices
 
 ---
+
+# 8. Prometheus Integration
+
+### - [ ] 19.8.1 Prometheus Metrics Setup
+Filename: `19_08_01_prometheus_metrics_setup.py` | Tags: `['monitoring', 'control', 'intermediate', 'success']`
+
+- [ ] Configure Prometheus exporter
+- [ ] Define custom Airflow metrics
+- [ ] Set up metric scraping
+- [ ] Validate metric collection
+
+### - [ ] 19.8.2 Custom Metric Creation
+Filename: `19_08_02_custom_metric_creation.py` | Tags: `['monitoring', 'control', 'intermediate', 'success']`
+
+- [ ] Create task-level custom metrics
+- [ ] Implement business metric tracking
+- [ ] Add dimensional labels to metrics
+- [ ] Handle metric cardinality
+
+### - [ ] 19.8.3 Alerting with Prometheus
+Filename: `19_08_03_alerting_with_prometheus.py` | Tags: `['monitoring', 'control', 'intermediate', 'success']`
+
+- [ ] Configure AlertManager rules
+- [ ] Create task failure alerts
+- [ ] Set up SLA breach notifications
+- [ ] Implement escalation policies
+
+### - [ ] 19.8.4 Grafana Dashboard Integration
+Filename: `19_08_04_grafana_dashboard_integration.py` | Tags: `['monitoring', 'control', 'intermediate', 'success']`
+
+- [ ] Build Airflow overview dashboards
+- [ ] Create DAG-specific visualizations
+- [ ] Implement drill-down capabilities
+- [ ] Share dashboard templates
+
+### - [ ] 19.8.5 Metric Query Patterns
+Filename: `19_08_05_metric_query_patterns.py` | Tags: `['monitoring', 'control', 'intermediate', 'success']`
+
+- [ ] Write PromQL for Airflow metrics
+- [ ] Calculate success rates
+- [ ] Track execution durations
+- [ ] Monitor resource utilization
+
+---
+
+# 9. Logging Anti-Patterns and Best Practices
+
+### - [ ] 19.9.1 Avoiding Log Flooding
+Filename: `19_09_01_avoiding_log_flooding.py` | Tags: `['anti-pattern', 'control', 'intermediate', 'warning']`
+
+- [ ] Identify excessive logging patterns
+- [ ] Implement log level strategies
+- [ ] Configure log sampling
+- [ ] Handle debug logging in production
+
+### - [ ] 19.9.2 Structured Logging Patterns
+Filename: `19_09_02_structured_logging_patterns.py` | Tags: `['best-practice', 'control', 'intermediate', 'success']`
+
+- [ ] Implement JSON logging format
+- [ ] Add correlation IDs to logs
+- [ ] Include contextual metadata
+- [ ] Enable log parsing and analysis
+
+### - [ ] 19.9.3 Sensitive Data in Logs
+Filename: `19_09_03_sensitive_data_in_logs.py` | Tags: `['anti-pattern', 'control', 'intermediate', 'warning']`
+
+- [ ] Identify PII exposure risks
+- [ ] Implement log sanitization
+- [ ] Configure secret masking
+- [ ] Audit logs for compliance
+
+### - [ ] 19.9.4 Log Retention Strategies
+Filename: `19_09_04_log_retention_strategies.py` | Tags: `['best-practice', 'control', 'intermediate', 'success']`
+
+- [ ] Define retention policies
+- [ ] Implement log rotation
+- [ ] Archive historical logs
+- [ ] Handle compliance requirements
+
+### - [ ] 19.9.5 Centralized Logging Architecture
+Filename: `19_09_05_centralized_logging_architecture.py` | Tags: `['best-practice', 'control', 'advanced', 'success']`
+
+- [ ] Design log aggregation pipeline
+- [ ] Configure ELK/Loki integration
+- [ ] Implement log forwarding
+- [ ] Handle high-volume logging
+
+---
+
+# 10. Advanced Monitoring Patterns
+
+### - [ ] 19.10.1 Distributed Tracing
+Filename: `19_10_01_distributed_tracing.py` | Tags: `['monitoring', 'control', 'advanced', 'success']`
+
+- [ ] Configure OpenTelemetry integration
+- [ ] Trace task execution paths
+- [ ] Correlate spans across services
+- [ ] Analyze trace data
+
+### - [ ] 19.10.2 Anomaly Detection
+Filename: `19_10_02_anomaly_detection.py` | Tags: `['monitoring', 'control', 'advanced', 'success']`
+
+- [ ] Implement baseline metrics collection
+- [ ] Configure anomaly detection algorithms
+- [ ] Alert on statistical deviations
+- [ ] Tune detection sensitivity
+
+### - [ ] 19.10.3 Capacity Planning Metrics
+Filename: `19_10_03_capacity_planning_metrics.py` | Tags: `['monitoring', 'control', 'advanced', 'success']`
+
+- [ ] Track resource utilization trends
+- [ ] Forecast capacity requirements
+- [ ] Monitor growth patterns
+- [ ] Plan scaling thresholds
+
+### - [ ] 19.10.4 SLA Monitoring and Reporting
+Filename: `19_10_04_sla_monitoring_reporting.py` | Tags: `['monitoring', 'control', 'intermediate', 'success']`
+
+- [ ] Define SLA metrics and targets
+- [ ] Track SLA compliance rates
+- [ ] Generate SLA reports
+- [ ] Alert on SLA risks
+
+### - [ ] 19.10.5 Business Metrics Integration
+Filename: `19_10_05_business_metrics_integration.py` | Tags: `['monitoring', 'control', 'advanced', 'success']`
+
+- [ ] Track data quality metrics
+- [ ] Monitor pipeline business value
+- [ ] Integrate with business dashboards
+- [ ] Report on data freshness
+
+---

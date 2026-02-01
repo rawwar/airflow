@@ -235,3 +235,221 @@ Filename: `50_05_06_edge_case_patterns_example_6.py` | Tags: `['reference', 'adv
 - [ ] Include error handling and best practices
 
 ---
+
+# 6. Concurrency Edge Cases
+
+## Overview
+Edge cases related to concurrent task execution and resource contention.
+
+## Tasks
+
+### - [ ] 50.6.1 Pool Exhaustion Scenarios
+Filename: `50_06_01_pool_exhaustion.py` | Tags: `['reference', 'core', 'intermediate', 'edge-case']`
+- [ ] All pool slots occupied
+- [ ] Task starvation patterns
+- [ ] Priority-based allocation
+- [ ] Detection and recovery
+
+### - [ ] 50.6.2 Deadlock Situations
+Filename: `50_06_02_deadlock_situations.py` | Tags: `['reference', 'core', 'advanced', 'edge-case']`
+- [ ] Cross-DAG deadlocks
+- [ ] Pool-based deadlocks
+- [ ] Detection mechanisms
+- [ ] Prevention strategies
+
+### - [ ] 50.6.3 Race Conditions
+Filename: `50_06_03_race_conditions.py` | Tags: `['reference', 'core', 'advanced', 'edge-case']`
+- [ ] XCom race conditions
+- [ ] File system races
+- [ ] Database conflicts
+- [ ] Mitigation strategies
+
+### - [ ] 50.6.4 Task Instance Conflicts
+Filename: `50_06_04_task_conflicts.py` | Tags: `['reference', 'core', 'intermediate', 'edge-case']`
+- [ ] Duplicate task instances
+- [ ] State inconsistencies
+- [ ] HA scheduler conflicts
+- [ ] Resolution approaches
+
+### - [ ] 50.6.5 Max Active Runs Edge Cases
+Filename: `50_06_05_max_active_runs.py` | Tags: `['reference', 'core', 'intermediate', 'edge-case']`
+- [ ] Backlog accumulation
+- [ ] Catchup interaction
+- [ ] Priority handling
+- [ ] Queue management
+
+---
+
+# 7. Timing and Scheduling Edge Cases
+
+## Overview
+Edge cases related to time, schedules, and data intervals.
+
+## Tasks
+
+### - [ ] 50.7.1 DST Transition Issues
+Filename: `50_07_01_dst_transitions.py` | Tags: `['reference', 'core', 'intermediate', 'edge-case']`
+- [ ] Skipped hour scenarios
+- [ ] Repeated hour scenarios
+- [ ] Schedule ambiguity
+- [ ] Correct handling
+
+### - [ ] 50.7.2 Leap Year and Month Edge Cases
+Filename: `50_07_02_leap_year_month.py` | Tags: `['reference', 'core', 'intermediate', 'edge-case']`
+- [ ] Feb 29 scheduling
+- [ ] Month-end on 31st
+- [ ] Year boundary issues
+- [ ] Safe patterns
+
+### - [ ] 50.7.3 Clock Skew Issues
+Filename: `50_07_03_clock_skew.py` | Tags: `['reference', 'core', 'advanced', 'edge-case']`
+- [ ] Multi-node clock drift
+- [ ] Scheduler timing issues
+- [ ] NTP synchronization
+- [ ] Impact on scheduling
+
+### - [ ] 50.7.4 Long-Running Task vs Schedule
+Filename: `50_07_04_long_running_vs_schedule.py` | Tags: `['reference', 'core', 'intermediate', 'edge-case']`
+- [ ] Task exceeds schedule interval
+- [ ] Overlapping runs
+- [ ] Backpressure patterns
+- [ ] Solutions
+
+### - [ ] 50.7.5 Manual Trigger Data Interval
+Filename: `50_07_05_manual_trigger_interval.py` | Tags: `['reference', 'core', 'intermediate', 'edge-case']`
+- [ ] Default interval assignment
+- [ ] Custom interval specification
+- [ ] Impact on processing logic
+- [ ] Best practices
+
+---
+
+# 8. Data and State Edge Cases
+
+## Overview
+Edge cases in data handling, XCom, and state management.
+
+## Tasks
+
+### - [ ] 50.8.1 Large XCom Values
+Filename: `50_08_01_large_xcom.py` | Tags: `['reference', 'core', 'intermediate', 'edge-case']`
+- [ ] XCom size limits
+- [ ] Database bloat
+- [ ] Serialization failures
+- [ ] Alternative approaches
+
+### - [ ] 50.8.2 Missing XCom Dependencies
+Filename: `50_08_02_missing_xcom.py` | Tags: `['reference', 'core', 'intermediate', 'edge-case']`
+- [ ] Upstream XCom not found
+- [ ] Cross-DAG XCom issues
+- [ ] Default value handling
+- [ ] Error recovery
+
+### - [ ] 50.8.3 State Recovery After Crash
+Filename: `50_08_03_state_recovery.py` | Tags: `['reference', 'core', 'advanced', 'edge-case']`
+- [ ] Scheduler crash recovery
+- [ ] Worker crash scenarios
+- [ ] Database crash handling
+- [ ] Data consistency
+
+### - [ ] 50.8.4 Orphaned Task Instances
+Filename: `50_08_04_orphaned_instances.py` | Tags: `['reference', 'core', 'intermediate', 'edge-case']`
+- [ ] DAG removal with running tasks
+- [ ] Task removal impact
+- [ ] Cleanup procedures
+- [ ] Prevention
+
+### - [ ] 50.8.5 Database Integrity Issues
+Filename: `50_08_05_database_integrity.py` | Tags: `['reference', 'core', 'advanced', 'edge-case']`
+- [ ] Foreign key violations
+- [ ] Orphaned records
+- [ ] Repair procedures
+- [ ] Prevention strategies
+
+---
+
+# 9. External System Edge Cases
+
+## Overview
+Edge cases when interacting with external systems.
+
+## Tasks
+
+### - [ ] 50.9.1 Connection Failures During Execution
+Filename: `50_09_01_connection_failures.py` | Tags: `['reference', 'core', 'intermediate', 'edge-case']`
+- [ ] Mid-task connection loss
+- [ ] Partial operation completion
+- [ ] Retry considerations
+- [ ] Idempotency requirements
+
+### - [ ] 50.9.2 External API Rate Limiting
+Filename: `50_09_02_api_rate_limiting.py` | Tags: `['reference', 'core', 'intermediate', 'edge-case']`
+- [ ] Hit rate limits
+- [ ] Backoff strategies
+- [ ] Pool coordination
+- [ ] Circuit breaker patterns
+
+### - [ ] 50.9.3 Schema Changes in External Systems
+Filename: `50_09_03_schema_changes.py` | Tags: `['reference', 'core', 'intermediate', 'edge-case']`
+- [ ] Upstream schema changes
+- [ ] Breaking changes handling
+- [ ] Version detection
+- [ ] Graceful degradation
+
+### - [ ] 50.9.4 External System Timeout
+Filename: `50_09_04_external_timeout.py` | Tags: `['reference', 'core', 'intermediate', 'edge-case']`
+- [ ] Long-running external calls
+- [ ] Timeout vs task timeout
+- [ ] Cleanup on timeout
+- [ ] State management
+
+### - [ ] 50.9.5 Credential Rotation During Run
+Filename: `50_09_05_credential_rotation.py` | Tags: `['reference', 'core', 'advanced', 'edge-case']`
+- [ ] Secrets change during execution
+- [ ] Token expiration
+- [ ] Refresh handling
+- [ ] Graceful credential updates
+
+---
+
+# 10. Recovery and Debugging Edge Cases
+
+## Overview
+Debugging and recovering from unusual edge case scenarios.
+
+## Tasks
+
+### - [ ] 50.10.1 Stuck DAG Run Recovery
+Filename: `50_10_01_stuck_dag_recovery.py` | Tags: `['reference', 'core', 'intermediate', 'edge-case']`
+- [ ] DAG run neither success nor failed
+- [ ] Manual intervention
+- [ ] State reset procedures
+- [ ] Root cause analysis
+
+### - [ ] 50.10.2 Infinite Loop Detection
+Filename: `50_10_02_infinite_loop.py` | Tags: `['reference', 'core', 'intermediate', 'edge-case']`
+- [ ] Self-triggering loops
+- [ ] Retry loops
+- [ ] Detection mechanisms
+- [ ] Safe termination
+
+### - [ ] 50.10.3 Memory Exhaustion
+Filename: `50_10_03_memory_exhaustion.py` | Tags: `['reference', 'core', 'intermediate', 'edge-case']`
+- [ ] Worker OOM scenarios
+- [ ] Large data processing
+- [ ] Memory profiling
+- [ ] Prevention strategies
+
+### - [ ] 50.10.4 Log File Growth
+Filename: `50_10_04_log_file_growth.py` | Tags: `['reference', 'core', 'intermediate', 'edge-case']`
+- [ ] Excessive logging
+- [ ] Disk space exhaustion
+- [ ] Log rotation
+- [ ] Monitoring
+
+### - [ ] 50.10.5 Edge Case Documentation
+Filename: `50_10_05_edge_case_docs.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+- [ ] Document known edge cases
+- [ ] Runbooks for recovery
+- [ ] Team knowledge sharing
+- [ ] Prevention checklist

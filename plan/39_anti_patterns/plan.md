@@ -419,3 +419,47 @@ Filename: `39_09_06_missing_documentation_example_6.py` | Tags: `['reference', '
 - [ ] Include error handling and best practices
 
 ---
+
+# 10. Architecture Anti-Patterns
+
+### - [ ] 39.10.1 Monolithic DAGs
+Filename: `39_10_01_monolithic_dags.py` | Tags: `['reference', 'anti-patterns', 'intermediate', 'failure']`
+
+- [ ] Identify overly large DAGs
+- [ ] Split into smaller, focused DAGs
+- [ ] Use cross-DAG dependencies
+- [ ] Refactor for maintainability
+
+### - [ ] 39.10.2 Tight Coupling
+Filename: `39_10_02_tight_coupling.py` | Tags: `['reference', 'anti-patterns', 'intermediate', 'failure']`
+
+- [ ] Identify tightly coupled components
+- [ ] Decouple using XCom or assets
+- [ ] Abstract external dependencies
+- [ ] Design for testability
+
+### - [ ] 39.10.3 Circular Dependencies
+Filename: `39_10_03_circular_dependencies.py` | Tags: `['reference', 'anti-patterns', 'intermediate', 'failure']`
+
+- [ ] Detect circular task dependencies
+- [ ] Resolve DAG cycles
+- [ ] Handle cross-DAG circular deps
+- [ ] Design acyclic workflows
+
+### - [ ] 39.10.4 Over-Engineering
+Filename: `39_10_04_over_engineering.py` | Tags: `['reference', 'anti-patterns', 'intermediate', 'failure']`
+
+- [ ] Identify unnecessary complexity
+- [ ] Simplify dynamic DAG generation
+- [ ] Reduce abstraction layers
+- [ ] Keep solutions appropriate to problems
+
+### - [ ] 39.10.5 Ignoring Operational Concerns
+Filename: `39_10_05_ignoring_operations.py` | Tags: `['reference', 'anti-patterns', 'intermediate', 'failure']`
+
+- [ ] Add proper monitoring from start
+- [ ] Plan for failure scenarios
+- [ ] Consider maintenance burden
+- [ ] Design for observability
+
+---

@@ -327,3 +327,135 @@ Filename: `25_07_06_ray_operator_subtask_6.py` | Tags: `['reference', 'providers
 - [ ] Include error handling and best practices
 
 ---
+
+# 8. SSH Operator
+
+#### - [ ] 25.8.1 Basic SSH Command Execution
+Filename: `25_08_01_basic_ssh_command.py` | Tags: `['ssh', 'remote', 'beginner', 'command']`
+
+- [ ] Create DAG executing remote commands via SSH
+- [ ] Show SSH connection configuration
+- [ ] Demonstrate command output capture
+- [ ] Include error handling for connection failures
+
+#### - [ ] 25.8.2 SSH File Transfer Operations
+Filename: `25_08_02_ssh_file_transfer.py` | Tags: `['ssh', 'sftp', 'file-transfer', 'intermediate']`
+
+- [ ] Implement SFTP file upload and download
+- [ ] Show batch file transfer patterns
+- [ ] Demonstrate progress monitoring for large files
+- [ ] Include checksum verification
+
+#### - [ ] 25.8.3 SSH Tunnel for Database Access
+Filename: `25_08_03_ssh_tunnel_database.py` | Tags: `['ssh', 'tunnel', 'database', 'advanced']`
+
+- [ ] Create SSH tunnel for secure database access
+- [ ] Show port forwarding configuration
+- [ ] Demonstrate connection through bastion hosts
+- [ ] Include tunnel lifecycle management
+
+#### - [ ] 25.8.4 SSH Key Management
+Filename: `25_08_04_ssh_key_management.py` | Tags: `['ssh', 'security', 'keys', 'intermediate']`
+
+- [ ] Configure SSH key-based authentication
+- [ ] Show key rotation automation
+- [ ] Demonstrate multi-key management
+- [ ] Include security best practices
+
+#### - [ ] 25.8.5 Remote Script Execution
+Filename: `25_08_05_remote_script_execution.py` | Tags: `['ssh', 'scripts', 'remote', 'intermediate']`
+
+- [ ] Execute complex scripts on remote servers
+- [ ] Show script deployment and execution
+- [ ] Demonstrate environment variable passing
+- [ ] Include output parsing and error handling
+
+---
+
+# 9. Compute Anti-Patterns
+
+#### - [ ] 25.9.1 Container Resource Over-Provisioning
+Filename: `25_09_01_resource_over_provisioning.py` | Tags: `['anti-pattern', 'resources', 'cost', 'intermediate']`
+
+- [ ] Document container resource allocation mistakes
+- [ ] Show proper resource limit configuration
+- [ ] Demonstrate resource monitoring and adjustment
+- [ ] Include cost impact analysis
+
+#### - [ ] 25.9.2 Improper Container Lifecycle Management
+Filename: `25_09_02_container_lifecycle.py` | Tags: `['anti-pattern', 'containers', 'cleanup', 'intermediate']`
+
+- [ ] Identify container cleanup failures
+- [ ] Show proper teardown implementation
+- [ ] Demonstrate orphan container detection
+- [ ] Include automated cleanup strategies
+
+#### - [ ] 25.9.3 Missing Health Checks
+Filename: `25_09_03_missing_health_checks.py` | Tags: `['anti-pattern', 'health', 'monitoring', 'intermediate']`
+
+- [ ] Document health check anti-patterns
+- [ ] Show proper liveness and readiness probes
+- [ ] Demonstrate health check integration
+- [ ] Include recovery automation
+
+#### - [ ] 25.9.4 Hardcoded Container Images
+Filename: `25_09_04_hardcoded_images.py` | Tags: `['anti-pattern', 'images', 'versioning', 'beginner']`
+
+- [ ] Identify image versioning mistakes
+- [ ] Show proper image tag management
+- [ ] Demonstrate image promotion pipelines
+- [ ] Include vulnerability scanning integration
+
+#### - [ ] 25.9.5 Ignoring Container Logs
+Filename: `25_09_05_container_logging.py` | Tags: `['anti-pattern', 'logging', 'debugging', 'intermediate']`
+
+- [ ] Document logging anti-patterns
+- [ ] Show proper log collection setup
+- [ ] Demonstrate centralized logging integration
+- [ ] Include log analysis for troubleshooting
+
+---
+
+# 10. Advanced Compute Patterns
+
+#### - [ ] 25.10.1 Hybrid Cloud Compute
+Filename: `25_10_01_hybrid_cloud_compute.py` | Tags: `['advanced', 'hybrid', 'multi-cloud', 'architecture']`
+
+- [ ] Design pipelines spanning multiple cloud providers
+- [ ] Show workload distribution strategies
+- [ ] Demonstrate failover between clouds
+- [ ] Include cost optimization across providers
+
+#### - [ ] 25.10.2 Spot Instance Integration
+Filename: `25_10_02_spot_instance_integration.py` | Tags: `['advanced', 'spot', 'cost', 'intermediate']`
+
+- [ ] Implement spot instance usage for compute tasks
+- [ ] Show interruption handling strategies
+- [ ] Demonstrate checkpointing for long-running jobs
+- [ ] Include fallback to on-demand instances
+
+#### - [ ] 25.10.3 GPU Workload Orchestration
+Filename: `25_10_03_gpu_workload_orchestration.py` | Tags: `['advanced', 'gpu', 'ml', 'high-performance']`
+
+- [ ] Orchestrate GPU-intensive workloads
+- [ ] Show GPU resource scheduling
+- [ ] Demonstrate multi-GPU job distribution
+- [ ] Include GPU memory management
+
+#### - [ ] 25.10.4 Serverless Compute Integration
+Filename: `25_10_04_serverless_compute.py` | Tags: `['advanced', 'serverless', 'lambda', 'functions']`
+
+- [ ] Integrate serverless functions in DAGs
+- [ ] Show AWS Lambda, Azure Functions, GCP Cloud Functions
+- [ ] Demonstrate cold start optimization
+- [ ] Include cost comparison with containers
+
+#### - [ ] 25.10.5 Compute Autoscaling Strategies
+Filename: `25_10_05_autoscaling_strategies.py` | Tags: `['advanced', 'autoscaling', 'performance', 'cost']`
+
+- [ ] Implement dynamic compute scaling
+- [ ] Show metric-based autoscaling rules
+- [ ] Demonstrate predictive scaling patterns
+- [ ] Include scale-to-zero configurations
+
+---

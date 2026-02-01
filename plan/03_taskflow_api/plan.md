@@ -281,3 +281,179 @@ Filename: `03_06_06_taskflow_performance_considerations.py` | Tags: `['reference
 - [ ] Include memory and serialization overhead notes
 
 ---
+
+# 3.7 TaskFlow Anti-Patterns
+
+### - [ ] 3.7.1 Large XCom Return Values
+Filename: `03_07_01_large_xcom_return_values.py` | Tags: `['reference', 'core', 'intermediate', 'anti-pattern']`
+
+- [ ] Anti-pattern: returning large DataFrames
+- [ ] Show memory issues with large returns
+- [ ] Alternative: return file path or reference
+- [ ] Include size limits and workarounds
+
+### - [ ] 3.7.2 Non-Serializable Returns
+Filename: `03_07_02_non_serializable_returns.py` | Tags: `['reference', 'core', 'intermediate', 'anti-pattern']`
+
+- [ ] Anti-pattern: returning database connections
+- [ ] Show pickling failures
+- [ ] Alternative patterns for resource handles
+- [ ] Custom serialization approaches
+
+### - [ ] 3.7.3 Stateful Functions
+Filename: `03_07_03_stateful_functions.py` | Tags: `['reference', 'core', 'intermediate', 'anti-pattern']`
+
+- [ ] Anti-pattern: using global/class state
+- [ ] Show issues with worker isolation
+- [ ] Making functions stateless
+- [ ] Proper state management via XCom
+
+### - [ ] 3.7.4 Complex Nested Functions
+Filename: `03_07_04_complex_nested_functions.py` | Tags: `['reference', 'core', 'intermediate', 'anti-pattern']`
+
+- [ ] Anti-pattern: deeply nested @task calls
+- [ ] Debugging complexity issues
+- [ ] Flattening task structure
+- [ ] Clear dependency graphs
+
+### - [ ] 3.7.5 Missing Type Hints
+Filename: `03_07_05_missing_type_hints.py` | Tags: `['reference', 'core', 'beginner', 'anti-pattern']`
+
+- [ ] Anti-pattern: untyped task functions
+- [ ] Benefits of type hints for XCom
+- [ ] IDE support and documentation
+- [ ] Airflow serialization improvements
+
+---
+
+# 3.8 TaskFlow Testing
+
+### - [ ] 3.8.1 Unit Testing @task Functions
+Filename: `03_08_01_unit_testing_task_functions.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+
+- [ ] Test decorated function directly
+- [ ] Mock context parameters
+- [ ] Assert return values
+- [ ] Isolation from Airflow
+
+### - [ ] 3.8.2 Integration Testing TaskFlow DAGs
+Filename: `03_08_02_integration_testing_taskflow_dags.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+
+- [ ] Test full DAG execution
+- [ ] Verify task dependencies
+- [ ] Check XCom data flow
+- [ ] End-to-end validation
+
+### - [ ] 3.8.3 Mocking External Dependencies
+Filename: `03_08_03_mocking_external_dependencies.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+
+- [ ] Mock API calls in @task
+- [ ] Mock database connections
+- [ ] Mock file system operations
+- [ ] Dependency injection patterns
+
+### - [ ] 3.8.4 Testing Multiple Outputs
+Filename: `03_08_04_testing_multiple_outputs.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+
+- [ ] Test tuple/dict returns
+- [ ] Verify each output individually
+- [ ] Test downstream consumption
+- [ ] XCom key verification
+
+### - [ ] 3.8.5 Testing TaskFlow with expand()
+Filename: `03_08_05_testing_taskflow_with_expand.py` | Tags: `['reference', 'core', 'advanced', 'success']`
+
+- [ ] Test mapped task generation
+- [ ] Verify mapping behavior
+- [ ] Test aggregation of results
+- [ ] Dynamic task count verification
+
+---
+
+# 3.9 TaskFlow Real-World Patterns
+
+### - [ ] 3.9.1 ETL Pipeline with TaskFlow
+Filename: `03_09_01_etl_pipeline_taskflow.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+
+- [ ] Extract function returning data
+- [ ] Transform function processing
+- [ ] Load function writing output
+- [ ] Complete E-T-L chain
+
+### - [ ] 3.9.2 API Orchestration with TaskFlow
+Filename: `03_09_02_api_orchestration_taskflow.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+
+- [ ] Call multiple APIs in sequence
+- [ ] Aggregate responses
+- [ ] Error handling per call
+- [ ] Retry patterns
+
+### - [ ] 3.9.3 Data Validation Pipeline
+Filename: `03_09_03_data_validation_pipeline.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+
+- [ ] Validation function chain
+- [ ] Pass/fail branching
+- [ ] Aggregated results
+- [ ] Notification on issues
+
+### - [ ] 3.9.4 Feature Engineering Pipeline
+Filename: `03_09_04_feature_engineering_pipeline.py` | Tags: `['reference', 'patterns', 'advanced', 'success']`
+
+- [ ] Multiple feature transformations
+- [ ] Parallel feature computation
+- [ ] Feature aggregation
+- [ ] Model-ready output
+
+### - [ ] 3.9.5 Microservice Integration
+Filename: `03_09_05_microservice_integration.py` | Tags: `['reference', 'patterns', 'advanced', 'success']`
+
+- [ ] Service call orchestration
+- [ ] Response handling
+- [ ] Failure isolation
+- [ ] Saga pattern implementation
+
+---
+
+# 3.10 TaskFlow Migration and Best Practices
+
+### - [ ] 3.10.1 Migrating from PythonOperator
+Filename: `03_10_01_migrating_from_pythonoperator.py` | Tags: `['reference', 'core', 'beginner', 'success']`
+
+- [ ] Before: PythonOperator pattern
+- [ ] After: @task pattern
+- [ ] Migration steps
+- [ ] Preserving behavior
+
+### - [ ] 3.10.2 TaskFlow Code Organization
+Filename: `03_10_02_taskflow_code_organization.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+
+- [ ] File structure for TaskFlow
+- [ ] Separating business logic
+- [ ] Reusable task functions
+- [ ] Module organization
+
+### - [ ] 3.10.3 TaskFlow Documentation Standards
+Filename: `03_10_03_taskflow_documentation_standards.py` | Tags: `['reference', 'core', 'beginner', 'success']`
+
+- [ ] Docstring patterns
+- [ ] Type hint conventions
+- [ ] Parameter documentation
+- [ ] Return value documentation
+
+### - [ ] 3.10.4 TaskFlow Debugging Techniques
+Filename: `03_10_04_taskflow_debugging_techniques.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+
+- [ ] Local execution for debugging
+- [ ] Logging best practices
+- [ ] XCom inspection
+- [ ] Error traceback analysis
+
+### - [ ] 3.10.5 TaskFlow Performance Tuning
+Filename: `03_10_05_taskflow_performance_tuning.py` | Tags: `['reference', 'core', 'advanced', 'success']`
+
+- [ ] Minimize serialization overhead
+- [ ] Optimize XCom size
+- [ ] Efficient data passing
+- [ ] Memory management
+
+---

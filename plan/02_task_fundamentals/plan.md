@@ -233,3 +233,297 @@ Filename: `02_04_06_taskgroup_default_args.py` | Tags: `['reference', 'core', 'b
 - [ ] File: `taskgroup_default_args.py`
 
 ---
+
+# Task Testing Strategies
+
+## Overview
+Patterns for testing individual tasks and task behavior.
+
+## Tasks
+
+#### - [ ] 2.5.1 Unit Testing PythonOperator
+Filename: `02_05_01_unit_testing_pythonoperator.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+
+- [ ] Test python_callable independently
+- [ ] Mock context and dependencies
+- [ ] Assert return values and XCom
+- [ ] File: `test_python_operator.py`
+
+#### - [ ] 2.5.2 Unit Testing BashOperator
+Filename: `02_05_02_unit_testing_bashoperator.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+
+- [ ] Test bash command execution
+- [ ] Mock environment variables
+- [ ] Verify exit codes
+- [ ] File: `test_bash_operator.py`
+
+#### - [ ] 2.5.3 Integration Testing Tasks
+Filename: `02_05_03_integration_testing_tasks.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+
+- [ ] Test task with real dependencies
+- [ ] Database integration tests
+- [ ] API call verification
+- [ ] File: `test_task_integration.py`
+
+#### - [ ] 2.5.4 Mocking Task Context
+Filename: `02_05_04_mocking_task_context.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+
+- [ ] Create mock TaskInstance
+- [ ] Mock XCom push/pull
+- [ ] Mock Variables and Connections
+- [ ] File: `test_mock_context.py`
+
+#### - [ ] 2.5.5 Task Execution Simulation
+Filename: `02_05_05_task_execution_simulation.py` | Tags: `['reference', 'core', 'advanced', 'success']`
+
+- [ ] Simulate task execution flow
+- [ ] Test retry behavior
+- [ ] Verify timeout handling
+- [ ] File: `test_task_simulation.py`
+
+---
+
+# Task Anti-Patterns
+
+## Overview
+Common mistakes to avoid when defining tasks.
+
+## Tasks
+
+#### - [ ] 2.6.1 Long-Running Single Task
+Filename: `02_06_01_long_running_single_task.py` | Tags: `['reference', 'core', 'intermediate', 'anti-pattern']`
+
+- [ ] Anti-pattern: monolithic tasks
+- [ ] Breaking into smaller units
+- [ ] Checkpoint patterns
+- [ ] File: `task_long_running_antipattern.py`
+
+#### - [ ] 2.6.2 Task Without Idempotency
+Filename: `02_06_02_task_without_idempotency.py` | Tags: `['reference', 'core', 'intermediate', 'anti-pattern']`
+
+- [ ] Non-idempotent operations
+- [ ] Duplicate data on retry
+- [ ] Making tasks idempotent
+- [ ] File: `task_idempotency_antipattern.py`
+
+#### - [ ] 2.6.3 Task With Side Effects
+Filename: `02_06_03_task_with_side_effects.py` | Tags: `['reference', 'core', 'intermediate', 'anti-pattern']`
+
+- [ ] Untracked side effects
+- [ ] External system dependencies
+- [ ] Proper effect isolation
+- [ ] File: `task_side_effects_antipattern.py`
+
+#### - [ ] 2.6.4 Hardcoded Task Parameters
+Filename: `02_06_04_hardcoded_task_parameters.py` | Tags: `['reference', 'core', 'beginner', 'anti-pattern']`
+
+- [ ] Environment-specific hardcoding
+- [ ] Using Variables instead
+- [ ] Template-based parameters
+- [ ] File: `task_hardcoded_params_antipattern.py`
+
+#### - [ ] 2.6.5 Missing Error Handling
+Filename: `02_06_05_missing_error_handling.py` | Tags: `['reference', 'core', 'beginner', 'anti-pattern']`
+
+- [ ] Swallowing exceptions
+- [ ] No retry configuration
+- [ ] Proper error propagation
+- [ ] File: `task_error_handling_antipattern.py`
+
+---
+
+# Advanced Task Patterns
+
+## Overview
+Advanced patterns for complex task scenarios.
+
+## Tasks
+
+#### - [ ] 2.7.1 Task with External State
+Filename: `02_07_01_task_with_external_state.py` | Tags: `['reference', 'patterns', 'advanced', 'success']`
+
+- [ ] Track state outside Airflow
+- [ ] State validation on start
+- [ ] Cleanup on completion
+- [ ] File: `task_external_state.py`
+
+#### - [ ] 2.7.2 Task with Checkpointing
+Filename: `02_07_02_task_with_checkpointing.py` | Tags: `['reference', 'patterns', 'advanced', 'success']`
+
+- [ ] Save progress periodically
+- [ ] Resume from checkpoint
+- [ ] Handle partial failures
+- [ ] File: `task_checkpointing.py`
+
+#### - [ ] 2.7.3 Task with Resource Locking
+Filename: `02_07_03_task_with_resource_locking.py` | Tags: `['reference', 'patterns', 'advanced', 'success']`
+
+- [ ] Acquire distributed lock
+- [ ] Execute with lock
+- [ ] Release lock safely
+- [ ] File: `task_resource_locking.py`
+
+#### - [ ] 2.7.4 Task with Circuit Breaker
+Filename: `02_07_04_task_with_circuit_breaker.py` | Tags: `['reference', 'patterns', 'advanced', 'success']`
+
+- [ ] Detect repeated failures
+- [ ] Open circuit to prevent damage
+- [ ] Auto-recovery patterns
+- [ ] File: `task_circuit_breaker.py`
+
+#### - [ ] 2.7.5 Task with Rate Limiting
+Filename: `02_07_05_task_with_rate_limiting.py` | Tags: `['reference', 'patterns', 'advanced', 'success']`
+
+- [ ] Limit API calls per time window
+- [ ] Token bucket implementation
+- [ ] Backoff strategies
+- [ ] File: `task_rate_limiting.py`
+
+---
+
+# Task Debugging and Troubleshooting
+
+## Overview
+Techniques for debugging task issues.
+
+## Tasks
+
+#### - [ ] 2.8.1 Task Log Analysis
+Filename: `02_08_01_task_log_analysis.py` | Tags: `['reference', 'core', 'beginner', 'success']`
+
+- [ ] Reading task logs in UI
+- [ ] Log levels and filtering
+- [ ] Structured logging patterns
+- [ ] File: `task_log_analysis.py`
+
+#### - [ ] 2.8.2 Task State Inspection
+Filename: `02_08_02_task_state_inspection.py` | Tags: `['reference', 'core', 'beginner', 'success']`
+
+- [ ] Understanding task states
+- [ ] Querying task instances
+- [ ] State transition debugging
+- [ ] File: `task_state_inspection.py`
+
+#### - [ ] 2.8.3 Task XCom Debugging
+Filename: `02_08_03_task_xcom_debugging.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+
+- [ ] Viewing XCom values in UI
+- [ ] Debugging serialization issues
+- [ ] XCom size problems
+- [ ] File: `task_xcom_debugging.py`
+
+#### - [ ] 2.8.4 Task Execution Debugging
+Filename: `02_08_04_task_execution_debugging.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+
+- [ ] Using airflow tasks test
+- [ ] Dry run execution
+- [ ] Local debugging setup
+- [ ] File: `task_execution_debugging.py`
+
+#### - [ ] 2.8.5 Task Performance Profiling
+Filename: `02_08_05_task_performance_profiling.py` | Tags: `['reference', 'core', 'advanced', 'success']`
+
+- [ ] Measure task duration
+- [ ] Identify bottlenecks
+- [ ] Memory profiling
+- [ ] File: `task_performance_profiling.py`
+
+---
+
+# Task Performance Optimization
+
+## Overview
+Techniques for optimizing task performance.
+
+## Tasks
+
+#### - [ ] 2.9.1 Task Parallelization
+Filename: `02_09_01_task_parallelization.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+
+- [ ] Split work across parallel tasks
+- [ ] Optimal concurrency settings
+- [ ] Pool configuration
+- [ ] File: `task_parallelization.py`
+
+#### - [ ] 2.9.2 Task Resource Optimization
+Filename: `02_09_02_task_resource_optimization.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+
+- [ ] Memory usage optimization
+- [ ] CPU utilization
+- [ ] I/O patterns
+- [ ] File: `task_resource_optimization.py`
+
+#### - [ ] 2.9.3 Task Caching Strategies
+Filename: `02_09_03_task_caching_strategies.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+
+- [ ] Cache expensive computations
+- [ ] Skip already-processed data
+- [ ] Cache invalidation
+- [ ] File: `task_caching_strategies.py`
+
+#### - [ ] 2.9.4 Task Batch Processing
+Filename: `02_09_04_task_batch_processing.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+
+- [ ] Process data in batches
+- [ ] Optimal batch sizes
+- [ ] Memory-efficient batching
+- [ ] File: `task_batch_processing.py`
+
+#### - [ ] 2.9.5 Task Connection Pooling
+Filename: `02_09_05_task_connection_pooling.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+
+- [ ] Reuse database connections
+- [ ] Connection pool sizing
+- [ ] Connection lifecycle
+- [ ] File: `task_connection_pooling.py`
+
+---
+
+# Task Real-World Examples
+
+## Overview
+Complete real-world task examples.
+
+## Tasks
+
+#### - [ ] 2.10.1 Data Processing Task
+Filename: `02_10_01_data_processing_task.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+
+- [ ] Read, transform, write pattern
+- [ ] Error handling and logging
+- [ ] Metrics collection
+- [ ] File: `task_data_processing.py`
+
+#### - [ ] 2.10.2 API Integration Task
+Filename: `02_10_02_api_integration_task.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+
+- [ ] REST API calls
+- [ ] Pagination handling
+- [ ] Rate limit compliance
+- [ ] File: `task_api_integration.py`
+
+#### - [ ] 2.10.3 File Transfer Task
+Filename: `02_10_03_file_transfer_task.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+
+- [ ] S3/GCS file operations
+- [ ] Large file handling
+- [ ] Transfer verification
+- [ ] File: `task_file_transfer.py`
+
+#### - [ ] 2.10.4 Database Operation Task
+Filename: `02_10_04_database_operation_task.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+
+- [ ] SQL execution patterns
+- [ ] Transaction management
+- [ ] Bulk operations
+- [ ] File: `task_database_operation.py`
+
+#### - [ ] 2.10.5 Notification Task
+Filename: `02_10_05_notification_task.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+
+- [ ] Send email notifications
+- [ ] Slack/Teams integration
+- [ ] Custom notification logic
+- [ ] File: `task_notification.py`
+
+---

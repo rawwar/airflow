@@ -1,8 +1,13 @@
-# 07 Xcom
+# 07 XCom
 
 ## Overview
 
-This section covers all aspects of 07 xcom.
+This section covers all aspects of XCom (cross-communication) in Airflow 3.x for passing data between tasks.
+
+## Airflow 3.x Notes
+- Use `logical_date` instead of deprecated `execution_date` when referencing XCom
+- Template: `{{ ti.xcom_pull() }}` works with `logical_date` context
+- TaskFlow API provides implicit XCom handling
 
 ---
 
@@ -40,8 +45,9 @@ Filename: `07_01_04_xcom_with_templates.py` | Tags: `['reference', 'core', 'begi
 Filename: `07_01_05_xcom_metadata.py` | Tags: `['reference', 'core', 'beginner', 'success']`
 
 - [ ] Create DAG examining XCom table
-- [ ] Show execution_date, task_id, key columns
+- [ ] Show logical_date (replaces execution_date), task_id, key columns
 - [ ] Include timestamp tracking
+- [ ] Note: execution_date column name may still appear in DB schema
 
 ### - [ ] 7.7.1.6 XCom cleanup
 Filename: `07_01_06_xcom_cleanup.py` | Tags: `['reference', 'core', 'beginner', 'success']`
@@ -325,5 +331,137 @@ Filename: `07_07_06_xcom_performance_optimization.py` | Tags: `['reference', 'co
 - [ ] Create DAG optimizing XCom usage
 - [ ] Show batching, caching strategies
 - [ ] Include profiling and benchmarking
+
+---
+
+# 7.8 XCom Anti-Patterns
+
+### - [ ] 7.8.1 Large Data in XCom
+Filename: `07_08_01_large_data_in_xcom.py` | Tags: `['reference', 'core', 'intermediate', 'anti-pattern']`
+
+- [ ] Anti-pattern: passing DataFrames via XCom
+- [ ] Database size explosion
+- [ ] Alternative: external storage references
+- [ ] File path passing pattern
+
+### - [ ] 7.8.2 Sensitive Data in XCom
+Filename: `07_08_02_sensitive_data_in_xcom.py` | Tags: `['reference', 'core', 'intermediate', 'anti-pattern']`
+
+- [ ] Anti-pattern: passwords in XCom
+- [ ] Security implications
+- [ ] Secrets backend usage
+- [ ] Encryption patterns
+
+### - [ ] 7.8.3 Overusing XCom
+Filename: `07_08_03_overusing_xcom.py` | Tags: `['reference', 'core', 'intermediate', 'anti-pattern']`
+
+- [ ] Anti-pattern: XCom for everything
+- [ ] When to use Variables instead
+- [ ] External state storage
+- [ ] Right tool for the job
+
+### - [ ] 7.8.4 XCom Without Error Handling
+Filename: `07_08_04_xcom_without_error_handling.py` | Tags: `['reference', 'core', 'beginner', 'anti-pattern']`
+
+- [ ] Anti-pattern: assuming XCom exists
+- [ ] KeyError on missing XCom
+- [ ] Proper default handling
+- [ ] Graceful degradation
+
+### - [ ] 7.8.5 Non-Deterministic XCom Keys
+Filename: `07_08_05_non_deterministic_xcom_keys.py` | Tags: `['reference', 'core', 'intermediate', 'anti-pattern']`
+
+- [ ] Anti-pattern: dynamic keys without pattern
+- [ ] Key collision issues
+- [ ] Consistent naming conventions
+- [ ] Key schema documentation
+
+---
+
+# 7.9 XCom Testing
+
+### - [ ] 7.9.1 Unit Testing XCom Push
+Filename: `07_09_01_unit_testing_xcom_push.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+
+- [ ] Mock ti.xcom_push
+- [ ] Verify pushed values
+- [ ] Test key and value
+- [ ] Assertions patterns
+
+### - [ ] 7.9.2 Unit Testing XCom Pull
+Filename: `07_09_02_unit_testing_xcom_pull.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+
+- [ ] Mock ti.xcom_pull
+- [ ] Set up return values
+- [ ] Test missing XCom handling
+- [ ] Multiple task_ids
+
+### - [ ] 7.9.3 Integration Testing XCom Flow
+Filename: `07_09_03_integration_testing_xcom_flow.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+
+- [ ] Test full XCom chain
+- [ ] Verify data transformation
+- [ ] End-to-end validation
+- [ ] Database state checks
+
+### - [ ] 7.9.4 Testing Custom XCom Backend
+Filename: `07_09_04_testing_custom_xcom_backend.py` | Tags: `['reference', 'core', 'advanced', 'success']`
+
+- [ ] Mock backend operations
+- [ ] Test serialization/deserialization
+- [ ] Error handling tests
+- [ ] Performance tests
+
+### - [ ] 7.9.5 Testing XCom with Dynamic Tasks
+Filename: `07_09_05_testing_xcom_with_dynamic_tasks.py` | Tags: `['reference', 'core', 'advanced', 'success']`
+
+- [ ] Test XCom from expand()
+- [ ] Verify map_indexes parameter
+- [ ] Aggregation testing
+- [ ] Edge cases
+
+---
+
+# 7.10 XCom Real-World Patterns
+
+### - [ ] 7.10.1 File Processing Pipeline XCom
+Filename: `07_10_01_file_processing_pipeline_xcom.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+
+- [ ] Pass file paths between tasks
+- [ ] Process file list via XCom
+- [ ] Aggregated results
+- [ ] Cleanup coordination
+
+### - [ ] 7.10.2 API Response Chaining
+Filename: `07_10_02_api_response_chaining.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+
+- [ ] Pass API responses via XCom
+- [ ] Extract IDs for next call
+- [ ] Pagination handling
+- [ ] Response aggregation
+
+### - [ ] 7.10.3 Data Quality Results XCom
+Filename: `07_10_03_data_quality_results_xcom.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+
+- [ ] Pass validation results
+- [ ] Aggregate quality metrics
+- [ ] Conditional branching
+- [ ] Alert generation
+
+### - [ ] 7.10.4 ML Model Parameters XCom
+Filename: `07_10_04_ml_model_parameters_xcom.py` | Tags: `['reference', 'patterns', 'advanced', 'success']`
+
+- [ ] Hyperparameter passing
+- [ ] Model metrics communication
+- [ ] Best model selection
+- [ ] Experiment tracking
+
+### - [ ] 7.10.5 Resource Handle Passing
+Filename: `07_10_05_resource_handle_passing.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+
+- [ ] Pass cluster IDs via XCom
+- [ ] Connection handles
+- [ ] Teardown coordination
+- [ ] Resource lifecycle
 
 ---

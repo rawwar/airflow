@@ -327,3 +327,135 @@ Filename: `06_07_06_template_migration.py` | Tags: `['reference', 'core', 'begin
 - [ ] Include deprecation handling
 
 ---
+
+# 6.8 Template Anti-Patterns
+
+### - [ ] 6.8.1 Complex Logic in Templates
+Filename: `06_08_01_complex_logic_in_templates.py` | Tags: `['reference', 'core', 'intermediate', 'anti-pattern']`
+
+- [ ] Anti-pattern: business logic in Jinja
+- [ ] Debugging complexity issues
+- [ ] Moving logic to Python tasks
+- [ ] When template logic is acceptable
+
+### - [ ] 6.8.2 Database Calls in Templates
+Filename: `06_08_02_database_calls_in_templates.py` | Tags: `['reference', 'core', 'intermediate', 'anti-pattern']`
+
+- [ ] Anti-pattern: Variable.get() in templates
+- [ ] Performance impact on parsing
+- [ ] Alternative patterns
+- [ ] Caching strategies
+
+### - [ ] 6.8.3 Unescaped User Input
+Filename: `06_08_03_unescaped_user_input.py` | Tags: `['reference', 'core', 'intermediate', 'anti-pattern']`
+
+- [ ] Security risk of raw params
+- [ ] Template injection vulnerabilities
+- [ ] Proper escaping techniques
+- [ ] Input validation patterns
+
+### - [ ] 6.8.4 Hardcoded Values in Templates
+Filename: `06_08_04_hardcoded_values_in_templates.py` | Tags: `['reference', 'core', 'beginner', 'anti-pattern']`
+
+- [ ] Anti-pattern: magic strings
+- [ ] Using Variables instead
+- [ ] Configuration externalization
+- [ ] Environment handling
+
+### - [ ] 6.8.5 Deeply Nested Templates
+Filename: `06_08_05_deeply_nested_templates.py` | Tags: `['reference', 'core', 'intermediate', 'anti-pattern']`
+
+- [ ] Anti-pattern: excessive nesting
+- [ ] Readability issues
+- [ ] Flattening patterns
+- [ ] Template decomposition
+
+---
+
+# 6.9 Template Debugging
+
+### - [ ] 6.9.1 Template Rendering Preview
+Filename: `06_09_01_template_rendering_preview.py` | Tags: `['reference', 'core', 'beginner', 'success']`
+
+- [ ] UI rendered template view
+- [ ] airflow tasks render command
+- [ ] Pre-execution validation
+- [ ] Debug logging
+
+### - [ ] 6.9.2 Undefined Variable Debugging
+Filename: `06_09_02_undefined_variable_debugging.py` | Tags: `['reference', 'core', 'beginner', 'success']`
+
+- [ ] Identifying undefined variables
+- [ ] StrictUndefined configuration
+- [ ] Default value patterns
+- [ ] Error message interpretation
+
+### - [ ] 6.9.3 Template Expression Debugging
+Filename: `06_09_03_template_expression_debugging.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+
+- [ ] Complex expression debugging
+- [ ] Print debugging in templates
+- [ ] Step-by-step evaluation
+- [ ] Logging template values
+
+### - [ ] 6.9.4 Template Context Inspection
+Filename: `06_09_04_template_context_inspection.py` | Tags: `['reference', 'core', 'intermediate', 'success']`
+
+- [ ] Listing available context vars
+- [ ] Task context exploration
+- [ ] DAG-level vs task-level context
+- [ ] Custom context debugging
+
+### - [ ] 6.9.5 Common Template Errors
+Filename: `06_09_05_common_template_errors.py` | Tags: `['reference', 'core', 'beginner', 'failure']`
+
+- [ ] Syntax error patterns
+- [ ] Type mismatch errors
+- [ ] Missing attribute errors
+- [ ] Resolution strategies
+
+---
+
+# 6.10 Template Real-World Examples
+
+### - [ ] 6.10.1 SQL Query Templating
+Filename: `06_10_01_sql_query_templating.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+
+- [ ] Date-partitioned queries
+- [ ] Dynamic table names
+- [ ] Parameter injection
+- [ ] SQL file templates
+
+### - [ ] 6.10.2 Shell Command Templating
+Filename: `06_10_02_shell_command_templating.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+
+- [ ] Dynamic file paths
+- [ ] Date-stamped outputs
+- [ ] Environment variables
+- [ ] Multi-line commands
+
+### - [ ] 6.10.3 API URL Templating
+Filename: `06_10_03_api_url_templating.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+
+- [ ] Dynamic endpoints
+- [ ] Query parameters
+- [ ] Date ranges in URLs
+- [ ] Pagination parameters
+
+### - [ ] 6.10.4 Configuration File Templating
+Filename: `06_10_04_configuration_file_templating.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+
+- [ ] YAML/JSON config generation
+- [ ] Environment-specific configs
+- [ ] Secrets injection
+- [ ] Config validation
+
+### - [ ] 6.10.5 Notification Message Templating
+Filename: `06_10_05_notification_message_templating.py` | Tags: `['reference', 'patterns', 'intermediate', 'success']`
+
+- [ ] Email body templates
+- [ ] Slack message formatting
+- [ ] Dynamic content inclusion
+- [ ] HTML templates
+
+---

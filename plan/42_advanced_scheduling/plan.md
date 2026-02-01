@@ -281,3 +281,179 @@ Filename: `42_06_06_business_day_schedules_example_6.py` | Tags: `['reference', 
 - [ ] Include error handling and best practices
 
 ---
+
+# 7. Data Intervals and Logical Dates
+
+### - [ ] 42.7.1 Understanding Data Intervals
+Filename: `42_07_01_data_intervals.py` | Tags: `['reference', 'scheduling', 'intermediate', 'success']`
+
+- [ ] Explain data_interval_start and end
+- [ ] Difference from execution_date
+- [ ] Use in task logic
+- [ ] Handle interval boundaries
+
+### - [ ] 42.7.2 Logical Date vs Run Date
+Filename: `42_07_02_logical_vs_run_date.py` | Tags: `['reference', 'scheduling', 'intermediate', 'success']`
+
+- [ ] Understand logical_date concept
+- [ ] When task actually runs vs interval
+- [ ] Common confusion points
+- [ ] Best practices for date handling
+
+### - [ ] 42.7.3 Backfill Behavior
+Filename: `42_07_03_backfill_behavior.py` | Tags: `['reference', 'scheduling', 'intermediate', 'success']`
+
+- [ ] How backfill determines intervals
+- [ ] Configure backfill date ranges
+- [ ] Handle gaps in backfill
+- [ ] Best practices for backfilling
+
+### - [ ] 42.7.4 Catchup Configuration
+Filename: `42_07_04_catchup_config.py` | Tags: `['reference', 'scheduling', 'beginner', 'success']`
+
+- [ ] Set catchup=True/False appropriately
+- [ ] Impact on DAG start behavior
+- [ ] Handle historical data processing
+- [ ] Common catchup pitfalls
+
+### - [ ] 42.7.5 Manual Trigger Data Intervals
+Filename: `42_07_05_manual_trigger_intervals.py` | Tags: `['reference', 'scheduling', 'intermediate', 'success']`
+
+- [ ] Specify interval on manual trigger
+- [ ] Handle None schedule DAGs
+- [ ] Use run_after and conf
+- [ ] Test manual trigger behavior
+
+---
+
+# 8. Event-Driven Scheduling
+
+### - [ ] 42.8.1 Asset-Triggered DAGs
+Filename: `42_08_01_asset_triggered_dags.py` | Tags: `['reference', 'scheduling', 'intermediate', 'success']`
+
+- [ ] Schedule DAGs on asset updates
+- [ ] Configure asset conditions
+- [ ] Handle multiple asset triggers
+- [ ] Debug asset scheduling
+
+### - [ ] 42.8.2 External Trigger Integration
+Filename: `42_08_02_external_triggers.py` | Tags: `['reference', 'scheduling', 'intermediate', 'success']`
+
+- [ ] Trigger DAGs via API
+- [ ] Webhook-based triggering
+- [ ] Event queue integration
+- [ ] Handle trigger parameters
+
+### - [ ] 42.8.3 Sensor-Based Waiting
+Filename: `42_08_03_sensor_scheduling.py` | Tags: `['reference', 'scheduling', 'intermediate', 'success']`
+
+- [ ] Use sensors for event detection
+- [ ] Deferrable sensors for efficiency
+- [ ] Combine schedule and sensors
+- [ ] Handle sensor timeout
+
+### - [ ] 42.8.4 Hybrid Time and Event Scheduling
+Filename: `42_08_04_hybrid_scheduling.py` | Tags: `['reference', 'scheduling', 'advanced', 'success']`
+
+- [ ] Combine time-based and event-driven
+- [ ] Priority between triggers
+- [ ] Handle concurrent triggers
+- [ ] Design patterns for hybrid
+
+### - [ ] 42.8.5 Real-Time Event Processing
+Filename: `42_08_05_realtime_events.py` | Tags: `['reference', 'scheduling', 'advanced', 'success']`
+
+- [ ] Near-real-time DAG execution
+- [ ] Minimize scheduling latency
+- [ ] Handle high-frequency triggers
+- [ ] Scale for event volume
+
+---
+
+# 9. Scheduling Debugging
+
+### - [ ] 42.9.1 Debug Missed Schedules
+Filename: `42_09_01_debug_missed_schedules.py` | Tags: `['reference', 'debugging', 'intermediate', 'failure']`
+
+- [ ] Identify why DAG runs were missed
+- [ ] Check scheduler logs
+- [ ] Verify schedule configuration
+- [ ] Handle timezone issues
+
+### - [ ] 42.9.2 Debug Unexpected Runs
+Filename: `42_09_02_debug_unexpected_runs.py` | Tags: `['reference', 'debugging', 'intermediate', 'failure']`
+
+- [ ] Diagnose extra DAG runs
+- [ ] Check trigger sources
+- [ ] Review catchup behavior
+- [ ] Fix schedule misconfiguration
+
+### - [ ] 42.9.3 Debug Timetable Issues
+Filename: `42_09_03_debug_timetable_issues.py` | Tags: `['reference', 'debugging', 'intermediate', 'failure']`
+
+- [ ] Troubleshoot custom timetables
+- [ ] Validate next_dagrun_info
+- [ ] Test timetable edge cases
+- [ ] Fix interval calculation bugs
+
+### - [ ] 42.9.4 Debug DST Transitions
+Filename: `42_09_04_debug_dst_transitions.py` | Tags: `['reference', 'debugging', 'intermediate', 'failure']`
+
+- [ ] Handle spring forward skipped hours
+- [ ] Handle fall back duplicated hours
+- [ ] Test DST boundary behavior
+- [ ] Configure correct timezone
+
+### - [ ] 42.9.5 Scheduling Anti-Patterns
+Filename: `42_09_05_scheduling_antipatterns.py` | Tags: `['reference', 'anti-patterns', 'intermediate', 'failure']`
+
+- [ ] Avoid overly complex schedules
+- [ ] Don't rely on exact timing
+- [ ] Handle clock drift
+- [ ] Prevent schedule conflicts
+
+---
+
+# 10. Best Practices and Patterns
+
+### - [ ] 42.10.1 Schedule Selection Guide
+Filename: `42_10_01_schedule_selection.py` | Tags: `['reference', 'best-practices', 'beginner', 'success']`
+
+- [ ] When to use cron vs timetable
+- [ ] When to use event-driven
+- [ ] Consider data availability
+- [ ] Match schedule to use case
+
+### - [ ] 42.10.2 Testing Schedules
+Filename: `42_10_02_testing_schedules.py` | Tags: `['reference', 'testing', 'intermediate', 'success']`
+
+- [ ] Unit test custom timetables
+- [ ] Verify schedule calculation
+- [ ] Test edge cases (year boundary, etc.)
+- [ ] Integration test with scheduler
+
+### - [ ] 42.10.3 Schedule Documentation
+Filename: `42_10_03_schedule_documentation.py` | Tags: `['reference', 'best-practices', 'beginner', 'success']`
+
+- [ ] Document schedule intent
+- [ ] Explain timezone choices
+- [ ] Note business requirements
+- [ ] Communicate schedule changes
+
+### - [ ] 42.10.4 Schedule Monitoring
+Filename: `42_10_04_schedule_monitoring.py` | Tags: `['reference', 'best-practices', 'intermediate', 'success']`
+
+- [ ] Monitor schedule adherence
+- [ ] Alert on missed runs
+- [ ] Track schedule latency
+- [ ] Dashboard schedule metrics
+
+### - [ ] 42.10.5 Schedule Change Management
+Filename: `42_10_05_schedule_changes.py` | Tags: `['reference', 'best-practices', 'intermediate', 'success']`
+
+- [ ] Plan schedule modifications
+- [ ] Handle in-flight runs
+- [ ] Communicate changes
+- [ ] Test before deploying
+
+---

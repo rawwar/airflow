@@ -419,3 +419,47 @@ Filename: `14_09_06_error_patterns_subtask_6.py` | Tags: `['reference', 'control
 - [ ] Include error handling and best practices
 
 ---
+
+# 10. Error Testing
+
+### - [ ] 14.10.1 Testing Retry Behavior
+Filename: `14_10_01_testing_retry_behavior.py` | Tags: `['reference', 'control', 'intermediate', 'success']`
+
+- [ ] Trigger controlled failures
+- [ ] Verify retry count
+- [ ] Test retry delay
+- [ ] Assert final state
+
+### - [ ] 14.10.2 Testing Timeout Behavior
+Filename: `14_10_02_testing_timeout_behavior.py` | Tags: `['reference', 'control', 'intermediate', 'success']`
+
+- [ ] Create long-running task
+- [ ] Verify timeout triggers
+- [ ] Test cleanup on timeout
+- [ ] State verification
+
+### - [ ] 14.10.3 Testing Error Callbacks
+Filename: `14_10_03_testing_error_callbacks.py` | Tags: `['reference', 'control', 'intermediate', 'success']`
+
+- [ ] Trigger failure
+- [ ] Verify callback execution
+- [ ] Assert context contents
+- [ ] Notification verification
+
+### - [ ] 14.10.4 Testing Exception Types
+Filename: `14_10_04_testing_exception_types.py` | Tags: `['reference', 'control', 'intermediate', 'success']`
+
+- [ ] AirflowException handling
+- [ ] Custom exception types
+- [ ] Exception propagation
+- [ ] Error classification
+
+### - [ ] 14.10.5 Integration Testing Errors
+Filename: `14_10_05_integration_testing_errors.py` | Tags: `['reference', 'control', 'advanced', 'success']`
+
+- [ ] Full DAG error scenarios
+- [ ] Multi-task failure chains
+- [ ] Recovery testing
+- [ ] Alert verification
+
+---
